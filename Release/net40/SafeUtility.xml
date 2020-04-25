@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SafeUtility</name>
+    </assembly>
+    <members>
+        <member name="T:DawnXZ.SafeUtility.ProcessRequest">
+            <summary>
+            Web请求进程安全检测处理类
+            </summary>
+        </member>
+        <member name="F:DawnXZ.SafeUtility.ProcessRequest.FInjectionString">
+            <summary>
+            SQL注入校对字符串
+            </summary>
+        </member>
+        <member name="F:DawnXZ.SafeUtility.ProcessRequest.FReturnParam">
+            <summary>
+            是否返回错误信息
+            </summary>
+        </member>
+        <member name="F:DawnXZ.SafeUtility.ProcessRequest.FReturnPage">
+            <summary>
+            SQL注入错误跳转页面
+            </summary>
+        </member>
+        <member name="M:DawnXZ.SafeUtility.ProcessRequest.IsUploadRequest(System.Web.HttpRequest)">
+            <summary>
+            用来识别是否是流的方式传输
+            </summary>
+            <param name="request">使 ASP.NET 能够读取客户端在 Web 请求期间发送的 HTTP 值。</param>
+            <returns>比较结果</returns>
+        </member>
+        <member name="M:DawnXZ.SafeUtility.ProcessRequest.StringStartsWithAnotherIgnoreCase(System.String,System.String)">
+            <summary>
+            比较内容类型
+            </summary>
+            <param name="s1">比较值一</param>
+            <param name="s2">比较值二</param>
+            <returns>比较结果</returns>
+        </member>
+        <member name="M:DawnXZ.SafeUtility.ProcessRequest.StartProcessRequest">
+            <summary>
+            处理用户提交的请求
+            </summary>
+        </member>
+        <member name="M:DawnXZ.SafeUtility.ProcessRequest.ProcessSqlStr(System.String)">
+            <summary>
+            分析用户请求是否正常
+            传入用户提交数据
+            返回是否含有SQL注入式攻击代码
+            </summary>
+            <param name="Str"></param>
+            <returns></returns>
+        </member>
+        <member name="T:DawnXZ.SafeUtility.SqlInjection">
+            <summary>
+            SQL注入安全检测处理类
+            <remarks>
+            <para>在 Web.config 文件中的 appSettings 配置节添加如下代码</para>
+            <para>&lt;!--防注入设置[yes/no][strSqlInjection可不配置]--&gt;</para>
+            <para>&lt;add key="SafeInjectionString" value="and |exec |insert |select |delete |update |count | * |chr |mid |master |truncate |char |declare " /&gt;</para>
+            <para>&lt;add key="SafeReturnParam" value="no" /&gt;</para>
+            <para>&lt;add key="SafeReturnPage" value="Error.aspx" /&gt;</para>
+            <para>在 Web.config 文件中的 system.web 配置节 中的 HttpModules 中添加如下代码</para>
+            <para>&lt;!--防注入设置--&gt;</para>
+            <para>&lt;add name="httpSqlInjection" type="DawnXZ.SafeUtility.SqlInjection,SafeUtility" /&gt;</para>
+            </remarks>
+            </summary>
+        </member>
+        <member name="M:DawnXZ.SafeUtility.SqlInjection.Init(System.Web.HttpApplication)">
+            <summary>
+            初始化
+            </summary>
+            <param name="application"></param>
+        </member>
+        <member name="M:DawnXZ.SafeUtility.SqlInjection.Application_BeginRequest(System.Object,System.EventArgs)">
+            <summary>
+            应用程序请求开始
+            </summary>
+            <param name="source"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:DawnXZ.SafeUtility.SqlInjection.Dispose">
+            <summary>
+            释放
+            </summary>
+        </member>
+    </members>
+</doc>

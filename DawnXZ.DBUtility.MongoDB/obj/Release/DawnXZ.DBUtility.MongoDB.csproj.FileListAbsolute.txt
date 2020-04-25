@@ -1,0 +1,6 @@
+E:\DawnProjectDevOps\DawnHistorySaveCollection\晨曦常用工具集\Release\net40\DBUtility.MongoDB.xml
+E:\DawnProjectDevOps\DawnHistorySaveCollection\晨曦常用工具集\Release\net40\DBUtility.MongoDB.dll
+E:\DawnProjectDevOps\DawnHistorySaveCollection\晨曦常用工具集\DawnXZ.DBUtility.MongoDB\obj\Release\DawnXZ.DBUtility.MongoDB.csprojAssemblyReference.cache
+E:\DawnProjectDevOps\DawnHistorySaveCollection\晨曦常用工具集\DawnXZ.DBUtility.MongoDB\obj\Release\DawnXZ.DBUtility.MongoDB.csproj.CoreCompileInputs.cache
+E:\DawnProjectDevOps\DawnHistorySaveCollection\晨曦常用工具集\DawnXZ.DBUtility.MongoDB\obj\Release\DawnXZ.DBUtility.MongoDB.csproj.CopyComplete
+E:\DawnProjectDevOps\DawnHistorySaveCollection\晨曦常用工具集\DawnXZ.DBUtility.MongoDB\obj\Release\DBUtility.MongoDB.dll

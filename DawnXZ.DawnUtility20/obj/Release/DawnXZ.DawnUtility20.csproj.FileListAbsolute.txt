@@ -1,0 +1,5 @@
+E:\DawnProjectDevOps\DawnHistorySaveCollection\晨曦常用工具集\Release\net20\DawnUtility.xml
+E:\DawnProjectDevOps\DawnHistorySaveCollection\晨曦常用工具集\Release\net20\DawnUtility.dll
+E:\DawnProjectDevOps\DawnHistorySaveCollection\晨曦常用工具集\DawnXZ.DawnUtility20\obj\Release\DawnXZ.DawnUtility20.csprojAssemblyReference.cache
+E:\DawnProjectDevOps\DawnHistorySaveCollection\晨曦常用工具集\DawnXZ.DawnUtility20\obj\Release\DawnXZ.DawnUtility20.csproj.CoreCompileInputs.cache
+E:\DawnProjectDevOps\DawnHistorySaveCollection\晨曦常用工具集\DawnXZ.DawnUtility20\obj\Release\DawnUtility.dll

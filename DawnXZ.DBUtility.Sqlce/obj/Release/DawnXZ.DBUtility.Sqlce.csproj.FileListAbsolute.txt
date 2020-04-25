@@ -1,0 +1,6 @@
+E:\DawnProjectDevOps\DawnHistorySaveCollection\晨曦常用工具集\Release\net40\DBUtility.Sqlce.xml
+E:\DawnProjectDevOps\DawnHistorySaveCollection\晨曦常用工具集\Release\net40\DBUtility.Sqlce.dll
+E:\DawnProjectDevOps\DawnHistorySaveCollection\晨曦常用工具集\DawnXZ.DBUtility.Sqlce\obj\Release\DawnXZ.DBUtility.Sqlce.csprojAssemblyReference.cache
+E:\DawnProjectDevOps\DawnHistorySaveCollection\晨曦常用工具集\DawnXZ.DBUtility.Sqlce\obj\Release\DawnXZ.DBUtility.Sqlce.csproj.CoreCompileInputs.cache
+E:\DawnProjectDevOps\DawnHistorySaveCollection\晨曦常用工具集\DawnXZ.DBUtility.Sqlce\obj\Release\DawnXZ.DBUtility.Sqlce.csproj.CopyComplete
+E:\DawnProjectDevOps\DawnHistorySaveCollection\晨曦常用工具集\DawnXZ.DBUtility.Sqlce\obj\Release\DBUtility.Sqlce.dll

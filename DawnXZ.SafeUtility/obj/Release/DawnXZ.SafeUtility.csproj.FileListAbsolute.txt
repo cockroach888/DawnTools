@@ -1,0 +1,5 @@
+E:\DawnProjectDevOps\DawnHistorySaveCollection\晨曦常用工具集\Release\net40\SafeUtility.xml
+E:\DawnProjectDevOps\DawnHistorySaveCollection\晨曦常用工具集\Release\net40\SafeUtility.dll
+E:\DawnProjectDevOps\DawnHistorySaveCollection\晨曦常用工具集\DawnXZ.SafeUtility\obj\Release\DawnXZ.SafeUtility.csprojAssemblyReference.cache
+E:\DawnProjectDevOps\DawnHistorySaveCollection\晨曦常用工具集\DawnXZ.SafeUtility\obj\Release\DawnXZ.SafeUtility.csproj.CoreCompileInputs.cache
+E:\DawnProjectDevOps\DawnHistorySaveCollection\晨曦常用工具集\DawnXZ.SafeUtility\obj\Release\SafeUtility.dll

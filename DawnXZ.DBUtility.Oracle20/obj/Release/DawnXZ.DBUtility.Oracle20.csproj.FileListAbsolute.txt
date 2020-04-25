@@ -1,0 +1,5 @@
+E:\DawnProjectDevOps\DawnHistorySaveCollection\晨曦常用工具集\Release\net20\DBUtility.Oracle.xml
+E:\DawnProjectDevOps\DawnHistorySaveCollection\晨曦常用工具集\Release\net20\DBUtility.Oracle.dll
+E:\DawnProjectDevOps\DawnHistorySaveCollection\晨曦常用工具集\DawnXZ.DBUtility.Oracle20\obj\Release\DawnXZ.DBUtility.Oracle20.csprojAssemblyReference.cache
+E:\DawnProjectDevOps\DawnHistorySaveCollection\晨曦常用工具集\DawnXZ.DBUtility.Oracle20\obj\Release\DawnXZ.DBUtility.Oracle20.csproj.CoreCompileInputs.cache
+E:\DawnProjectDevOps\DawnHistorySaveCollection\晨曦常用工具集\DawnXZ.DBUtility.Oracle20\obj\Release\DBUtility.Oracle.dll

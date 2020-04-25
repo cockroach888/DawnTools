@@ -1,0 +1,281 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D00669A9-7113-4B20-B9CB-332ECA9B5BC8}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DawnXZ.DawnApp</RootNamespace>
+    <AssemblyName>晨曦工具集</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <PublishUrl>发布\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Release\DawnApp\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>sys.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>DawnXZ.DawnApp.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MongoDB.Bson">
+      <HintPath>..\..\..\..\Classlib\Mongo\Net40\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver">
+      <HintPath>..\..\..\..\Classlib\Mongo\Net40\MongoDB.Driver.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Core\ConfigHelper.cs" />
+    <Compile Include="Core\ConnHelper.cs" />
+    <Compile Include="Entity\CasePartTemplateInfo.cs" />
+    <Compile Include="frmBuilding.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBuilding.designer.cs">
+      <DependentUpon>frmBuilding.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDESEncrypt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDESEncrypt.designer.cs">
+      <DependentUpon>frmDESEncrypt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDESEncryptAll.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDESEncryptAll.designer.cs">
+      <DependentUpon>frmDESEncryptAll.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin.designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMongoDB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMongoDB.Designer.cs">
+      <DependentUpon>frmMongoDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmNuclear.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNuclear.Designer.cs">
+      <DependentUpon>frmNuclear.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRSAHelper.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRSAHelper.designer.cs">
+      <DependentUpon>frmRSAHelper.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTest.designer.cs">
+      <DependentUpon>frmTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SplashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SplashScreen.designer.cs">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Template\TmpForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Template\TmpForm.Designer.cs">
+      <DependentUpon>TmpForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="frmBuilding.resx">
+      <DependentUpon>frmBuilding.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDESEncrypt.resx">
+      <DependentUpon>frmDESEncrypt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDESEncryptAll.resx">
+      <DependentUpon>frmDESEncryptAll.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMongoDB.resx">
+      <DependentUpon>frmMongoDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNuclear.resx">
+      <DependentUpon>frmNuclear.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRSAHelper.resx">
+      <DependentUpon>frmRSAHelper.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTest.resx">
+      <DependentUpon>frmTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="SplashScreen.resx">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Template\TmpForm.resx">
+      <DependentUpon>TmpForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="App.config" />
+    <None Include="DawnXZ.DawnApp.snk" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Core\Readme.txt" />
+    <Content Include="Entity\Readme.txt" />
+    <Content Include="form.ico" />
+    <None Include="Resources\ico06.png" />
+    <None Include="Resources\png-1596.png" />
+    <Content Include="魂.ico" />
+    <None Include="Resources\progress.png" />
+    <None Include="Resources\loading.png" />
+    <None Include="Resources\Background.jpg" />
+    <None Include="Resources\ico01.png" />
+    <None Include="Resources\ico02.png" />
+    <None Include="Resources\ico03.png" />
+    <None Include="Resources\ico04.png" />
+    <None Include="Resources\ico05.png" />
+    <Content Include="sys.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.4.5">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 4.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DawnXZ.DawnUtility\DawnXZ.DawnUtility.csproj">
+      <Project>{db3c18db-7985-43d6-acf3-d55c5e4d6e5a}</Project>
+      <Name>DawnXZ.DawnUtility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DawnXZ.DBUtility.MongoDB\DawnXZ.DBUtility.MongoDB.csproj">
+      <Project>{bf967d20-4b95-452f-9e2c-2c24a2bb20cb}</Project>
+      <Name>DawnXZ.DBUtility.MongoDB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DawnXZ.FileUtility\DawnXZ.FileUtility.csproj">
+      <Project>{45af8a4d-b59d-4ed8-a12c-437200871662}</Project>
+      <Name>DawnXZ.FileUtility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DawnXZ.FormUtility\DawnXZ.FormUtility.csproj">
+      <Project>{a8e07bd1-be2c-4f5a-8887-7ce81067a39b}</Project>
+      <Name>DawnXZ.FormUtility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DawnXZ.NuclearUtility\DawnXZ.NuclearUtility.csproj">
+      <Project>{101ffcf8-9f0d-45d5-96a1-2fd306b9bfa9}</Project>
+      <Name>DawnXZ.NuclearUtility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DawnXZ.VerifyUtility\DawnXZ.VerifyUtility.csproj">
+      <Project>{ad3504f1-81bc-4c7c-9080-f7743365e9e3}</Project>
+      <Name>DawnXZ.VerifyUtility</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

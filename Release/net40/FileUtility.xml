@@ -1,0 +1,2472 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FileUtility</name>
+    </assembly>
+    <members>
+        <member name="T:DawnXZ.FileUtility.FileDirectoryEnumerable">
+            <summary>
+            文件或目录遍历处理器
+            <para>对 FileDirectoryEnumerator 类进行封装</para>
+            <para>使用示例：</para>
+            <para>FileDirectoryEnumerable fde1 = new FileDirectoryEnumerable();</para>
+            <para>fde1.SearchPath = @"c:\windows\";</para>
+            <para>fde1.ReturnStringType = false;</para>
+            <para>fde1.SearchPattern = "*.*";</para>
+            <para>foreach (object name in fde1) {</para>
+            <para>　　var file = item as FileInfo;</para>
+            <para>　　Console.WriteLine(name);</para>
+            <para>}</para>
+            <para>Console.ReadLine();</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.FileDirectoryEnumerable.FEnumerableList">
+            <summary>
+            文件或目录遍历结果集合存储器
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.FileDirectoryEnumerable.bolReturnStringType">
+            <summary>
+            是否以字符串方式返回查询结果
+            <para>若返回true则当前对象返回为字符串</para>
+            <para>否则返回 FileInfo 或 DirectoryInfo 类型</para>
+            </summary>
+        </member>
+        <member name="P:DawnXZ.FileUtility.FileDirectoryEnumerable.ReturnStringType">
+            <summary>
+            是否以字符串方式返回查询结果
+            <para>若返回true则当前对象返回为字符串</para>
+            <para>否则返回 FileInfo 或 DirectoryInfo 类型</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.FileDirectoryEnumerable.strSearchPattern">
+            <summary>
+            文件或目录名的通配符
+            </summary>
+        </member>
+        <member name="P:DawnXZ.FileUtility.FileDirectoryEnumerable.SearchPattern">
+            <summary>
+            文件或目录名的通配符
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.FileDirectoryEnumerable.strSearchPath">
+            <summary>
+            搜索路径
+            <para>必须为绝对路径</para>
+            </summary>
+        </member>
+        <member name="P:DawnXZ.FileUtility.FileDirectoryEnumerable.SearchPath">
+            <summary>
+            搜索路径
+            <para>必须为绝对路径</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.FileDirectoryEnumerable.bolSearchForFile">
+            <summary>
+            是否查找文件
+            </summary>
+        </member>
+        <member name="P:DawnXZ.FileUtility.FileDirectoryEnumerable.SearchForFile">
+            <summary>
+            是否查找文件
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.FileDirectoryEnumerable.bolSearchForDirectory">
+            <summary>
+            是否查找子目录
+            <para>显示时是否包含子目录名称</para>
+            </summary>
+        </member>
+        <member name="P:DawnXZ.FileUtility.FileDirectoryEnumerable.SearchForDirectory">
+            <summary>
+            是否查找子目录
+            <para>显示时是否包含子目录名称</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.FileDirectoryEnumerable.bolThrowIOException">
+            <summary>
+            发生IO错误时是否抛出异常
+            </summary>
+        </member>
+        <member name="P:DawnXZ.FileUtility.FileDirectoryEnumerable.ThrowIOException">
+            <summary>
+            发生IO错误时是否抛出异常
+            </summary>
+        </member>
+        <member name="M:DawnXZ.FileUtility.FileDirectoryEnumerable.GetEnumerator">
+            <summary>
+            返回内置的文件和目录遍历器
+            </summary>
+            <returns>遍历器对象</returns>
+        </member>
+        <member name="M:DawnXZ.FileUtility.FileDirectoryEnumerable.Close">
+            <summary>
+            关闭对象
+            </summary>
+        </member>
+        <member name="T:DawnXZ.FileUtility.FileDirectoryEnumerator">
+            <summary>
+            文件和目录的遍历器
+            <para>对 Win32API 函数的 FindFirstFile、FindNextFile、FindClose 进行封装</para>
+            <para>使用示例：</para>
+            <para>FileDirectoryEnumerator fde2 = new FileDirectoryEnumerator();</para>
+            <para>fde2.SearchPath = @"c:\windows\";</para>
+            <para>fde2.ReturnStringType = true;</para>
+            <para>fde2.SearchPattern = "*.*";</para>
+            <para>fde2.Reset();</para>
+            <para>fde2.ReturnStringType = true;</para>
+            <para>while (fde2.MoveNext()) {</para>
+            <para>　　Console.WriteLine(string.Format("{0}   {1}  \t{2}", fde2.LastAccessTime.ToString("yyyy-MM-dd HH:mm:ss"), fde2.FileLength, fde2.Name));</para>
+            <para>}</para>
+            <para>Console.WriteLine(string.Format("总文件个数：{0}", fde2.SearchedCount));</para>
+            <para>fde2.Close();</para>
+            <para>Console.ReadLine();</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.FileDirectoryEnumerator.objCurrentObject">
+            <summary>
+            当前对象
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.FileDirectoryEnumerator.bolIsEmpty">
+            <summary>
+            目录是否为空
+            </summary>
+        </member>
+        <member name="P:DawnXZ.FileUtility.FileDirectoryEnumerator.IsEmpty">
+            <summary>
+            目录是否为空
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.FileDirectoryEnumerator.intSearchedCount">
+            <summary>
+            已找到的对象的个数
+            </summary>
+        </member>
+        <member name="P:DawnXZ.FileUtility.FileDirectoryEnumerator.SearchedCount">
+            <summary>
+            已找到的对象的个数
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.FileDirectoryEnumerator.bolIsFile">
+            <summary>
+            当前对象是否为文件
+            <para>若为true则当前对象为文件，否则为目录</para>
+            </summary>
+        </member>
+        <member name="P:DawnXZ.FileUtility.FileDirectoryEnumerator.IsFile">
+            <summary>
+            当前对象是否为文件
+            <para>若为true则当前对象为文件，否则为目录</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.FileDirectoryEnumerator.intLastErrorCode">
+            <summary>
+            最后一次操作的Win32错误代码
+            </summary>
+        </member>
+        <member name="P:DawnXZ.FileUtility.FileDirectoryEnumerator.LastErrorCode">
+            <summary>
+            最后一次操作的Win32错误代码
+            </summary>
+        </member>
+        <member name="P:DawnXZ.FileUtility.FileDirectoryEnumerator.Name">
+            <summary>
+            当前对象的名称
+            </summary>
+        </member>
+        <member name="P:DawnXZ.FileUtility.FileDirectoryEnumerator.Attributes">
+            <summary>
+            当前对象属性
+            </summary>
+        </member>
+        <member name="P:DawnXZ.FileUtility.FileDirectoryEnumerator.CreationTime">
+            <summary>
+            当前对象创建时间
+            </summary>
+        </member>
+        <member name="P:DawnXZ.FileUtility.FileDirectoryEnumerator.LastAccessTime">
+            <summary>
+            当前对象最后访问时间
+            </summary>
+        </member>
+        <member name="P:DawnXZ.FileUtility.FileDirectoryEnumerator.LastWriteTime">
+            <summary>
+            当前对象最后保存时间
+            </summary>
+        </member>
+        <member name="P:DawnXZ.FileUtility.FileDirectoryEnumerator.FileLength">
+            <summary>
+            当前文件长度,若为当前对象为文件则返回文件长度,若当前对象为目录则返回0
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.FileDirectoryEnumerator.bolThrowIOException">
+            <summary>
+            发生IO错误时是否抛出异常
+            </summary>
+        </member>
+        <member name="P:DawnXZ.FileUtility.FileDirectoryEnumerator.ThrowIOException">
+            <summary>
+            发生IO错误时是否抛出异常
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.FileDirectoryEnumerator.bolReturnStringType">
+            <summary>
+            是否以字符串方式返回查询结果,若返回true则当前对象返回为字符串,
+            否则返回 FileInfo或DirectoryInfo类型
+            </summary>
+        </member>
+        <member name="P:DawnXZ.FileUtility.FileDirectoryEnumerator.ReturnStringType">
+            <summary>
+            是否以字符串方式返回查询结果,若返回true则当前对象返回为字符串,
+            否则返回 FileInfo或DirectoryInfo类型
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.FileDirectoryEnumerator.strSearchPattern">
+            <summary>
+            要匹配的文件或目录名,支持通配符
+            </summary>
+        </member>
+        <member name="P:DawnXZ.FileUtility.FileDirectoryEnumerator.SearchPattern">
+            <summary>
+            要匹配的文件或目录名,支持通配符
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.FileDirectoryEnumerator.strSearchPath">
+            <summary>
+            搜索的父目录,必须为绝对路径,不得有通配符,该目录必须存在
+            </summary>
+        </member>
+        <member name="P:DawnXZ.FileUtility.FileDirectoryEnumerator.SearchPath">
+            <summary>
+            搜索的父目录,必须为绝对路径,不得有通配符,该目录必须存在
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.FileDirectoryEnumerator.bolSearchForFile">
+            <summary>
+            是否查找文件
+            </summary>
+        </member>
+        <member name="P:DawnXZ.FileUtility.FileDirectoryEnumerator.SearchForFile">
+            <summary>
+            是否查找文件
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.FileDirectoryEnumerator.bolSearchForDirectory">
+            <summary>
+            是否查找子目录
+            <para>显示时是否包含子目录名称</para>
+            </summary>
+        </member>
+        <member name="P:DawnXZ.FileUtility.FileDirectoryEnumerator.SearchForDirectory">
+            <summary>
+            是否查找子目录
+            <para>显示时是否包含子目录名称</para>
+            </summary>
+        </member>
+        <member name="M:DawnXZ.FileUtility.FileDirectoryEnumerator.Close">
+            <summary>
+            关闭对象,停止搜索
+            </summary>
+        </member>
+        <member name="P:DawnXZ.FileUtility.FileDirectoryEnumerator.Current">
+            <summary>
+            返回当前对象
+            </summary>
+        </member>
+        <member name="M:DawnXZ.FileUtility.FileDirectoryEnumerator.MoveNext">
+            <summary>
+            找到下一个文件或目录
+            </summary>
+            <returns>操作是否成功</returns>
+        </member>
+        <member name="M:DawnXZ.FileUtility.FileDirectoryEnumerator.Reset">
+            <summary>
+            重新设置对象
+            </summary>
+        </member>
+        <member name="T:DawnXZ.FileUtility.FileDirectoryEnumerator.WIN32_FIND_DATA">
+            <summary>
+            WIN32数据查找结构体
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.FileDirectoryEnumerator.WIN32_FIND_DATA.dwFileAttributes">
+            <summary>
+            文件属性
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.FileDirectoryEnumerator.WIN32_FIND_DATA.ftCreationTime_dwLowDateTime">
+            <summary>
+            创建文件的时间
+            <para>最低时间</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.FileDirectoryEnumerator.WIN32_FIND_DATA.ftCreationTime_dwHighDateTime">
+            <summary>
+            创建文件的时间
+            <para>最高时间</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.FileDirectoryEnumerator.WIN32_FIND_DATA.ftLastAccessTime_dwLowDateTime">
+            <summary>
+            最后一次访问文件的时间
+            <para>最低时间</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.FileDirectoryEnumerator.WIN32_FIND_DATA.ftLastAccessTime_dwHighDateTime">
+            <summary>
+            最后一次访问文件的时间
+            <para>最高时间</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.FileDirectoryEnumerator.WIN32_FIND_DATA.ftLastWriteTime_dwLowDateTime">
+            <summary>
+            最后修改时间
+            <para>最低时间</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.FileDirectoryEnumerator.WIN32_FIND_DATA.ftLastWriteTime_dwHighDateTime">
+            <summary>
+            最后修改时间
+            <para>最高时间</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.FileDirectoryEnumerator.WIN32_FIND_DATA.nFileSizeHigh">
+            <summary>
+            文件大小
+            <para>最大值</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.FileDirectoryEnumerator.WIN32_FIND_DATA.nFileSizeLow">
+            <summary>
+            文件大小
+            <para>最小值</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.FileDirectoryEnumerator.WIN32_FIND_DATA.dwReserved0">
+            <summary>
+            保留的值
+            <para>变量1</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.FileDirectoryEnumerator.WIN32_FIND_DATA.dwReserved1">
+            <summary>
+            保留的值
+            <para>变量2</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.FileDirectoryEnumerator.WIN32_FIND_DATA.cFileName">
+            <summary>
+            文件名称
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.FileDirectoryEnumerator.WIN32_FIND_DATA.cAlternateFileName">
+            <summary>
+            文件交替名称
+            </summary>
+        </member>
+        <member name="M:DawnXZ.FileUtility.FileDirectoryEnumerator.FindFirstFile(System.String,DawnXZ.FileUtility.FileDirectoryEnumerator.WIN32_FIND_DATA@)">
+            <summary>
+            查找第一个文件
+            </summary>
+            <param name="pFileName">文件名称</param>
+            <param name="pFindFileData">文件查找数据信息</param>
+            <returns>查找结果</returns>
+        </member>
+        <member name="M:DawnXZ.FileUtility.FileDirectoryEnumerator.FindNextFile(System.IntPtr,DawnXZ.FileUtility.FileDirectoryEnumerator.WIN32_FIND_DATA@)">
+            <summary>
+            查找下一个文件
+            </summary>
+            <param name="hndFindFile">文件查找句柄</param>
+            <param name="lpFindFileData">文件查找数据信息</param>
+            <returns>查找结果</returns>
+        </member>
+        <member name="M:DawnXZ.FileUtility.FileDirectoryEnumerator.FindClose(System.IntPtr)">
+            <summary>
+            关闭遍历操作
+            </summary>
+            <param name="hndFindFile">文件查找句柄</param>
+            <returns>操作结果</returns>
+        </member>
+        <member name="M:DawnXZ.FileUtility.FileDirectoryEnumerator.ToLong(System.Int32,System.Int32)">
+            <summary>
+            长整型转换器
+            </summary>
+            <param name="height">最高数</param>
+            <param name="low">最低数</param>
+            <returns>转换结果</returns>
+        </member>
+        <member name="M:DawnXZ.FileUtility.FileDirectoryEnumerator.WinIOError(System.Int32,System.String)">
+            <summary>
+            IO错误异常信息
+            </summary>
+            <param name="errorCode">错误代码</param>
+            <param name="str">错误信息</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.FileDirectoryEnumerator.MakeHRFromErrorCode(System.Int32)">
+            <summary>
+            错误代码
+            </summary>
+            <param name="errorCode">错误代码</param>
+            <returns>错误代码</returns>
+        </member>
+        <member name="F:DawnXZ.FileUtility.FileDirectoryEnumerator.INVALID_HANDLE_VALUE">
+            <summary>
+            无效的句柄值
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.FileDirectoryEnumerator.intSearchHandler">
+            <summary>
+            查找处理的底层句柄
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.FileDirectoryEnumerator.FFindData">
+            <summary>
+            WIN32数据查找结构体
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.FileDirectoryEnumerator.bolStartSearchFlag">
+            <summary>
+            开始搜索标志
+            </summary>
+        </member>
+        <member name="M:DawnXZ.FileUtility.FileDirectoryEnumerator.CloseHandler">
+            <summary>
+            关闭内部句柄
+            </summary>
+        </member>
+        <member name="M:DawnXZ.FileUtility.FileDirectoryEnumerator.StartSearch">
+            <summary>
+            开始搜索
+            </summary>
+            <returns>操作是否成功</returns>
+        </member>
+        <member name="M:DawnXZ.FileUtility.FileDirectoryEnumerator.SearchNext">
+            <summary>
+            搜索下一个
+            </summary>
+            <returns>操作是否成功</returns>
+        </member>
+        <member name="M:DawnXZ.FileUtility.FileDirectoryEnumerator.UpdateCurrentObject">
+            <summary>
+            更新当前对象
+            </summary>
+            <returns>操作是否成功</returns>
+        </member>
+        <member name="T:DawnXZ.FileUtility.DirHelper">
+            <summary>
+            目录操作辅助类
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.DirHelper.PATH_SPLIT_CHAR">
+            <summary>
+            路径分割符
+            </summary>
+        </member>
+        <member name="M:DawnXZ.FileUtility.DirHelper.CopyFiles(System.String,System.String,System.Boolean)">
+            <summary>
+            复制指定目录的所有文件
+            <para>不包含子目录及子目录中的文件</para>
+            </summary>
+            <param name="sourceDir">原始目录</param>
+            <param name="targetDir">目标目录</param>
+            <param name="overWrite">如果为true,表示覆盖同名文件,否则不覆盖</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.DirHelper.CopyFiles(System.String,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            复制指定目录的所有文件
+            </summary>
+            <param name="sourceDir">原始目录</param>
+            <param name="targetDir">目标目录</param>
+            <param name="overWrite">如果为true,覆盖同名文件,否则不覆盖</param>
+            <param name="copySubDir">如果为true,包含目录,否则不包含</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.DirHelper.CutFiles(System.String,System.String,System.Boolean)">
+            <summary>
+            剪切指定目录的所有文件,不包含子目录
+            </summary>
+            <param name="sourceDir">原始目录</param>
+            <param name="targetDir">目标目录</param>
+            <param name="overWrite">如果为true,覆盖同名文件,否则不覆盖</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.DirHelper.CutFiles(System.String,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            剪切指定目录的所有文件
+            </summary>
+            <param name="sourceDir">原始目录</param>
+            <param name="targetDir">目标目录</param>
+            <param name="overWrite">如果为true,覆盖同名文件,否则不覆盖</param>
+            <param name="moveSubDir">如果为true,包含目录,否则不包含</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.DirHelper.DelFiles(System.String)">
+            <summary>
+            删除指定目录的所有文件，不包含子目录
+            </summary>
+            <param name="targetDir">操作目录</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.DirHelper.DelFiles(System.String,System.Boolean)">
+            <summary>
+            删除指定目录的所有文件和子目录
+            </summary>
+            <param name="targetDir">操作目录</param>
+            <param name="delSubDir">如果为true,包含对子目录的操作</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.DirHelper.DirCreate(System.String)">
+            <summary>
+            创建指定目录
+            </summary>
+            <param name="targetDir">目录路径及名称</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.DirHelper.DirCreate(System.String,System.String)">
+            <summary>
+            创建指定目录中的子目录
+            </summary>
+            <param name="parentDir">父目录路径</param>
+            <param name="subDirName">子目录名称</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.DirHelper.DirDelete(System.String)">
+            <summary>
+            删除指定目录
+            </summary>
+            <param name="targetDir">目录路径</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.DirHelper.DirDeleteByChild(System.String)">
+            <summary>
+            删除指定目录的所有子目录
+            <para>不包括对当前目录文件的删除</para>
+            </summary>
+            <param name="targetDir">目录路径</param>
+        </member>
+        <member name="T:DawnXZ.FileUtility.FileHelper">
+            <summary>
+            文件操作辅助类
+            </summary>
+        </member>
+        <member name="P:DawnXZ.FileUtility.FileHelper.LogPath">
+            <summary>
+            日志存放路径
+            </summary>
+        </member>
+        <member name="P:DawnXZ.FileUtility.FileHelper.AppPath">
+            <summary>
+            应用程序路径
+            <para>基目录，由程序集冲突解决程序用来探测程序集</para>
+            </summary>
+        </member>
+        <member name="P:DawnXZ.FileUtility.FileHelper.AppPathOfFileName">
+            <summary>
+            应用程序路径
+            <para>定义模块位置的完全限定路径</para>
+            </summary>
+        </member>
+        <member name="P:DawnXZ.FileUtility.FileHelper.AppPathOfCurrentDirectory">
+            <summary>
+            应用程序路径
+            <para>包含目录路径的字符串</para>
+            </summary>
+        </member>
+        <member name="P:DawnXZ.FileUtility.FileHelper.AppPathOfGetCurrentDirectory">
+            <summary>
+            应用程序路径
+            <para>包含当前工作目录的路径的字符串</para>
+            </summary>
+        </member>
+        <member name="P:DawnXZ.FileUtility.FileHelper.AppPathOfApplicationBase">
+            <summary>
+            应用程序路径
+            <para>应用程序基目录的名称</para>
+            </summary>
+        </member>
+        <member name="M:DawnXZ.FileUtility.FileHelper.GetNameByYear">
+            <summary>
+            获得文件名称
+            格式：年
+            </summary>
+            <returns>yyyyMMdd.log / yyyy-MM-dd.log</returns>
+        </member>
+        <member name="M:DawnXZ.FileUtility.FileHelper.GetNameByMonth(System.Boolean)">
+            <summary>
+            获得文件名称
+            格式：年月
+            </summary>
+            <param name="isHorizontal">是否启用横杆分隔</param>
+            <returns>yyyyMMdd.log / yyyy-MM-dd.log</returns>
+        </member>
+        <member name="M:DawnXZ.FileUtility.FileHelper.GetNameByDate(System.Boolean)">
+            <summary>
+            获得文件名称
+            格式：年月日
+            </summary>
+            <param name="isHorizontal">是否启用横杆分隔</param>
+            <returns>yyyyMMdd.log / yyyy-MM-dd.log</returns>
+        </member>
+        <member name="M:DawnXZ.FileUtility.FileHelper.GetNameByHour(System.Boolean)">
+            <summary>
+            获得文件名称
+            格式：年月日时
+            </summary>
+            <param name="isHorizontal">是否启用横杆分隔</param>
+            <returns>yyyyMMdd.log / yyyy-MM-dd.log</returns>
+        </member>
+        <member name="M:DawnXZ.FileUtility.FileHelper.GetNameByDatetime(System.Boolean)">
+            <summary>
+            获得文件名称
+            格式：年月日时分秒
+            </summary>
+            <param name="isHorizontal">是否启用横杆分隔</param>
+            <returns>yyyyMMddHHmmss.log / yyyy-MM-dd-HHmmss.log</returns>
+        </member>
+        <member name="M:DawnXZ.FileUtility.FileHelper.GetNameByALL(System.Boolean)">
+            <summary>
+            获得文件名称
+            格式：年月日时分秒毫秒
+            </summary>
+            <param name="isHorizontal">是否启用横杆分隔</param>
+            <returns>yyyyMMddHHmmssfff.log / yyyy-MM-dd-HHmmssfff.log</returns>
+        </member>
+        <member name="M:DawnXZ.FileUtility.FileHelper.GetExtension(System.String)">
+            <summary>
+            获取指定文件的扩展名
+            </summary>
+            <param name="fileName">文件名称</param>
+            <returns>扩展名</returns>
+        </member>
+        <member name="M:DawnXZ.FileUtility.FileHelper.BackupFile(System.String,System.String)">
+            <summary>
+            备份文件,当目标文件存在时覆盖
+            </summary>
+            <param name="sourceFileName">源文件名</param>
+            <param name="destFileName">目标文件名</param>
+            <returns>操作是否成功</returns>
+        </member>
+        <member name="M:DawnXZ.FileUtility.FileHelper.BackupFile(System.String,System.String,System.Boolean)">
+            <summary>
+            备份文件
+            </summary>
+            <param name="sourceFileName">源文件名</param>
+            <param name="destFileName">目标文件名</param>
+            <param name="overwrite">当目标文件存在时是否覆盖</param>
+            <returns>操作是否成功</returns>
+        </member>
+        <member name="M:DawnXZ.FileUtility.FileHelper.RestoreFile(System.String,System.String)">
+            <summary>
+            恢复文件
+            </summary>
+            <param name="backupFileName">备份文件名</param>
+            <param name="targetFileName">要恢复的文件名</param>
+            <returns>操作是否成功</returns>
+        </member>
+        <member name="M:DawnXZ.FileUtility.FileHelper.RestoreFile(System.String,System.String,System.String)">
+            <summary>
+            恢复文件
+            </summary>
+            <param name="backupFileName">备份文件名</param>
+            <param name="targetFileName">要恢复的文件名</param>
+            <param name="backupTargetFileName">要恢复文件再次备份的名称,如果为null,则不再备份恢复文件</param>
+            <returns>操作是否成功</returns>
+        </member>
+        <member name="T:DawnXZ.FileUtility.ImageHelper">
+            <summary>
+            图片操作辅助类
+            <para>缩略图/水印</para>
+            </summary>
+        </member>
+        <member name="M:DawnXZ.FileUtility.ImageHelper.ShowImage(System.String,System.String)">
+            <summary>
+            显示指定图片
+            </summary>
+            <param name="filePath">显示图片</param>
+            <param name="defPath">默认图片</param>
+            <returns>要显示的图片</returns>
+        </member>
+        <member name="M:DawnXZ.FileUtility.ImageHelper.IsWebImage(System.String)">
+            <summary>
+            判断文件类型是否为WEB格式图片
+            (注：JPG,GIF,BMP,PNG)
+            </summary>
+            <param name="contentType">HttpPostedFile.ContentType</param>
+            <returns></returns>
+        </member>
+        <member name="M:DawnXZ.FileUtility.ImageHelper.Thumbnail(System.String,System.String,System.Int32,System.Int32,System.String)">
+            <summary>
+            普通缩略图生成模式
+            </summary>
+            <param name="originalImagePath">源图路径（物理路径）</param>
+            <param name="thumbnailPath">缩略图路径（物理路径）</param>
+            <param name="width">缩略图宽度</param>
+            <param name="height">缩略图高度</param>
+            <param name="mode">
+            生成缩略图的方式
+            <para>"HW" 指定高宽缩放（可能变形）</para>
+            <para>"W" 指定宽，高按比例</para>
+            <para>"H" 指定高，宽按比例</para>
+            <para>"Cut" 指定高宽裁减（不变形）</para>
+            </param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.ImageHelper.CutForSquare(System.Web.HttpPostedFile,System.String,System.Int32,System.Int32)">
+            <summary>
+            正方型裁剪
+            以图片中心为轴心，截取正方型，然后等比缩放
+            用于头像处理
+            </summary>
+            <remarks>吴剑 2010-11-23</remarks>
+            <param name="postedFile">原图HttpPostedFile对象</param>
+            <param name="fileSaveUrl">缩略图存放地址</param>
+            <param name="side">指定的边长（正方型）</param>
+            <param name="quality">质量（范围0-100）</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.ImageHelper.CutForSquare(System.IO.Stream,System.String,System.Int32,System.Int32)">
+            <summary>
+            正方型裁剪
+            以图片中心为轴心，截取正方型，然后等比缩放
+            用于头像处理
+            </summary>
+            <remarks>吴剑 2010-11-23</remarks>
+            <param name="fromFile">原图HttpPostedFile对象</param>
+            <param name="fileSaveUrl">缩略图存放地址</param>
+            <param name="side">指定的边长（正方型）</param>
+            <param name="quality">质量（范围0-100）</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.ImageHelper.CutForCustom(System.Web.HttpPostedFile,System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            指定长宽裁剪
+            按模版比例最大范围的裁剪图片并缩放至模版尺寸
+            </summary>
+            <remarks>吴剑 2010-11-15</remarks>
+            <param name="postedFile">原图HttpPostedFile对象</param>
+            <param name="fileSaveUrl">保存路径</param>
+            <param name="maxWidth">最大宽(单位:px)</param>
+            <param name="maxHeight">最大高(单位:px)</param>
+            <param name="quality">质量（范围0-100）</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.ImageHelper.ZoomAuto(System.Web.HttpPostedFile,System.String,System.Double,System.Double,System.String,System.String)">
+            <summary>
+            图片按等比缩放生成缩略图
+            </summary>
+            <remarks>吴剑 2011-01-21</remarks>
+            <param name="postedFile">原图HttpPostedFile对象</param>
+            <param name="savePath">缩略图存放地址</param>
+            <param name="targetWidth">指定的最大宽度</param>
+            <param name="targetHeight">指定的最大高度</param>
+            <param name="watermarkText">水印文字(为""表示不使用水印)</param>
+            <param name="watermarkImage">水印图片路径(为""表示不使用水印)</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.ImageHelper.ImageWatermark(System.String,System.String,System.String)">
+            <summary>
+            图片附加水印处理
+            <para>图片水印</para>
+            </summary>
+            <param name="path">需要加载水印的图片路径（绝对路径）</param>
+            <param name="waterpath">水印图片（绝对路径）</param>
+            <param name="location">
+            水印位置（传送正确的代码）
+            <para>传值：LT / T / RT / LC / C / RC / LB / B</para>
+            <para>释义：左上角/上居中/右上角/左居中/居中/右居中/左下角/下居中</para>
+            </param>
+            <returns>处理后的图片路径</returns>
+        </member>
+        <member name="M:DawnXZ.FileUtility.ImageHelper.GetLocation(System.String,System.Drawing.Image,System.Drawing.Image)">
+            <summary>
+            图片附加水印处理
+            图片水印
+            </summary>
+            <param name="location">水印位置</param>
+            <param name="img">需要添加水印的图片</param>
+            <param name="waterimg">水印图片</param>
+            <returns>图片水印位置</returns>
+        </member>
+        <member name="M:DawnXZ.FileUtility.ImageHelper.LetterWatermark(System.String,System.Int32,System.String,System.Drawing.Color,System.String)">
+            <summary>
+            图片附加水印处理
+            <para>文字水印</para>
+            </summary>
+            <param name="path">图片路径（绝对路径）</param>
+            <param name="size">字体大小</param>
+            <param name="letter">水印文字</param>
+            <param name="color">颜色</param>
+            <param name="location">
+            水印位置（传送正确的代码）
+            <para>传值：LT / T / RT / LC / C / RC / LB / B</para>
+            <para>释义：左上角/上居中/右上角/左居中/居中/右居中/左下角/下居中</para>
+            </param>
+            <returns>处理后的图片路径</returns>
+        </member>
+        <member name="M:DawnXZ.FileUtility.ImageHelper.GetLocation(System.String,System.Drawing.Image,System.Int32,System.Int32)">
+            <summary>
+            图片附加水印处理
+            <para>文字水印</para>
+            </summary>
+            <param name="location">位置代码</param>
+            <param name="img">图片对象</param>
+            <param name="width">宽(当水印类型为文字时,传过来的就是字体的大小)</param>
+            <param name="height">高(当水印类型为文字时,传过来的就是字符的长度)</param>
+            <returns>文字水印位置</returns>
+        </member>
+        <member name="T:DawnXZ.FileUtility.IniHelper">
+            <summary>
+            配置文件操作辅助类
+            </summary>
+        </member>
+        <member name="M:DawnXZ.FileUtility.IniHelper.GetPrivateProfileInt(System.String,System.String,System.Int32,System.String)">
+            <summary>
+            配置文件参数整形数据读取
+            </summary>
+            <param name="lpAppName">项目名称( 如：[TypeName] )</param>
+            <param name="lpKeyName">参数名称</param>
+            <param name="nDefault">默认值</param>
+            <param name="lpFileName">配置文件绝对路径</param>
+            <returns>参数整形数据</returns>
+        </member>
+        <member name="M:DawnXZ.FileUtility.IniHelper.GetPrivateProfileString(System.String,System.String,System.String,System.Text.StringBuilder,System.Int32,System.String)">
+            <summary>
+            配置文件参数字符串数据读取
+            </summary>
+            <param name="lpAppName">项目名称( 如：[TypeName] )</param>
+            <param name="lpKeyName">参数名称</param>
+            <param name="lpDefault">默认值</param>
+            <param name="lpReturnedString">数据接收对象</param>
+            <param name="nSize">数据大小</param>
+            <param name="lpFileName">配置文件绝对路径</param>
+            <returns>参数字符串数据</returns>
+        </member>
+        <member name="M:DawnXZ.FileUtility.IniHelper.WritePrivateProfileString(System.String,System.String,System.String,System.String)">
+            <summary>
+            配置文件参数数据写入
+            </summary>
+            <param name="lpAppName">项目名称( 如：[TypeName] )</param>
+            <param name="lpKeyName">参数名称</param>
+            <param name="lpString">参数设定值</param>
+            <param name="lpFileName">配置文件绝对路径</param>
+            <returns>写入是否成功</returns>
+        </member>
+        <member name="M:DawnXZ.FileUtility.IniHelper.ReadInt(System.String,System.String,System.String,System.Int32)">
+            <summary>
+            读取 int 型数据
+            </summary>
+            <param name="FFileName">配置文件绝对路径</param>
+            <param name="section">项目名称( 如：[TypeName] )</param>
+            <param name="key">参数名称</param>
+            <param name="def">缺省值</param>
+            <returns>int</returns>
+        </member>
+        <member name="M:DawnXZ.FileUtility.IniHelper.ReadString(System.String,System.String,System.String,System.String)">
+            <summary>
+            读取 string 型数据
+            </summary>
+            <param name="FFileName">配置文件绝对路径</param>
+            <param name="section">项目名称( 如：[TypeName] )</param>
+            <param name="key">参数名称</param>
+            <param name="def">缺省值</param>
+            <returns>string</returns>
+        </member>
+        <member name="M:DawnXZ.FileUtility.IniHelper.WriteInt(System.String,System.String,System.String,System.Int32)">
+            <summary>
+            写入 int 型数据
+            </summary>
+            <param name="FFileName">配置文件绝对路径</param>
+            <param name="section">项目名称( 如：[TypeName] )</param>
+            <param name="key">参数名称</param>
+            <param name="iVal">缺省值</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.IniHelper.WriteString(System.String,System.String,System.String,System.String)">
+            <summary>
+            写入 string 型数据
+            </summary>
+            <param name="FFileName">配置文件绝对路径</param>
+            <param name="section">项目名称( 如：[TypeName] )</param>
+            <param name="key">参数名称</param>
+            <param name="strVal">缺省值</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.IniHelper.DelKey(System.String,System.String,System.String)">
+            <summary>
+            删除“键”
+            </summary>
+            <param name="FFileName">配置文件绝对路径</param>
+            <param name="section">项目名称( 如：[TypeName] )</param>
+            <param name="key">参数名称</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.IniHelper.DelSection(System.String,System.String)">
+            <summary>
+            删除“项目”
+            </summary>
+            <param name="FFileName">配置文件绝对路径</param>
+            <param name="section">项目名称( 如：[TypeName] )</param>
+        </member>
+        <member name="T:DawnXZ.FileUtility.LogHelper">
+            <summary>
+            日志操作辅助类
+            </summary>
+        </member>
+        <member name="M:DawnXZ.FileUtility.LogHelper.Initialize(System.Byte,System.String,DawnXZ.FileUtility.LogType)">
+            <summary>
+            初始化
+            </summary>
+            <param name="dirType">目录类型：1 日志目录名称、2 日志存储路径</param>
+            <param name="dirNameOrPath">目录名称或路径</param>
+            <param name="logType">日志生产类型</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.LogHelper.#ctor(DawnXZ.FileUtility.LogType)">
+            <summary>
+            日志文件生产类
+            </summary>
+            <param name="logType">日志生产类型</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.LogHelper.#ctor(System.String,System.Byte,DawnXZ.FileUtility.LogType)">
+            <summary>
+            日志文件生产类
+            </summary>
+            <param name="dirNameOrPath">目录名称或路径</param>
+            <param name="dirType">目录类型：1 日志目录名称、2 日志存储路径</param>
+            <param name="logType">日志生产类型</param>
+        </member>
+        <member name="F:DawnXZ.FileUtility.LogHelper.FTimeSign">
+            <summary>
+            日志活动时间标志
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.LogHelper.FWriterLock">
+            <summary>
+            文件操作锁定对象
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.LogHelper.FLogMessages">
+            <summary>
+            日志消息队列
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.LogHelper.FSemaphore">
+            <summary> 
+            等待排队写日志消息信号量将释放
+            </summary> 
+        </member>
+        <member name="F:DawnXZ.FileUtility.LogHelper.FState">
+            <summary>
+            日志写入文件状态
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.LogHelper.FErrorCounted">
+            <summary>
+            错误发生次数
+            </summary>
+        </member>
+        <member name="P:DawnXZ.FileUtility.LogHelper.LogPath">
+            <summary>
+            日志存储路径
+            </summary>
+        </member>
+        <member name="P:DawnXZ.FileUtility.LogHelper.Writers">
+            <summary>
+            文件写入操作流
+            </summary>
+        </member>
+        <member name="P:DawnXZ.FileUtility.LogHelper.FLogType">
+            <summary> 
+            日志保存类型
+            </summary> 
+        </member>
+        <member name="P:DawnXZ.FileUtility.LogHelper.LogTailTag">
+            <summary>
+            日志文件尾部标记
+            </summary>
+        </member>
+        <member name="M:DawnXZ.FileUtility.LogHelper.Work">
+            <summary> 
+            写入日志文件的工作方法
+            <para>确定日志队列有需要写的记录</para>
+            </summary> 
+        </member>
+        <member name="M:DawnXZ.FileUtility.LogHelper.WriteMessage">
+            <summary> 
+            将消息写入到日志文件
+            </summary> 
+        </member>
+        <member name="M:DawnXZ.FileUtility.LogHelper.WaitLogMessage">
+            <summary> 
+            线程等待一条日志消息
+            <para>确定日志生活时间是 true 或 false</para>
+            </summary> 
+            <returns>是不是关闭的</returns> 
+        </member>
+        <member name="M:DawnXZ.FileUtility.LogHelper.GetFilename">
+            <summary> 
+            获取文件的名称由日志生产类型
+            </summary> 
+            <returns>日志文件的名称</returns> 
+        </member>
+        <member name="M:DawnXZ.FileUtility.LogHelper.FileWrite(DawnXZ.FileUtility.LogMessage)">
+            <summary> 
+            写入日志文件消息
+            <para>确定日志文件的时间标志</para>
+            </summary> 
+            <param name="msg">日志消息属性</param> 
+        </member>
+        <member name="M:DawnXZ.FileUtility.LogHelper.FileOpen">
+            <summary> 
+            打开日志文件写入日志消息
+            </summary> 
+        </member>
+        <member name="M:DawnXZ.FileUtility.LogHelper.FileClose">
+            <summary> 
+            关闭日志文件
+            </summary> 
+        </member>
+        <member name="M:DawnXZ.FileUtility.LogHelper.Write(DawnXZ.FileUtility.LogMessage)">
+            <summary> 
+            新的日志消息进行排队和释放一个信号量
+            </summary> 
+            <param name="msg">日志消息属性</param> 
+        </member>
+        <member name="M:DawnXZ.FileUtility.LogHelper.Write(System.String)">
+            <summary> 
+            写入消息的消息内容和类型
+            </summary> 
+            <param name="text">消息内容</param> 
+        </member>
+        <member name="M:DawnXZ.FileUtility.LogHelper.Write(System.String,DawnXZ.FileUtility.MessageType)">
+            <summary> 
+            写入消息的消息内容和类型
+            </summary> 
+            <param name="text">消息内容</param> 
+            <param name="type">消息类型</param> 
+        </member>
+        <member name="M:DawnXZ.FileUtility.LogHelper.Write(System.DateTime,System.String,DawnXZ.FileUtility.MessageType)">
+            <summary> 
+            写日志按日期时间和日志的内容和类型
+            </summary> 
+            <param name="dateTime">消息的日期时间</param> 
+            <param name="text">消息内容</param> 
+            <param name="type">消息类型</param> 
+        </member>
+        <member name="M:DawnXZ.FileUtility.LogHelper.Write(System.Exception)">
+            <summary> 
+            写入消息尝试异常和消息类型
+            </summary> 
+            <param name="ex">异常信息</param> 
+        </member>
+        <member name="M:DawnXZ.FileUtility.LogHelper.Write(System.Exception,DawnXZ.FileUtility.MessageType)">
+            <summary> 
+            写入消息尝试异常和消息类型
+            </summary> 
+            <param name="ex">异常信息</param> 
+            <param name="type">消息类型</param> 
+        </member>
+        <member name="M:DawnXZ.FileUtility.LogHelper.Write(System.Net.Sockets.SocketException)">
+            <summary>
+            写入消息尝试Socket异常和消息类型
+            </summary>
+            <param name="ex">套接字错误消息</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.LogHelper.Write(System.Net.Sockets.SocketException,DawnXZ.FileUtility.MessageType)">
+            <summary>
+            写入消息尝试Socket异常和消息类型
+            </summary>
+            <param name="ex">套接字错误消息</param>
+            <param name="msgType">消息类型</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.LogHelper.Dispose">
+            <summary> 
+            处理日志
+            </summary> 
+        </member>
+        <member name="T:DawnXZ.FileUtility.LogMessage">
+            <summary> 
+            日志消息类
+            </summary> 
+        </member>
+        <member name="M:DawnXZ.FileUtility.LogMessage.#ctor">
+            <summary> 
+            创建日志消息实例
+            </summary> 
+        </member>
+        <member name="M:DawnXZ.FileUtility.LogMessage.#ctor(System.String,DawnXZ.FileUtility.MessageType)">
+            <summary> 
+            创建日志消息的消息内容和消息类型
+            </summary> 
+            <param name="text">消息内容</param> 
+            <param name="messageType">消息类型</param> 
+        </member>
+        <member name="M:DawnXZ.FileUtility.LogMessage.#ctor(System.DateTime,System.String,DawnXZ.FileUtility.MessageType)">
+            <summary> 
+            创建日期时间和消息内容和消息类型的日志消息
+            </summary> 
+            <param name="dateTime">消息的日期时间</param> 
+            <param name="text">消息内容</param> 
+            <param name="messageType">消息类型</param> 
+        </member>
+        <member name="P:DawnXZ.FileUtility.LogMessage.MsgDatetime">
+            <summary> 
+            获取或设置消息的日期时间
+            </summary> 
+        </member>
+        <member name="P:DawnXZ.FileUtility.LogMessage.MsgText">
+            <summary> 
+            获取或设置消息内容
+            </summary> 
+        </member>
+        <member name="P:DawnXZ.FileUtility.LogMessage.MsgType">
+            <summary> 
+            获取或设置消息类型
+            </summary> 
+        </member>
+        <member name="M:DawnXZ.FileUtility.LogMessage.ToString">
+            <summary> 
+            得到消息的字符串
+            </summary> 
+            <returns>消息字符串</returns> 
+        </member>
+        <member name="T:DawnXZ.FileUtility.LogType">
+            <summary> 
+            日志类型类
+            </summary> 
+            <remarks>每日或每周或每月或每年创建的日志</remarks> 
+        </member>
+        <member name="F:DawnXZ.FileUtility.LogType.Hour">
+            <summary>
+            按小时创建日志
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.LogType.Daily">
+            <summary> 
+            通过每日创建日志
+            </summary> 
+        </member>
+        <member name="F:DawnXZ.FileUtility.LogType.Monthly">
+            <summary> 
+            按每月创建日志
+            </summary> 
+        </member>
+        <member name="F:DawnXZ.FileUtility.LogType.Annually">
+            <summary> 
+            创建日志由每年
+            </summary> 
+        </member>
+        <member name="T:DawnXZ.FileUtility.MessageType">
+            <summary> 
+            日志消息类型枚举
+            </summary> 
+        </member>
+        <member name="F:DawnXZ.FileUtility.MessageType.Unknown">
+            <summary> 
+            未知的类型
+            </summary> 
+        </member>
+        <member name="F:DawnXZ.FileUtility.MessageType.Information">
+            <summary> 
+            信息类型
+            </summary> 
+        </member>
+        <member name="F:DawnXZ.FileUtility.MessageType.Warning">
+            <summary> 
+            警告类型
+            </summary> 
+        </member>
+        <member name="F:DawnXZ.FileUtility.MessageType.Error">
+            <summary> 
+            错误类型
+            </summary> 
+        </member>
+        <member name="F:DawnXZ.FileUtility.MessageType.Success">
+            <summary> 
+            成功类型
+            </summary> 
+        </member>
+        <member name="T:DawnXZ.FileUtility.DriveInfoExtension">
+            <summary>
+            文件及目录遍历扫描处理器扩展类
+            <para>DriveInfo</para>
+            <para>例子及运行时间测量：</para>
+            <para>var sw = System.Diagnostics.Stopwatch.StartNew();</para>
+            <para>var files = (new DriveInfo(@"c:\")).EnumerateFiles().ToArray();</para>
+            <para>var elapsed = sw.ElapsedMilliseconds.ToString();</para>
+            <para>Console.WriteLine(string.Format("Found {0} files, elapsed {1} ms", files.Length, elapsed));</para>
+            </summary>
+        </member>
+        <member name="M:DawnXZ.FileUtility.DriveInfoExtension.EnumerateFiles(System.IO.DriveInfo)">
+            <summary>
+            枚举并遍历所有文件
+            </summary>
+            <param name="drive">驱动信息对象</param>
+            <returns>遍历结果集</returns>
+        </member>
+        <member name="T:DawnXZ.FileUtility.MFTScanner">
+            <summary>
+            文件及目录遍历扫描处理器类
+            <para>USN Journal</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.MFTScanner.INVALID_HANDLE_VALUE">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.MFTScanner.GENERIC_READ">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.MFTScanner.FILE_SHARE_READ">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.MFTScanner.FILE_SHARE_WRITE">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.MFTScanner.OPEN_EXISTING">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.MFTScanner.FILE_READ_ATTRIBUTES">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.MFTScanner.FILE_NAME_IINFORMATION">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.MFTScanner.FILE_FLAG_BACKUP_SEMANTICS">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.MFTScanner.FILE_OPEN_FOR_BACKUP_INTENT">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.MFTScanner.FILE_OPEN_BY_FILE_ID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.MFTScanner.FILE_OPEN">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.MFTScanner.OBJ_CASE_INSENSITIVE">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.MFTScanner.FSCTL_ENUM_USN_DATA">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:DawnXZ.FileUtility.MFTScanner.MFT_ENUM_DATA">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.MFTScanner.MFT_ENUM_DATA.StartFileReferenceNumber">
+            <summary>
+            启动档案编号
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.MFTScanner.MFT_ENUM_DATA.LowUsn">
+            <summary>
+            最低USN
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.MFTScanner.MFT_ENUM_DATA.HighUsn">
+            <summary>
+            最高USN
+            </summary>
+        </member>
+        <member name="T:DawnXZ.FileUtility.MFTScanner.USN_RECORD">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.MFTScanner.USN_RECORD.RecordLength">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.MFTScanner.USN_RECORD.MajorVersion">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.MFTScanner.USN_RECORD.MinorVersion">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.MFTScanner.USN_RECORD.FileReferenceNumber">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.MFTScanner.USN_RECORD.ParentFileReferenceNumber">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.MFTScanner.USN_RECORD.Usn">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.MFTScanner.USN_RECORD.TimeStamp">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.MFTScanner.USN_RECORD.Reason">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.MFTScanner.USN_RECORD.SourceInfo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.MFTScanner.USN_RECORD.SecurityId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.MFTScanner.USN_RECORD.FileAttributes">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.MFTScanner.USN_RECORD.FileNameLength">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.MFTScanner.USN_RECORD.FileNameOffset">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:DawnXZ.FileUtility.MFTScanner.IO_STATUS_BLOCK">
+            <summary>
+            IO状态阻塞
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.MFTScanner.IO_STATUS_BLOCK.Status">
+            <summary>
+            状态
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.MFTScanner.IO_STATUS_BLOCK.Information">
+            <summary>
+            信息
+            </summary>
+        </member>
+        <member name="T:DawnXZ.FileUtility.MFTScanner.UNICODE_STRING">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.MFTScanner.UNICODE_STRING.Length">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.MFTScanner.UNICODE_STRING.MaximumLength">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.MFTScanner.UNICODE_STRING.Buffer">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:DawnXZ.FileUtility.MFTScanner.OBJECT_ATTRIBUTES">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.MFTScanner.OBJECT_ATTRIBUTES.Length">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.MFTScanner.OBJECT_ATTRIBUTES.RootDirectory">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.MFTScanner.OBJECT_ATTRIBUTES.ObjectName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.MFTScanner.OBJECT_ATTRIBUTES.Attributes">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.MFTScanner.OBJECT_ATTRIBUTES.SecurityDescriptor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.MFTScanner.OBJECT_ATTRIBUTES.SecurityQualityOfService">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DawnXZ.FileUtility.MFTScanner.DeviceIoControl(System.IntPtr,System.Int32,DawnXZ.FileUtility.MFTScanner.MFT_ENUM_DATA@,System.Int32,System.IntPtr,System.Int32,System.Int32@,System.IntPtr)">
+            <summary>
+            
+            </summary>
+            <param name="hDevice"></param>
+            <param name="dwIoControlCode"></param>
+            <param name="lpInBuffer"></param>
+            <param name="nInBufferSize"></param>
+            <param name="lpOutBuffer"></param>
+            <param name="nOutBufferSize"></param>
+            <param name="lpBytesReturned"></param>
+            <param name="lpOverlapped"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DawnXZ.FileUtility.MFTScanner.CreateFile(System.String,System.UInt32,System.Int32,System.IntPtr,System.Int32,System.Int32,System.IntPtr)">
+            <summary>
+            
+            </summary>
+            <param name="lpFileName"></param>
+            <param name="dwDesiredAccess"></param>
+            <param name="dwShareMode"></param>
+            <param name="lpSecurityAttributes"></param>
+            <param name="dwCreationDisposition"></param>
+            <param name="dwFlagsAndAttributes"></param>
+            <param name="hTemplateFile"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DawnXZ.FileUtility.MFTScanner.CloseHandle(System.IntPtr)">
+            <summary>
+            
+            </summary>
+            <param name="lpObject"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DawnXZ.FileUtility.MFTScanner.NtCreateFile(System.IntPtr@,System.Int32,DawnXZ.FileUtility.MFTScanner.OBJECT_ATTRIBUTES@,DawnXZ.FileUtility.MFTScanner.IO_STATUS_BLOCK@,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="FileHandle"></param>
+            <param name="DesiredAccess"></param>
+            <param name="ObjectAttributes"></param>
+            <param name="IoStatusBlock"></param>
+            <param name="AllocationSize"></param>
+            <param name="FileAttribs"></param>
+            <param name="SharedAccess"></param>
+            <param name="CreationDisposition"></param>
+            <param name="CreateOptions"></param>
+            <param name="EaBuffer"></param>
+            <param name="EaLength"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DawnXZ.FileUtility.MFTScanner.NtQueryInformationFile(System.IntPtr,DawnXZ.FileUtility.MFTScanner.IO_STATUS_BLOCK@,System.IntPtr,System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="FileHandle"></param>
+            <param name="IoStatusBlock"></param>
+            <param name="FileInformation"></param>
+            <param name="Length"></param>
+            <param name="FileInformationClass"></param>
+            <returns></returns>
+        </member>
+        <member name="F:DawnXZ.FileUtility.MFTScanner.m_hCJ">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.MFTScanner.m_Buffer">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.MFTScanner.m_BufferSize">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.MFTScanner.m_DriveLetter">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:DawnXZ.FileUtility.MFTScanner.FSNode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.MFTScanner.FSNode.FRN">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.MFTScanner.FSNode.ParentFRN">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.MFTScanner.FSNode.FileName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.MFTScanner.FSNode.IsFile">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DawnXZ.FileUtility.MFTScanner.FSNode.#ctor(System.Int64,System.Int64,System.String,System.Boolean)">
+            <summary>
+            
+            </summary>
+            <param name="lFRN"></param>
+            <param name="lParentFSN"></param>
+            <param name="sFileName"></param>
+            <param name="bIsFile"></param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.MFTScanner.OpenVolume(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="szDriveLetter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DawnXZ.FileUtility.MFTScanner.Cleanup">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DawnXZ.FileUtility.MFTScanner.EnumerateFiles(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="szDriveLetter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DawnXZ.FileUtility.MFTScanner.IsAdministrator">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:DawnXZ.FileUtility.PictureHelper">
+            <summary>
+            图片操作辅助类
+            </summary>
+        </member>
+        <member name="M:DawnXZ.FileUtility.PictureHelper.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.PictureHelper.FPictureHelperInstance">
+            <summary>
+            单例访问模式对象
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.PictureHelper.FObjectLocker">
+            <summary>
+            单例访问模式对象锁
+            </summary>
+        </member>
+        <member name="P:DawnXZ.FileUtility.PictureHelper.PictureHelperInstance">
+            <summary>
+            单例访问模式
+            </summary>
+        </member>
+        <member name="M:DawnXZ.FileUtility.PictureHelper.LDPic(System.Drawing.Bitmap,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            调整图片光暗
+            </summary>
+            <param name="mybm">原始图片</param>
+            <param name="width">原始图片的长度</param>
+            <param name="height">原始图片的高度</param>
+            <param name="val">增加或减少的光暗值</param>
+            <returns>处理后图片对象</returns>
+        </member>
+        <member name="M:DawnXZ.FileUtility.PictureHelper.RePic(System.Drawing.Bitmap,System.Int32,System.Int32)">
+            <summary>
+            图片反色处理
+            </summary>
+            <param name="mybm">原始图片</param>
+            <param name="width">原始图片的长度</param>
+            <param name="height">原始图片的高度</param>
+            <returns>处理后图片对象</returns>
+        </member>
+        <member name="M:DawnXZ.FileUtility.PictureHelper.FD(System.Drawing.Bitmap,System.Int32,System.Int32)">
+            <summary>
+            图片浮雕处理
+            </summary>
+            <param name="oldBitmap">原始图片</param>
+            <param name="Width">原始图片的长度</param>
+            <param name="Height">原始图片的高度</param>
+            <returns>处理后图片对象</returns>
+        </member>
+        <member name="M:DawnXZ.FileUtility.PictureHelper.ResizeImage(System.Drawing.Bitmap,System.Int32,System.Int32)">
+            <summary>
+            拉伸图片
+            </summary>
+            <param name="bmp">原始图片</param>
+            <param name="newW">新的宽度</param>
+            <param name="newH">新的高度</param>
+            <returns>处理后图片对象</returns>
+        </member>
+        <member name="M:DawnXZ.FileUtility.PictureHelper.FilPic(System.Drawing.Bitmap,System.Int32,System.Int32)">
+            <summary>
+            滤色处理
+            </summary>
+            <param name="mybm">原始图片</param>
+            <param name="width">原始图片的长度</param>
+            <param name="height">原始图片的高度</param>
+            <returns>处理后图片对象</returns>
+        </member>
+        <member name="M:DawnXZ.FileUtility.PictureHelper.RevPicLR(System.Drawing.Bitmap,System.Int32,System.Int32)">
+            <summary>
+            左右翻转
+            </summary>
+            <param name="mybm">原始图片</param>
+            <param name="width">原始图片的长度</param>
+            <param name="height">原始图片的高度</param>
+            <returns>处理后图片对象</returns>
+        </member>
+        <member name="M:DawnXZ.FileUtility.PictureHelper.RevPicUD(System.Drawing.Bitmap,System.Int32,System.Int32)">
+            <summary>
+            上下翻转
+            </summary>
+            <param name="mybm">原始图片</param>
+            <param name="width">原始图片的长度</param>
+            <param name="height">原始图片的高度</param>
+            <returns>处理后图片对象</returns>
+        </member>
+        <member name="M:DawnXZ.FileUtility.PictureHelper.Compress(System.String,System.String)">
+            <summary>
+            压缩到指定尺寸
+            </summary>
+            <param name="oldfile">原文件</param>
+            <param name="newfile">新文件</param>
+            <returns>是否成功</returns>
+        </member>
+        <member name="M:DawnXZ.FileUtility.PictureHelper.Gray(System.Drawing.Color)">
+            <summary>
+            图片灰度化
+            </summary>
+            <param name="c">颜色值</param>
+            <returns>处理后颜色值</returns>
+        </member>
+        <member name="M:DawnXZ.FileUtility.PictureHelper.BWPic(System.Drawing.Bitmap,System.Int32,System.Int32)">
+            <summary>
+            转换为黑白图片
+            </summary>
+            <param name="mybm">要进行处理的图片</param>
+            <param name="width">图片的长度</param>
+            <param name="height">图片的高度</param>
+            <returns>处理后图片对象</returns>
+        </member>
+        <member name="M:DawnXZ.FileUtility.PictureHelper.GetFrames(System.String,System.String)">
+            <summary>
+            获取图片中的各帧
+            </summary>
+            <param name="pPath">图片路径</param>
+            <param name="pSavedPath">保存路径</param>
+        </member>
+        <member name="T:DawnXZ.FileUtility.XMLHelper">
+            <summary>
+            XML文件操作辅助类
+            </summary>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XMLHelper.AppendChild(System.Xml.XmlDocument,System.Xml.XmlNode,DawnXZ.FileUtility.XmlParameter[])">
+            <summary>
+            追加子节点
+            </summary>
+            <param name="xDoc">XmlDocument</param>
+            <param name="parentNode">XmlNode</param>
+            <param name="paras">XmlParameter</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XMLHelper.AddEveryNode(System.Xml.XmlDocument,System.Xml.XmlNode,DawnXZ.FileUtility.XmlParameter[])">
+            <summary>
+            添加的每个节点
+            </summary>
+            <param name="xDoc">XmlDocument</param>
+            <param name="parentNode">XmlNode</param>
+            <param name="paras">XmlParameter</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XMLHelper.xmlDoc(System.String)">
+            <summary>
+            创建一个XmlDocument对象
+            </summary>
+            <param name="PathOrString">文件名称或XML字符串</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XMLHelper.CreateXMLFile(System.String,System.String,System.String,DawnXZ.FileUtility.XmlParameter[])">
+            <summary>
+            创建一个XML文档
+            </summary>
+            <param name="fileFullName">文件名称，包括完整路径</param>
+            <param name="rootName">根结点名称</param>
+            <param name="elemName">元素节点名称</param>
+            <param name="paras">XML参数</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XMLHelper.CreateXMLFile(System.String,System.String,DawnXZ.FileUtility.XmlParameter,DawnXZ.FileUtility.XmlParameter[])">
+            <summary>
+            创建一个XML文档
+            </summary>
+            <param name="fileFullName">文件名称，包括完整路径</param>
+            <param name="rootName">根结点名称</param>
+            <param name="elemp">元素节点对象</param>
+            <param name="paras">XML参数</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XMLHelper.CreateXMLFile(System.String,DawnXZ.FileUtility.XmlParameter,System.String,DawnXZ.FileUtility.XmlParameter[])">
+            <summary>
+            创建一个XML文档
+            </summary>
+            <param name="fileFullName">文件名称，包括完整路径</param>
+            <param name="rootp">根结点对象</param>
+            <param name="elemName">元素节点名称</param>
+            <param name="paras">XML参数</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XMLHelper.CreateXMLFile(System.String,DawnXZ.FileUtility.XmlParameter,DawnXZ.FileUtility.XmlParameter,DawnXZ.FileUtility.XmlParameter[])">
+            <summary>
+            创建一个XML文档
+            </summary>
+            <param name="fileFullName">文件名称，包括完整路径</param>
+            <param name="rootp">根结点对象</param>
+            <param name="elemp">元素节点对象</param>
+            <param name="paras">XML参数</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XMLHelper.AddNewNode(System.String,System.Xml.XmlNode,DawnXZ.FileUtility.XmlParameter[])">
+            <summary>
+            添加新节点
+            </summary>
+            <param name="fileFullName">文件名称，包括完整路径</param>
+            <param name="parentNode">新节点的父节点对象</param>
+            <param name="paras">XML参数对象</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XMLHelper.AddNewNode(System.Xml.XmlDocument,System.Xml.XmlNode,DawnXZ.FileUtility.XmlParameter[])">
+            <summary>
+            添加新节点
+            </summary>
+            <param name="xDoc">XmlDocument对象</param>
+            <param name="parentNode">新节点的父节点对象</param>
+            <param name="paras">XML参数对象</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XMLHelper.AddNewNode(System.Xml.XmlDocument,System.String,DawnXZ.FileUtility.XmlParameter[])">
+            <summary>
+            添加新节点
+            </summary>
+            <param name="xDoc">XmlDocument对象</param>
+            <param name="parentName">新节点的父节点名称</param>
+            <param name="paras">XML参数对象</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XMLHelper.AddNewNode(System.String,System.String,DawnXZ.FileUtility.XmlParameter[])">
+            <summary>
+            添加新节点
+            </summary>
+            <param name="fileFullName">文件名称，包括完整路径</param>
+            <param name="parentName">新节点的父节点名称</param>
+            <param name="paras">XML参数对象</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XMLHelper.AddAttribute(System.Xml.XmlDocument,System.Xml.XmlNode,System.String,System.String,System.String)">
+            <summary>
+            添加节点属性
+            </summary>
+            <param name="xDoc">XmlDocument对象</param>
+            <param name="node">节点对象</param>
+            <param name="namespaceOfPrefix">该节点的命名空间URI</param>
+            <param name="attributeName">新属性名称</param>
+            <param name="attributeValue">属性值</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XMLHelper.AddAttribute(System.Xml.XmlDocument,System.Xml.XmlNode,System.String,DawnXZ.FileUtility.AttributeParameter[])">
+            <summary>
+            添加节点属性
+            </summary>
+            <param name="xDoc">XmlDocument对象</param>
+            <param name="node">节点对象</param>
+            <param name="namespaceOfPrefix">该节点的命名空间URI</param>
+            <param name="attps">节点属性参数</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XMLHelper.AddAttribute(System.String,System.Xml.XmlNode,System.String,System.String,System.String)">
+            <summary>
+            添加节点属性
+            </summary>
+            <param name="fileFullName">文件名称，包括完整路径</param>
+            <param name="node">节点对象</param>
+            <param name="namespaceOfPrefix">该节点的命名空间URI</param>
+            <param name="attributeName">新属性名称</param>
+            <param name="attributeValue">属性值</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XMLHelper.AddAttribute(System.String,System.Xml.XmlNode,System.String,DawnXZ.FileUtility.AttributeParameter[])">
+            <summary>
+            添加节点属性
+            </summary>
+            <param name="fileFullName">文件名称，包括完整路径</param>
+            <param name="node">节点对象</param>
+            <param name="namespaceOfPrefix">该节点的命名空间URI</param>
+            <param name="attps">节点属性参数</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XMLHelper.AddAttribute(System.Xml.XmlDocument,System.String,System.String,System.String,System.String)">
+            <summary>
+            添加节点属性
+            </summary>
+            <param name="xDoc">XmlDocument对象</param>
+            <param name="nodeName">节点名称</param>
+            <param name="namespaceOfPrefix">该节点的命名空间URI</param>
+            <param name="attributeName">新属性名称</param>
+            <param name="attributeValue">属性值</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XMLHelper.AddAttribute(System.Xml.XmlDocument,System.String,System.String,DawnXZ.FileUtility.AttributeParameter[])">
+            <summary>
+            添加节点属性
+            </summary>
+            <param name="xDoc">XmlDocument对象</param>
+            <param name="nodeName">节点名称</param>
+            <param name="namespaceOfPrefix">该节点的命名空间URI</param>
+            <param name="attps">节点属性参数</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XMLHelper.AddAttribute(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            添加节点属性
+            </summary>
+            <param name="fileFullName">文件名称，包括完整路径</param>
+            <param name="nodeName">节点名称</param>
+            <param name="namespaceOfPrefix">该节点的命名空间URI</param>
+            <param name="attributeName">新属性名称</param>
+            <param name="attributeValue">属性值</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XMLHelper.AddAttribute(System.String,System.String,System.String,DawnXZ.FileUtility.AttributeParameter[])">
+            <summary>
+            添加节点属性
+            </summary>
+            <param name="fileFullName">文件名称，包括完整路径</param>
+            <param name="nodeName">节点名称</param>
+            <param name="namespaceOfPrefix">该节点的命名空间URI</param>
+            <param name="attps">节点属性参数</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XMLHelper.GetNode(System.String,System.String)">
+            <summary>
+            获取指定节点名称的节点对象
+            </summary>
+            <param name="fileFullName">文件名称，包括完整路径</param>
+            <param name="nodeName">节点名称</param>
+            <returns></returns>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XMLHelper.GetNode(System.Xml.XmlNode,System.String)">
+            <summary>
+            获取指定节点名称的节点对象
+            </summary>
+            <param name="node">节点对象</param>
+            <param name="nodeName">节点名称</param>
+            <returns></returns>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XMLHelper.GetNode(System.Xml.XmlDocument,System.String)">
+            <summary>
+            获取指定节点名称的节点对象
+            </summary>
+            <param name="xDoc">XmlDocument对象</param>
+            <param name="nodeName">节点名称</param>
+            <returns></returns>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XMLHelper.GetNode(System.Xml.XmlDocument,System.Int32,System.String)">
+            <summary>
+            获取指定节点名称的节点对象
+            </summary>
+            <param name="xDoc">XmlDocument对象</param>
+            <param name="Index">节点索引</param>
+            <param name="nodeName">节点名称</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XMLHelper.GetNode(System.String,System.Int32,System.String)">
+            <summary>
+            获取指定节点名称的节点对象
+            </summary>
+            <param name="fileFullName">文件名称，包括完整路径</param>
+            <param name="Index">节点索引</param>
+            <param name="nodeName">节点名称</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XMLHelper.GetNode(System.Xml.XmlNode,System.String,System.String)">
+            <summary>
+            获取指定节点名称的节点对象
+            </summary>
+            <param name="node">节点对象</param>
+            <param name="nodeName">节点名称</param>
+            <param name="innerText">节点内容</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XMLHelper.GetNode(System.Xml.XmlDocument,System.String,System.String)">
+            <summary>
+            获取指定节点名称的节点对象
+            </summary>
+            <param name="xDoc">XmlDocument对象</param>
+            <param name="nodeName">节点名称</param>
+            <param name="innerText">节点内容</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XMLHelper.GetNode(System.Xml.XmlDocument,DawnXZ.FileUtility.XmlParameter)">
+            <summary>
+            获取指定节点名称的节点对象
+            </summary>
+            <param name="xDoc">XmlDocument对象</param>
+            <param name="xpar">XML参数</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XMLHelper.GetNode(System.Xml.XmlNode,DawnXZ.FileUtility.XmlParameter)">
+            <summary>
+            获取指定节点名称的节点对象
+            </summary>
+            <param name="node">节点对象</param>
+            <param name="xpar">XML参数</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XMLHelper.UpdateNode(System.Xml.XmlNode,DawnXZ.FileUtility.XmlParameter)">
+            <summary>
+            修改节点的内容
+            </summary>
+            <param name="node">修改的节点对象</param>
+            <param name="para">XML参数对象</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XMLHelper.UpdateNode(System.Xml.XmlNode,System.Int32,System.String)">
+            <summary>
+            修改节点的内容
+            </summary>
+            <param name="node">父节点对象</param>
+            <param name="childIndex">该节点的索引</param>
+            <param name="nodeText">修改后的内容</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XMLHelper.UpdateNode(System.Xml.XmlNode,System.String)">
+            <summary>
+            修改节点的内容
+            </summary>
+            <param name="node">修改的节点对象</param>
+            <param name="nodeText">修改后的内容</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XMLHelper.UpdateNode(System.Xml.XmlDocument,System.Int32,DawnXZ.FileUtility.XmlParameter)">
+            <summary>
+            修改节点的内容
+            </summary>
+            <param name="xDoc">XMLDocument对象</param>
+            <param name="Index">节点索引</param>
+            <param name="para">XML参数对象</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XMLHelper.UpdateNode(System.Xml.XmlDocument,System.Int32,System.String,System.Int32,System.String)">
+            <summary>
+            修改节点的内容
+            </summary>
+            <param name="xDoc">XMLDocument对象</param>
+            <param name="Index">节点索引</param>
+            <param name="nodeName">父节点名称</param>
+            <param name="childIndex">该节点的索引</param>
+            <param name="nodeText">修改后的内容</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XMLHelper.UpdateNode(System.Xml.XmlDocument,System.Int32,System.String,System.String)">
+            <summary>
+            修改节点的内容
+            </summary>
+            <param name="xDoc">XMLDocument对象</param>
+            <param name="Index">节点索引</param>
+            <param name="nodeName">修改的节点名称</param>
+            <param name="nodeText">修改后的内容</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XMLHelper.UpdateNode(System.String,System.Int32,DawnXZ.FileUtility.XmlParameter)">
+            <summary>
+            修改节点的内容
+            </summary>
+            <param name="fileFullName">文件名称，包括完整路径</param>
+            <param name="Index">节点索引</param>
+            <param name="para">XML参数对象</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XMLHelper.UpdateNode(System.String,System.Int32,System.String,System.Int32,System.String)">
+            <summary>
+            修改节点的内容
+            </summary>
+            <param name="fileFullName">文件名称，包括完整路径</param>
+            <param name="Index">节点索引</param>
+            <param name="nodeName">父节点名称</param>
+            <param name="childIndex">该节点的索引</param>
+            <param name="nodeText">修改后的内容</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XMLHelper.UpdateNode(System.String,System.Int32,System.String,System.String)">
+            <summary>
+            修改节点的内容
+            </summary>
+            <param name="fileFullName">文件名称，包括完整路径</param>
+            <param name="Index">节点索引</param>
+            <param name="nodeName">修改的节点名称</param>
+            <param name="nodeText">修改后的内容</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XMLHelper.DeleteNode(System.Xml.XmlDocument,System.Int32)">
+            <summary>
+            删除节点
+            </summary>
+            <param name="xDoc">XmlDocument对象</param>
+            <param name="Index">节点索引</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XMLHelper.DeleteNode(System.String,System.Int32)">
+            <summary>
+            删除节点
+            </summary>
+            <param name="fileFullName">文件名称，包括完整路径</param>
+            <param name="Index">节点索引</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XMLHelper.DeleteNode(System.Xml.XmlDocument,System.Xml.XmlNode[])">
+            <summary>
+            删除节点
+            </summary>
+            <param name="xDoc">XmlDocument对象</param>
+            <param name="xns">需要删除的节点对象</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XMLHelper.DeleteNode(System.String,System.Xml.XmlNode[])">
+            <summary>
+            删除节点
+            </summary>
+            <param name="fileFullName">文件名称，包括完整路径</param>
+            <param name="xns">需要删除的节点对象</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XMLHelper.DeleteNode(System.Xml.XmlDocument,System.String,System.String)">
+            <summary>
+            删除节点
+            </summary>
+            <param name="xDoc">XmlDocument对象</param>
+            <param name="nodeName">节点名称</param>
+            <param name="nodeText">节点内容</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XMLHelper.DeleteNode(System.String,System.String,System.String)">
+            <summary>
+            删除节点
+            </summary>
+            <param name="fileFullName">文件名称，包括完整路径</param>
+            <param name="nodeName">节点名称</param>
+            <param name="nodeText">节点内容</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XMLHelper.SetAttribute(System.Xml.XmlNode,DawnXZ.FileUtility.AttributeParameter[])">
+            <summary>
+            修改属性值
+            </summary>
+            <param name="node">节点对象</param>
+            <param name="attps">属性参数</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XMLHelper.SetAttribute(System.Xml.XmlNode,System.String,System.String)">
+            <summary>
+            修改属性值
+            </summary>
+            <param name="node">节点对象</param>
+            <param name="attributeName">属性名称</param>
+            <param name="attributeValue">属性值</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XMLHelper.SetAttribute(System.Xml.XmlElement,DawnXZ.FileUtility.AttributeParameter[])">
+            <summary>
+            修改属性值
+            </summary>
+            <param name="elem">元素对象</param>
+            <param name="attps">属性参数</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XMLHelper.SetAttribute(System.Xml.XmlElement,System.String,System.String)">
+            <summary>
+            修改属性值
+            </summary>
+            <param name="elem">元素对象</param>
+            <param name="attributeName">属性名称</param>
+            <param name="attributeValue">属性值</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XMLHelper.SetAttribute(System.Xml.XmlDocument,DawnXZ.FileUtility.XmlParameter,DawnXZ.FileUtility.AttributeParameter[])">
+            <summary>
+            修改属性值
+            </summary>
+            <param name="xDoc">XmlDocument对象</param>
+            <param name="xpara">XML参数</param>
+            <param name="attps">属性参数</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XMLHelper.SetAttribute(System.Xml.XmlDocument,DawnXZ.FileUtility.XmlParameter,System.String,System.String)">
+            <summary>
+            修改属性值
+            </summary>
+            <param name="xDoc">XmlDocument对象</param>
+            <param name="xpara">XML参数</param>
+            <param name="attributeName">属性名称</param>
+            <param name="newValue">新属性值</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XMLHelper.SetAttribute(System.String,DawnXZ.FileUtility.XmlParameter,System.String,System.String)">
+            <summary>
+            修改属性值
+            </summary>
+            <param name="fileFullName">文件名称，包括完整路径</param>
+            <param name="xpara">XML参数</param>
+            <param name="attributeName">属性名称</param>
+            <param name="newValue">新属性值</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XMLHelper.SetAttribute(System.String,DawnXZ.FileUtility.XmlParameter,DawnXZ.FileUtility.AttributeParameter[])">
+            <summary>
+            修改属性值
+            </summary>
+            <param name="fileFullName">文件名称，包括完整路径</param>
+            <param name="xpara">XML参数</param>
+            <param name="attps">属性参数</param>
+        </member>
+        <member name="T:DawnXZ.FileUtility.XmlParameter">
+            <summary>
+            Xml 参数
+            </summary>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XmlParameter.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XmlParameter.#ctor(System.String,DawnXZ.FileUtility.AttributeParameter[])">
+            <summary>
+            构造函数
+            </summary>
+            <param name="name">属性名称</param>
+            <param name="attParas">属性参数</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XmlParameter.#ctor(System.String,System.String,DawnXZ.FileUtility.AttributeParameter[])">
+            <summary>
+            构造函数
+            </summary>
+            <param name="name">属性名称</param>
+            <param name="innerText">内部文本</param>
+            <param name="attParas">属性参数</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XmlParameter.#ctor(System.String,System.String,System.String,DawnXZ.FileUtility.AttributeParameter[])">
+            <summary>
+            构造函数
+            </summary>
+            <param name="name">属性名称</param>
+            <param name="innerText">内部文本</param>
+            <param name="namespaceOfPrefix">命名空间的前缀</param>
+            <param name="attParas">属性参数</param>
+        </member>
+        <member name="P:DawnXZ.FileUtility.XmlParameter.Name">
+            <summary>
+            属性名称
+            </summary>
+        </member>
+        <member name="P:DawnXZ.FileUtility.XmlParameter.InnerText">
+            <summary>
+            内部文本
+            </summary>
+        </member>
+        <member name="P:DawnXZ.FileUtility.XmlParameter.NamespaceOfPrefix">
+            <summary>
+            命名空间的前缀
+            </summary>
+        </member>
+        <member name="P:DawnXZ.FileUtility.XmlParameter.Attributes">
+            <summary>
+            属性参数
+            </summary>
+        </member>
+        <member name="T:DawnXZ.FileUtility.AttributeParameter">
+            <summary>
+            属性参数
+            </summary>
+        </member>
+        <member name="M:DawnXZ.FileUtility.AttributeParameter.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:DawnXZ.FileUtility.AttributeParameter.#ctor(System.String,System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="attributeName">属性名称</param>
+            <param name="attributeValue">属性值</param>
+        </member>
+        <member name="P:DawnXZ.FileUtility.AttributeParameter.Name">
+            <summary>
+            属性名称
+            </summary>
+        </member>
+        <member name="P:DawnXZ.FileUtility.AttributeParameter.Value">
+            <summary>
+            属性值
+            </summary>
+        </member>
+        <member name="T:DawnXZ.FileUtility.XmlHelperAt">
+            <summary>
+            XML文件操作辅助类
+            </summary>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XmlHelperAt.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="T:DawnXZ.FileUtility.XmlHelperAt.XmlType">
+            <summary>
+            XML类型枚举
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.XmlHelperAt.XmlType.File">
+            <summary>
+            文件型
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FileUtility.XmlHelperAt.XmlType.String">
+            <summary>
+            字符串型
+            </summary>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XmlHelperAt.CreateXmlDocument(System.String,System.String)">
+            <summary>
+            创建XML文档
+            <example>
+            <para>.net中调用方法：写入文件中,则：</para>
+            <para>document = XmlOperate.CreateXmlDocument("sex", "sexy");</para>
+            <para>document.Save("c:/bookstore.xml");s</para>
+            </example>
+            </summary>
+            <param name="name">根节点名称</param>
+            <param name="type">根节点的一个属性值</param>
+            <returns>XmlDocument</returns> 
+        </member>
+        <member name="M:DawnXZ.FileUtility.XmlHelperAt.Read(System.String,System.String,System.String)">
+            <summary>
+            读取数据
+            <example>
+            <para>使用示列:</para>
+            <para>XmlHelperAt.Read(path, "/Node", "")</para>
+            <para>XmlHelperAt.Read(path, "/Node/Element[@Attribute='Name']", "Attribute")</para>
+            </example>
+            </summary>
+            <param name="path">路径</param>
+            <param name="node">节点</param>
+            <param name="attribute">属性名，非空时返回该属性值，否则返回串联值</param>
+            <returns>string</returns>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XmlHelperAt.Insert(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            插入数据
+            <example>
+            <para>使用示列:</para>
+            <para>XmlHelperAt.Insert(path, "/Node", "Element", "", "Value")</para>
+            <para>XmlHelperAt.Insert(path, "/Node", "Element", "Attribute", "Value")</para>
+            <para>XmlHelperAt.Insert(path, "/Node", "", "Attribute", "Value")</para>
+            </example>
+            </summary>
+            <param name="path">路径</param>
+            <param name="node">节点</param>
+            <param name="element">元素名，非空时插入新元素，否则在该元素中插入属性</param>
+            <param name="attribute">属性名，非空时插入该元素属性值，否则插入元素值</param>
+            <param name="value">值</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XmlHelperAt.Update(System.String,System.String,System.String,System.String)">
+            <summary>
+            修改数据
+            <example>
+            <para>使用示列:</para>
+            <para>XmlHelperAt.Insert(path, "/Node", "", "Value")</para>
+            <para>XmlHelperAt.Insert(path, "/Node", "Attribute", "Value")</para>
+            </example>
+            </summary>
+            <param name="path">路径</param>
+            <param name="node">节点</param>
+            <param name="attribute">属性名，非空时修改该节点属性值，否则修改节点值</param>
+            <param name="value">值</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XmlHelperAt.Delete(System.String,System.String,System.String)">
+            <summary>
+            删除数据
+            <example>
+            <para>使用示列:</para>
+            <para>XmlHelperAt.Delete(path, "/Node", "")</para>
+            <para>XmlHelperAt.Delete(path, "/Node", "Attribute")</para>
+            </example>
+            </summary>
+            <param name="path">路径</param>
+            <param name="node">节点</param>
+            <param name="attribute">属性名，非空时删除该节点属性值，否则删除节点值</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XmlHelperAt.GetDataSet(System.String,DawnXZ.FileUtility.XmlHelperAt.XmlType)">
+            <summary>
+            读取XML资源到DataSet中
+            </summary>
+            <param name="source">XML资源，文件为路径，否则为XML字符串</param>
+            <param name="xmlType">XML资源类型</param>
+            <returns>DataSet</returns>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XmlHelperAt.GetNodeInfoByNodeName(System.String,System.String)">
+            <summary>
+            获得xml文件中指定节点的节点数据
+            </summary>
+            <param name="path">路径</param>
+            <param name="nodeName">节点名称</param>
+            <returns>string</returns>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XmlHelperAt.get_XmlValue_ds(System.String,System.Data.DataSet@)">
+            <summary>
+            获取一个字符串xml文档中的ds
+            </summary>
+            <param name="xml_string">含有xml信息的字符串</param>
+            <param name="ds">DataSet</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XmlHelperAt.GetTable(System.String,DawnXZ.FileUtility.XmlHelperAt.XmlType,System.String)">
+            <summary>
+            读取XML资源到DataTable中
+            </summary>
+            <param name="source">XML资源，文件为路径，否则为XML字符串</param>
+            <param name="xmlType">XML资源类型：文件，字符串</param>
+            <param name="tableName">表名称</param>
+            <returns>DataTable</returns>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XmlHelperAt.GetTableCell(System.String,DawnXZ.FileUtility.XmlHelperAt.XmlType,System.String,System.Int32,System.String)">
+            <summary>
+            读取XML资源中指定的DataTable的指定行指定列的值
+            </summary>
+            <param name="source">XML资源</param>
+            <param name="xmlType">XML资源类型：文件，字符串</param>
+            <param name="tableName">表名</param>
+            <param name="rowIndex">行号</param>
+            <param name="colName">列名</param>
+            <returns>值，不存在时返回Null</returns>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XmlHelperAt.GetTableCell(System.String,DawnXZ.FileUtility.XmlHelperAt.XmlType,System.String,System.Int32,System.Int32)">
+            <summary>
+            读取XML资源中指定的DataTable的指定行指定列的值
+            </summary>
+            <param name="source">XML资源</param>
+            <param name="xmlType">XML资源类型：文件，字符串</param>
+            <param name="tableName">表名</param>
+            <param name="rowIndex">行号</param>
+            <param name="colIndex">列号</param>
+            <returns>值，不存在时返回Null</returns>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XmlHelperAt.SaveTableToFile(System.Data.DataTable,System.String)">
+            <summary>
+            将DataTable写入XML文件中
+            </summary>
+            <param name="dt">含有数据的DataTable</param>
+            <param name="filePath">文件路径</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XmlHelperAt.SaveTableToFile(System.Data.DataTable,System.String,System.String)">
+            <summary>
+            将DataTable以指定的根结点名称写入文件
+            </summary>
+            <param name="dt">含有数据的DataTable</param>
+            <param name="rootName">根结点名称</param>
+            <param name="filePath">文件路径</param>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XmlHelperAt.UpdateTableCell(System.String,System.String,System.Int32,System.String,System.String)">
+            <summary>
+            使用DataSet方式更新XML文件节点
+            </summary>
+            <param name="filePath">XML文件路径</param>
+            <param name="tableName">表名称</param>
+            <param name="rowIndex">行号</param>
+            <param name="colName">列名</param>
+            <param name="content">更新值</param>
+            <returns>更新是否成功</returns>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XmlHelperAt.UpdateTableCell(System.String,System.String,System.Int32,System.Int32,System.String)">
+            <summary>
+            使用DataSet方式更新XML文件节点
+            </summary>
+            <param name="filePath">XML文件路径</param>
+            <param name="tableName">表名称</param>
+            <param name="rowIndex">行号</param>
+            <param name="colIndex">列号</param>
+            <param name="content">更新值</param>
+            <returns>更新是否成功</returns>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XmlHelperAt.GetNodeValue(System.String,DawnXZ.FileUtility.XmlHelperAt.XmlType,System.String)">
+            <summary>
+            读取XML资源中的指定节点内容
+            </summary>
+            <param name="source">XML资源</param>
+            <param name="xmlType">XML资源类型：文件，字符串</param>
+            <param name="nodeName">节点名称</param>
+            <returns>节点内容</returns>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XmlHelperAt.GetNodeValue(System.String,System.String)">
+            <summary>
+            读取XML资源中的指定节点内容
+            </summary>
+            <param name="source">XML资源</param>
+            <param name="nodeName">节点名称</param>
+            <returns>节点内容</returns>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XmlHelperAt.UpdateNode(System.String,System.String,System.String)">
+            <summary>
+            更新XML文件中的指定节点内容
+            </summary>
+            <param name="filePath">文件路径</param>
+            <param name="nodeName">节点名称</param>
+            <param name="nodeValue">更新内容</param>
+            <returns>更新是否成功</returns>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XmlHelperAt.ReadXML``1(System.String)">
+            <summary>
+            读取xml文件，并将文件序列化为类
+            </summary>
+            <typeparam name="T">泛型对象</typeparam>
+            <param name="path">路径</param>
+            <returns>序列化后的泛型对象</returns>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XmlHelperAt.WriteXML``1(``0,System.String,System.String,System.String)">
+            <summary>
+            将对象写入XML文件
+            </summary>
+            <typeparam name="T">C#对象名</typeparam>
+            <param name="item">对象实例</param>
+            <param name="path">路径</param>
+            <param name="jjdbh">标号</param>
+            <param name="ends">结束符号（整个xml的路径类似如下：C:\xmltest\201111send.xml，其中path=C:\xmltest,jjdbh=201111,ends=send）</param>
+            <returns></returns>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XmlHelperAt.SerializeToXmlStr``1(``0,System.Boolean)">
+            <summary>
+            静态扩展
+            </summary>
+            <typeparam name="T">需要序列化的对象类型，必须声明[Serializable]特征</typeparam>
+            <param name="obj">需要序列化的对象</param>
+            <param name="omitXmlDeclaration">true:省略XML声明;否则为false.默认false，即编写 XML 声明。</param>
+            <returns></returns>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XmlHelperAt.XmlSerialize``1(``0,System.Boolean)">
+            <summary>
+            使用XmlSerializer序列化对象
+            </summary>
+            <typeparam name="T">需要序列化的对象类型，必须声明[Serializable]特征</typeparam>
+            <param name="obj">需要序列化的对象</param>
+            <param name="omitXmlDeclaration">true:省略XML声明;否则为false.默认false，即编写 XML 声明。</param>
+            <returns>序列化后的字符串</returns>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XmlHelperAt.XmlSerialize``1(System.String,``0,System.Boolean,System.Boolean)">
+            <summary>
+            使用XmlSerializer序列化对象
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="path">文件路径</param>
+            <param name="obj">需要序列化的对象</param>
+            <param name="omitXmlDeclaration">true:省略XML声明;否则为false.默认false，即编写 XML 声明。</param>
+            <param name="removeDefaultNamespace">是否移除默认名称空间(如果对象定义时指定了:XmlRoot(Namespace = "http://www.xxx.com/xsd")则需要传false值进来)</param>
+            <returns>序列化后的字符串</returns>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XmlHelperAt.ShareReadFile(System.String)">
+            <summary>
+            ShareReadFile
+            </summary>
+            <param name="filePath">路径</param>
+            <returns>byte[]</returns>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XmlHelperAt.XmlFileDeserialize``1(System.String)">
+            <summary>
+            从文件读取并反序列化为对象 （解决: 多线程或多进程下读写并发问题）
+            </summary>
+            <typeparam name="T">返回的对象类型</typeparam>
+            <param name="path">文件地址</param>
+            <returns></returns>
+        </member>
+        <member name="M:DawnXZ.FileUtility.XmlHelperAt.XmlDeserialize``1(System.String)">
+            <summary>
+            使用XmlSerializer反序列化对象
+            </summary>
+            <param name="xmlOfObject">需要反序列化的xml字符串</param>
+            <returns>反序列化后的对象</returns>
+        </member>
+    </members>
+</doc>

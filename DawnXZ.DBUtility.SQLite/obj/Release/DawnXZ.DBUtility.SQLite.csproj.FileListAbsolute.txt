@@ -1,0 +1,6 @@
+E:\DawnProjectDevOps\DawnHistorySaveCollection\晨曦常用工具集\Release\net40\DBUtility.SQLite.xml
+E:\DawnProjectDevOps\DawnHistorySaveCollection\晨曦常用工具集\Release\net40\DBUtility.SQLite.dll
+E:\DawnProjectDevOps\DawnHistorySaveCollection\晨曦常用工具集\DawnXZ.DBUtility.SQLite\obj\Release\DawnXZ.DBUtility.SQLite.csprojAssemblyReference.cache
+E:\DawnProjectDevOps\DawnHistorySaveCollection\晨曦常用工具集\DawnXZ.DBUtility.SQLite\obj\Release\DawnXZ.DBUtility.SQLite.csproj.CoreCompileInputs.cache
+E:\DawnProjectDevOps\DawnHistorySaveCollection\晨曦常用工具集\DawnXZ.DBUtility.SQLite\obj\Release\DawnXZ.DBUtility.SQLite.csproj.CopyComplete
+E:\DawnProjectDevOps\DawnHistorySaveCollection\晨曦常用工具集\DawnXZ.DBUtility.SQLite\obj\Release\DBUtility.SQLite.dll

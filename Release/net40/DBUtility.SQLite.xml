@@ -1,0 +1,586 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DBUtility.SQLite</name>
+    </assembly>
+    <members>
+        <member name="T:DawnXZ.DBUtility.SQliteConnectionString">
+            <summary>
+            数据库连接字符串
+            </summary>
+        </member>
+        <member name="M:DawnXZ.DBUtility.SQliteConnectionString.ConnectionString(System.String)">
+            <summary>
+            SQLite 连接字符串
+            <para>调用时请对此方法特别调用</para>
+            </summary>
+            <param name="sqlitePath">SQLite 文件路径</param>
+            <returns></returns>
+        </member>
+        <member name="T:DawnXZ.DBUtility.SQLiteHelper">
+            <summary>
+            The SQLiteHelper class is intended to encapsulate high performance, scalable best practices for 
+            common uses of SQLiteClient
+            </summary>
+        </member>
+        <member name="M:DawnXZ.DBUtility.SQLiteHelper.SelectPaging(System.String,System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.Int32@)">
+            <summary> 
+            通用分页查询方法
+            </summary> 
+            <param name="connectionStringing">连接字符串</param> 
+            <param name="tableName">表名</param> 
+            <param name="strColumns">查询字段名</param> 
+            <param name="strWhere">where条件</param> 
+            <param name="strOrder">排序条件</param> 
+            <param name="pageSize">每页数据数量</param> 
+            <param name="currentIndex">当前页数</param> 
+            <param name="recordOut">数据总量</param> 
+            <returns>DataTable数据表</returns> 
+        </member>
+        <member name="M:DawnXZ.DBUtility.SQLiteHelper.AttachParameters(System.Data.SQLite.SQLiteCommand,System.Data.SQLite.SQLiteParameter[])">
+            <summary>
+            This method is used to attach array of SQLiteParameters to a SQLiteCommand.
+            
+            This method will assign a value of DbNull to any parameter with a direction of
+            InputOutput and a value of null.  
+            
+            This behavior will prevent default values from being used, but
+            this will be the less common case than an intended pure output parameter (derived as InputOutput)
+            where the user provided no input value.
+            </summary>
+            <param name="command">The command to which the parameters will be added</param>
+            <param name="commandParameters">An array of SQLiteParameters to be added to command</param>
+        </member>
+        <member name="M:DawnXZ.DBUtility.SQLiteHelper.AssignParameterValues(System.Data.SQLite.SQLiteParameter[],System.Data.DataRow)">
+            <summary>
+            This method assigns dataRow column values to an array of SQLiteParameters
+            </summary>
+            <param name="commandParameters">Array of SQLiteParameters to be assigned values</param>
+            <param name="dataRow">The dataRow used to hold the stored procedure's parameter values</param>
+        </member>
+        <member name="M:DawnXZ.DBUtility.SQLiteHelper.AssignParameterValues(System.Data.SQLite.SQLiteParameter[],System.Object[])">
+            <summary>
+            This method assigns an array of values to an array of SQLiteParameters
+            </summary>
+            <param name="commandParameters">Array of SQLiteParameters to be assigned values</param>
+            <param name="parameterValues">Array of objects holding the values to be assigned</param>
+        </member>
+        <member name="M:DawnXZ.DBUtility.SQLiteHelper.PrepareCommand(System.Data.SQLite.SQLiteCommand,System.Data.SQLite.SQLiteConnection,System.Data.SQLite.SQLiteTransaction,System.Data.CommandType,System.String,System.Data.SQLite.SQLiteParameter[],System.Boolean@)">
+            <summary>
+            This method opens (if necessary) and assigns a connection, transaction, command type and parameters 
+            to the provided command
+            </summary>
+            <param name="command">The SQLiteCommand to be prepared</param>
+            <param name="connection">A valid SQLiteConnection, on which to execute this command</param>
+            <param name="transaction">A valid SQLiteTransaction, or 'null'</param>
+            <param name="commandType">The CommandType (stored procedure, text, etc.)</param>
+            <param name="commandText">The stored procedure name or T-SQL command</param>
+            <param name="commandParameters">An array of SQLiteParameters to be associated with the command or 'null' if no parameters are required</param>
+            <param name="mustCloseConnection"><c>true</c> if the connection was opened by the method, otherwose is false.</param>
+        </member>
+        <member name="M:DawnXZ.DBUtility.SQLiteHelper.ExecuteNonQuery(System.String,System.Data.CommandType,System.String)">
+            <summary>
+            Execute a SQLiteCommand (that returns no resultset and takes no parameters) against the database specified in 
+            the connection string
+            </summary>
+            <remarks>
+            e.g.:  
+             int result = ExecuteNonQuery(connString, CommandType.StoredProcedure, "PublishOrders");
+            </remarks>
+            <param name="connectionString">A valid connection string for a SQLiteConnection</param>
+            <param name="commandType">The CommandType (stored procedure, text, etc.)</param>
+            <param name="commandText">The stored procedure name or T-SQL command</param>
+            <returns>An int representing the number of rows affected by the command</returns>
+        </member>
+        <member name="M:DawnXZ.DBUtility.SQLiteHelper.ExecuteNonQuery(System.String,System.Data.CommandType,System.String,System.Data.SQLite.SQLiteParameter[])">
+            <summary>
+            Execute a SQLiteCommand (that returns no resultset) against the database specified in the connection string 
+            using the provided parameters
+            </summary>
+            <remarks>
+            e.g.:  
+             int result = ExecuteNonQuery(connString, CommandType.StoredProcedure, "PublishOrders", new SQLiteParameter("@prodid", 24));
+            </remarks>
+            <param name="connectionString">A valid connection string for a SQLiteConnection</param>
+            <param name="commandType">The CommandType (stored procedure, text, etc.)</param>
+            <param name="commandText">The stored procedure name or T-SQL command</param>
+            <param name="commandParameters">An array of SQLiteParamters used to execute the command</param>
+            <returns>An int representing the number of rows affected by the command</returns>
+        </member>
+        <member name="M:DawnXZ.DBUtility.SQLiteHelper.ExecuteNonQuery(System.Data.SQLite.SQLiteConnection,System.Data.CommandType,System.String)">
+            <summary>
+            Execute a SQLiteCommand (that returns no resultset and takes no parameters) against the provided SQLiteConnection. 
+            </summary>
+            <remarks>
+            e.g.:  
+             int result = ExecuteNonQuery(conn, CommandType.StoredProcedure, "PublishOrders");
+            </remarks>
+            <param name="connection">A valid SQLiteConnection</param>
+            <param name="commandType">The CommandType (stored procedure, text, etc.)</param>
+            <param name="commandText">The stored procedure name or T-SQL command</param>
+            <returns>An int representing the number of rows affected by the command</returns>
+        </member>
+        <member name="M:DawnXZ.DBUtility.SQLiteHelper.ExecuteNonQuery(System.Data.SQLite.SQLiteConnection,System.Data.CommandType,System.String,System.Data.SQLite.SQLiteParameter[])">
+            <summary>
+            Execute a SQLiteCommand (that returns no resultset) against the specified SQLiteConnection 
+            using the provided parameters.
+            </summary>
+            <remarks>
+            e.g.:  
+             int result = ExecuteNonQuery(conn, CommandType.StoredProcedure, "PublishOrders", new SQLiteParameter("@prodid", 24));
+            </remarks>
+            <param name="connection">A valid SQLiteConnection</param>
+            <param name="commandType">The CommandType (stored procedure, text, etc.)</param>
+            <param name="commandText">The stored procedure name or T-SQL command</param>
+            <param name="commandParameters">An array of SQLiteParamters used to execute the command</param>
+            <returns>An int representing the number of rows affected by the command</returns>
+        </member>
+        <member name="M:DawnXZ.DBUtility.SQLiteHelper.ExecuteNonQuery(System.Data.SQLite.SQLiteTransaction,System.Data.CommandType,System.String)">
+            <summary>
+            Execute a SQLiteCommand (that returns no resultset and takes no parameters) against the provided SQLiteTransaction. 
+            </summary>
+            <remarks>
+            e.g.:  
+             int result = ExecuteNonQuery(trans, CommandType.StoredProcedure, "PublishOrders");
+            </remarks>
+            <param name="transaction">A valid SQLiteTransaction</param>
+            <param name="commandType">The CommandType (stored procedure, text, etc.)</param>
+            <param name="commandText">The stored procedure name or T-SQL command</param>
+            <returns>An int representing the number of rows affected by the command</returns>
+        </member>
+        <member name="M:DawnXZ.DBUtility.SQLiteHelper.ExecuteNonQuery(System.Data.SQLite.SQLiteTransaction,System.Data.CommandType,System.String,System.Data.SQLite.SQLiteParameter[])">
+            <summary>
+            Execute a SQLiteCommand (that returns no resultset) against the specified SQLiteTransaction
+            using the provided parameters.
+            </summary>
+            <remarks>
+            e.g.:  
+             int result = ExecuteNonQuery(trans, CommandType.StoredProcedure, "GetOrders", new SQLiteParameter("@prodid", 24));
+            </remarks>
+            <param name="transaction">A valid SQLiteTransaction</param>
+            <param name="commandType">The CommandType (stored procedure, text, etc.)</param>
+            <param name="commandText">The stored procedure name or T-SQL command</param>
+            <param name="commandParameters">An array of SQLiteParamters used to execute the command</param>
+            <returns>An int representing the number of rows affected by the command</returns>
+        </member>
+        <member name="M:DawnXZ.DBUtility.SQLiteHelper.ExecuteDataset(System.String,System.Data.CommandType,System.String)">
+            <summary>
+            Execute a SQLiteCommand (that returns a resultset and takes no parameters) against the database specified in 
+            the connection string. 
+            </summary>
+            <remarks>
+            e.g.:  
+             DataSet ds = ExecuteDataset(connString, CommandType.StoredProcedure, "GetOrders");
+            </remarks>
+            <param name="connectionString">A valid connection string for a SQLiteConnection</param>
+            <param name="commandType">The CommandType (stored procedure, text, etc.)</param>
+            <param name="commandText">The stored procedure name or T-SQL command</param>
+            <returns>A dataset containing the resultset generated by the command</returns>
+        </member>
+        <member name="M:DawnXZ.DBUtility.SQLiteHelper.ExecuteDataset(System.String,System.Data.CommandType,System.String,System.Data.SQLite.SQLiteParameter[])">
+            <summary>
+            Execute a SQLiteCommand (that returns a resultset) against the database specified in the connection string 
+            using the provided parameters.
+            </summary>
+            <remarks>
+            e.g.:  
+             DataSet ds = ExecuteDataset(connString, CommandType.StoredProcedure, "GetOrders", new SQLiteParameter("@prodid", 24));
+            </remarks>
+            <param name="connectionString">A valid connection string for a SQLiteConnection</param>
+            <param name="commandType">The CommandType (stored procedure, text, etc.)</param>
+            <param name="commandText">The stored procedure name or T-SQL command</param>
+            <param name="commandParameters">An array of SQLiteParamters used to execute the command</param>
+            <returns>A dataset containing the resultset generated by the command</returns>
+        </member>
+        <member name="M:DawnXZ.DBUtility.SQLiteHelper.ExecuteDataset(System.Data.SQLite.SQLiteConnection,System.Data.CommandType,System.String)">
+            <summary>
+            Execute a SQLiteCommand (that returns a resultset and takes no parameters) against the provided SQLiteConnection. 
+            </summary>
+            <remarks>
+            e.g.:  
+             DataSet ds = ExecuteDataset(conn, CommandType.StoredProcedure, "GetOrders");
+            </remarks>
+            <param name="connection">A valid SQLiteConnection</param>
+            <param name="commandType">The CommandType (stored procedure, text, etc.)</param>
+            <param name="commandText">The stored procedure name or T-SQL command</param>
+            <returns>A dataset containing the resultset generated by the command</returns>
+        </member>
+        <member name="M:DawnXZ.DBUtility.SQLiteHelper.ExecuteDataset(System.Data.SQLite.SQLiteConnection,System.Data.CommandType,System.String,System.Data.SQLite.SQLiteParameter[])">
+            <summary>
+            Execute a SQLiteCommand (that returns a resultset) against the specified SQLiteConnection 
+            using the provided parameters.
+            </summary>
+            <remarks>
+            e.g.:  
+             DataSet ds = ExecuteDataset(conn, CommandType.StoredProcedure, "GetOrders", new SQLiteParameter("@prodid", 24));
+            </remarks>
+            <param name="connection">A valid SQLiteConnection</param>
+            <param name="commandType">The CommandType (stored procedure, text, etc.)</param>
+            <param name="commandText">The stored procedure name or T-SQL command</param>
+            <param name="commandParameters">An array of SQLiteParamters used to execute the command</param>
+            <returns>A dataset containing the resultset generated by the command</returns>
+        </member>
+        <member name="M:DawnXZ.DBUtility.SQLiteHelper.ExecuteDataset(System.Data.SQLite.SQLiteTransaction,System.Data.CommandType,System.String)">
+            <summary>
+            Execute a SQLiteCommand (that returns a resultset and takes no parameters) against the provided SQLiteTransaction. 
+            </summary>
+            <remarks>
+            e.g.:  
+             DataSet ds = ExecuteDataset(trans, CommandType.StoredProcedure, "GetOrders");
+            </remarks>
+            <param name="transaction">A valid SQLiteTransaction</param>
+            <param name="commandType">The CommandType (stored procedure, text, etc.)</param>
+            <param name="commandText">The stored procedure name or T-SQL command</param>
+            <returns>A dataset containing the resultset generated by the command</returns>
+        </member>
+        <member name="M:DawnXZ.DBUtility.SQLiteHelper.ExecuteDataset(System.Data.SQLite.SQLiteTransaction,System.Data.CommandType,System.String,System.Data.SQLite.SQLiteParameter[])">
+            <summary>
+            Execute a SQLiteCommand (that returns a resultset) against the specified SQLiteTransaction
+            using the provided parameters.
+            </summary>
+            <remarks>
+            e.g.:  
+             DataSet ds = ExecuteDataset(trans, CommandType.StoredProcedure, "GetOrders", new SQLiteParameter("@prodid", 24));
+            </remarks>
+            <param name="transaction">A valid SQLiteTransaction</param>
+            <param name="commandType">The CommandType (stored procedure, text, etc.)</param>
+            <param name="commandText">The stored procedure name or T-SQL command</param>
+            <param name="commandParameters">An array of SQLiteParamters used to execute the command</param>
+            <returns>A dataset containing the resultset generated by the command</returns>
+        </member>
+        <member name="T:DawnXZ.DBUtility.SQLiteHelper.SQLiteConnectionOwnership">
+            <summary>
+            This enum is used to indicate whether the connection was provided by the caller, or created by SQLiteHelper, so that
+            we can set the appropriate CommandBehavior when calling ExecuteReader()
+            </summary>
+        </member>
+        <member name="F:DawnXZ.DBUtility.SQLiteHelper.SQLiteConnectionOwnership.Internal">
+            <summary>Connection is owned and managed by SQLiteHelper</summary>
+        </member>
+        <member name="F:DawnXZ.DBUtility.SQLiteHelper.SQLiteConnectionOwnership.External">
+            <summary>Connection is owned and managed by the caller</summary>
+        </member>
+        <member name="M:DawnXZ.DBUtility.SQLiteHelper.ExecuteReader(System.Data.SQLite.SQLiteConnection,System.Data.SQLite.SQLiteTransaction,System.Data.CommandType,System.String,System.Data.SQLite.SQLiteParameter[],DawnXZ.DBUtility.SQLiteHelper.SQLiteConnectionOwnership)">
+            <summary>
+            Create and prepare a SQLiteCommand, and call ExecuteReader with the appropriate CommandBehavior.
+            </summary>
+            <remarks>
+            If we created and opened the connection, we want the connection to be closed when the DataReader is closed.
+            
+            If the caller provided the connection, we want to leave it to them to manage.
+            </remarks>
+            <param name="connection">A valid SQLiteConnection, on which to execute this command</param>
+            <param name="transaction">A valid SQLiteTransaction, or 'null'</param>
+            <param name="commandType">The CommandType (stored procedure, text, etc.)</param>
+            <param name="commandText">The stored procedure name or T-SQL command</param>
+            <param name="commandParameters">An array of SQLiteParameters to be associated with the command or 'null' if no parameters are required</param>
+            <param name="connectionOwnership">Indicates whether the connection parameter was provided by the caller, or created by SQLiteHelper</param>
+            <returns>SQLiteDataReader containing the results of the command</returns>
+        </member>
+        <member name="M:DawnXZ.DBUtility.SQLiteHelper.ExecuteReader(System.String,System.Data.CommandType,System.String)">
+            <summary>
+            Execute a SQLiteCommand (that returns a resultset and takes no parameters) against the database specified in 
+            the connection string. 
+            </summary>
+            <remarks>
+            e.g.:  
+             SQLiteDataReader dr = ExecuteReader(connString, CommandType.StoredProcedure, "GetOrders");
+            </remarks>
+            <param name="connectionString">A valid connection string for a SQLiteConnection</param>
+            <param name="commandType">The CommandType (stored procedure, text, etc.)</param>
+            <param name="commandText">The stored procedure name or T-SQL command</param>
+            <returns>A SQLiteDataReader containing the resultset generated by the command</returns>
+        </member>
+        <member name="M:DawnXZ.DBUtility.SQLiteHelper.ExecuteReader(System.String,System.Data.CommandType,System.String,System.Data.SQLite.SQLiteParameter[])">
+            <summary>
+            Execute a SQLiteCommand (that returns a resultset) against the database specified in the connection string 
+            using the provided parameters.
+            </summary>
+            <remarks>
+            e.g.:  
+             SQLiteDataReader dr = ExecuteReader(connString, CommandType.StoredProcedure, "GetOrders", new SQLiteParameter("@prodid", 24));
+            </remarks>
+            <param name="connectionString">A valid connection string for a SQLiteConnection</param>
+            <param name="commandType">The CommandType (stored procedure, text, etc.)</param>
+            <param name="commandText">The stored procedure name or T-SQL command</param>
+            <param name="commandParameters">An array of SQLiteParamters used to execute the command</param>
+            <returns>A SQLiteDataReader containing the resultset generated by the command</returns>
+        </member>
+        <member name="M:DawnXZ.DBUtility.SQLiteHelper.ExecuteReader(System.Data.SQLite.SQLiteConnection,System.Data.CommandType,System.String)">
+            <summary>
+            Execute a SQLiteCommand (that returns a resultset and takes no parameters) against the provided SQLiteConnection. 
+            </summary>
+            <remarks>
+            e.g.:  
+             SQLiteDataReader dr = ExecuteReader(conn, CommandType.StoredProcedure, "GetOrders");
+            </remarks>
+            <param name="connection">A valid SQLiteConnection</param>
+            <param name="commandType">The CommandType (stored procedure, text, etc.)</param>
+            <param name="commandText">The stored procedure name or T-SQL command</param>
+            <returns>A SQLiteDataReader containing the resultset generated by the command</returns>
+        </member>
+        <member name="M:DawnXZ.DBUtility.SQLiteHelper.ExecuteReader(System.Data.SQLite.SQLiteConnection,System.Data.CommandType,System.String,System.Data.SQLite.SQLiteParameter[])">
+            <summary>
+            Execute a SQLiteCommand (that returns a resultset) against the specified SQLiteConnection 
+            using the provided parameters.
+            </summary>
+            <remarks>
+            e.g.:  
+             SQLiteDataReader dr = ExecuteReader(conn, CommandType.StoredProcedure, "GetOrders", new SQLiteParameter("@prodid", 24));
+            </remarks>
+            <param name="connection">A valid SQLiteConnection</param>
+            <param name="commandType">The CommandType (stored procedure, text, etc.)</param>
+            <param name="commandText">The stored procedure name or T-SQL command</param>
+            <param name="commandParameters">An array of SQLiteParamters used to execute the command</param>
+            <returns>A SQLiteDataReader containing the resultset generated by the command</returns>
+        </member>
+        <member name="M:DawnXZ.DBUtility.SQLiteHelper.ExecuteReader(System.Data.SQLite.SQLiteTransaction,System.Data.CommandType,System.String)">
+            <summary>
+            Execute a SQLiteCommand (that returns a resultset and takes no parameters) against the provided SQLiteTransaction. 
+            </summary>
+            <remarks>
+            e.g.:  
+             SQLiteDataReader dr = ExecuteReader(trans, CommandType.StoredProcedure, "GetOrders");
+            </remarks>
+            <param name="transaction">A valid SQLiteTransaction</param>
+            <param name="commandType">The CommandType (stored procedure, text, etc.)</param>
+            <param name="commandText">The stored procedure name or T-SQL command</param>
+            <returns>A SQLiteDataReader containing the resultset generated by the command</returns>
+        </member>
+        <member name="M:DawnXZ.DBUtility.SQLiteHelper.ExecuteReader(System.Data.SQLite.SQLiteTransaction,System.Data.CommandType,System.String,System.Data.SQLite.SQLiteParameter[])">
+            <summary>
+            Execute a SQLiteCommand (that returns a resultset) against the specified SQLiteTransaction
+            using the provided parameters.
+            </summary>
+            <remarks>
+            e.g.:  
+              SQLiteDataReader dr = ExecuteReader(trans, CommandType.StoredProcedure, "GetOrders", new SQLiteParameter("@prodid", 24));
+            </remarks>
+            <param name="transaction">A valid SQLiteTransaction</param>
+            <param name="commandType">The CommandType (stored procedure, text, etc.)</param>
+            <param name="commandText">The stored procedure name or T-SQL command</param>
+            <param name="commandParameters">An array of SQLiteParamters used to execute the command</param>
+            <returns>A SQLiteDataReader containing the resultset generated by the command</returns>
+        </member>
+        <member name="M:DawnXZ.DBUtility.SQLiteHelper.ExecuteScalar(System.String,System.Data.CommandType,System.String)">
+            <summary>
+            Execute a SQLiteCommand (that returns a 1x1 resultset and takes no parameters) against the database specified in 
+            the connection string. 
+            </summary>
+            <remarks>
+            e.g.:  
+             int orderCount = (int)ExecuteScalar(connString, CommandType.StoredProcedure, "GetOrderCount");
+            </remarks>
+            <param name="connectionString">A valid connection string for a SQLiteConnection</param>
+            <param name="commandType">The CommandType (stored procedure, text, etc.)</param>
+            <param name="commandText">The stored procedure name or T-SQL command</param>
+            <returns>An object containing the value in the 1x1 resultset generated by the command</returns>
+        </member>
+        <member name="M:DawnXZ.DBUtility.SQLiteHelper.ExecuteScalar(System.String,System.Data.CommandType,System.String,System.Data.SQLite.SQLiteParameter[])">
+            <summary>
+            Execute a SQLiteCommand (that returns a 1x1 resultset) against the database specified in the connection string 
+            using the provided parameters.
+            </summary>
+            <remarks>
+            e.g.:  
+             int orderCount = (int)ExecuteScalar(connString, CommandType.StoredProcedure, "GetOrderCount", new SQLiteParameter("@prodid", 24));
+            </remarks>
+            <param name="connectionString">A valid connection string for a SQLiteConnection</param>
+            <param name="commandType">The CommandType (stored procedure, text, etc.)</param>
+            <param name="commandText">The stored procedure name or T-SQL command</param>
+            <param name="commandParameters">An array of SQLiteParamters used to execute the command</param>
+            <returns>An object containing the value in the 1x1 resultset generated by the command</returns>
+        </member>
+        <member name="M:DawnXZ.DBUtility.SQLiteHelper.ExecuteScalar(System.Data.SQLite.SQLiteConnection,System.Data.CommandType,System.String)">
+            <summary>
+            Execute a SQLiteCommand (that returns a 1x1 resultset and takes no parameters) against the provided SQLiteConnection. 
+            </summary>
+            <remarks>
+            e.g.:  
+             int orderCount = (int)ExecuteScalar(conn, CommandType.StoredProcedure, "GetOrderCount");
+            </remarks>
+            <param name="connection">A valid SQLiteConnection</param>
+            <param name="commandType">The CommandType (stored procedure, text, etc.)</param>
+            <param name="commandText">The stored procedure name or T-SQL command</param>
+            <returns>An object containing the value in the 1x1 resultset generated by the command</returns>
+        </member>
+        <member name="M:DawnXZ.DBUtility.SQLiteHelper.ExecuteScalar(System.Data.SQLite.SQLiteConnection,System.Data.CommandType,System.String,System.Data.SQLite.SQLiteParameter[])">
+            <summary>
+            Execute a SQLiteCommand (that returns a 1x1 resultset) against the specified SQLiteConnection 
+            using the provided parameters.
+            </summary>
+            <remarks>
+            e.g.:  
+             int orderCount = (int)ExecuteScalar(conn, CommandType.StoredProcedure, "GetOrderCount", new SQLiteParameter("@prodid", 24));
+            </remarks>
+            <param name="connection">A valid SQLiteConnection</param>
+            <param name="commandType">The CommandType (stored procedure, text, etc.)</param>
+            <param name="commandText">The stored procedure name or T-SQL command</param>
+            <param name="commandParameters">An array of SQLiteParamters used to execute the command</param>
+            <returns>An object containing the value in the 1x1 resultset generated by the command</returns>
+        </member>
+        <member name="M:DawnXZ.DBUtility.SQLiteHelper.ExecuteScalar(System.Data.SQLite.SQLiteTransaction,System.Data.CommandType,System.String)">
+            <summary>
+            Execute a SQLiteCommand (that returns a 1x1 resultset and takes no parameters) against the provided SQLiteTransaction. 
+            </summary>
+            <remarks>
+            e.g.:  
+             int orderCount = (int)ExecuteScalar(trans, CommandType.StoredProcedure, "GetOrderCount");
+            </remarks>
+            <param name="transaction">A valid SQLiteTransaction</param>
+            <param name="commandType">The CommandType (stored procedure, text, etc.)</param>
+            <param name="commandText">The stored procedure name or T-SQL command</param>
+            <returns>An object containing the value in the 1x1 resultset generated by the command</returns>
+        </member>
+        <member name="M:DawnXZ.DBUtility.SQLiteHelper.ExecuteScalar(System.Data.SQLite.SQLiteTransaction,System.Data.CommandType,System.String,System.Data.SQLite.SQLiteParameter[])">
+            <summary>
+            Execute a SQLiteCommand (that returns a 1x1 resultset) against the specified SQLiteTransaction
+            using the provided parameters.
+            </summary>
+            <remarks>
+            e.g.:  
+             int orderCount = (int)ExecuteScalar(trans, CommandType.StoredProcedure, "GetOrderCount", new SQLiteParameter("@prodid", 24));
+            </remarks>
+            <param name="transaction">A valid SQLiteTransaction</param>
+            <param name="commandType">The CommandType (stored procedure, text, etc.)</param>
+            <param name="commandText">The stored procedure name or T-SQL command</param>
+            <param name="commandParameters">An array of SQLiteParamters used to execute the command</param>
+            <returns>An object containing the value in the 1x1 resultset generated by the command</returns>
+        </member>
+        <member name="M:DawnXZ.DBUtility.SQLiteHelper.FillDataset(System.String,System.Data.CommandType,System.String,System.Data.DataSet,System.String[])">
+            <summary>
+            Execute a SQLiteCommand (that returns a resultset and takes no parameters) against the database specified in 
+            the connection string. 
+            </summary>
+            <remarks>
+            e.g.:  
+             FillDataset(connString, CommandType.StoredProcedure, "GetOrders", ds, new string[] {"orders"});
+            </remarks>
+            <param name="connectionString">A valid connection string for a SQLiteConnection</param>
+            <param name="commandType">The CommandType (stored procedure, text, etc.)</param>
+            <param name="commandText">The stored procedure name or T-SQL command</param>
+            <param name="dataSet">A dataset wich will contain the resultset generated by the command</param>
+            <param name="tableNames">This array will be used to create table mappings allowing the DataTables to be referenced
+            by a user defined name (probably the actual table name)</param>
+        </member>
+        <member name="M:DawnXZ.DBUtility.SQLiteHelper.FillDataset(System.String,System.Data.CommandType,System.String,System.Data.DataSet,System.String[],System.Data.SQLite.SQLiteParameter[])">
+            <summary>
+            Execute a SQLiteCommand (that returns a resultset) against the database specified in the connection string 
+            using the provided parameters.
+            </summary>
+            <remarks>
+            e.g.:  
+             FillDataset(connString, CommandType.StoredProcedure, "GetOrders", ds, new string[] {"orders"}, new SQLiteParameter("@prodid", 24));
+            </remarks>
+            <param name="connectionString">A valid connection string for a SQLiteConnection</param>
+            <param name="commandType">The CommandType (stored procedure, text, etc.)</param>
+            <param name="commandText">The stored procedure name or T-SQL command</param>
+            <param name="commandParameters">An array of SQLiteParamters used to execute the command</param>
+            <param name="dataSet">A dataset wich will contain the resultset generated by the command</param>
+            <param name="tableNames">This array will be used to create table mappings allowing the DataTables to be referenced
+            by a user defined name (probably the actual table name)
+            </param>
+        </member>
+        <member name="M:DawnXZ.DBUtility.SQLiteHelper.FillDataset(System.Data.SQLite.SQLiteConnection,System.Data.CommandType,System.String,System.Data.DataSet,System.String[])">
+            <summary>
+            Execute a SQLiteCommand (that returns a resultset and takes no parameters) against the provided SQLiteConnection. 
+            </summary>
+            <remarks>
+            e.g.:  
+             FillDataset(conn, CommandType.StoredProcedure, "GetOrders", ds, new string[] {"orders"});
+            </remarks>
+            <param name="connection">A valid SQLiteConnection</param>
+            <param name="commandType">The CommandType (stored procedure, text, etc.)</param>
+            <param name="commandText">The stored procedure name or T-SQL command</param>
+            <param name="dataSet">A dataset wich will contain the resultset generated by the command</param>
+            <param name="tableNames">This array will be used to create table mappings allowing the DataTables to be referenced
+            by a user defined name (probably the actual table name)
+            </param>    
+        </member>
+        <member name="M:DawnXZ.DBUtility.SQLiteHelper.FillDataset(System.Data.SQLite.SQLiteConnection,System.Data.CommandType,System.String,System.Data.DataSet,System.String[],System.Data.SQLite.SQLiteParameter[])">
+            <summary>
+            Execute a SQLiteCommand (that returns a resultset) against the specified SQLiteConnection 
+            using the provided parameters.
+            </summary>
+            <remarks>
+            e.g.:  
+             FillDataset(conn, CommandType.StoredProcedure, "GetOrders", ds, new string[] {"orders"}, new SQLiteParameter("@prodid", 24));
+            </remarks>
+            <param name="connection">A valid SQLiteConnection</param>
+            <param name="commandType">The CommandType (stored procedure, text, etc.)</param>
+            <param name="commandText">The stored procedure name or T-SQL command</param>
+            <param name="dataSet">A dataset wich will contain the resultset generated by the command</param>
+            <param name="tableNames">This array will be used to create table mappings allowing the DataTables to be referenced
+            by a user defined name (probably the actual table name)
+            </param>
+            <param name="commandParameters">An array of SQLiteParamters used to execute the command</param>
+        </member>
+        <member name="M:DawnXZ.DBUtility.SQLiteHelper.FillDataset(System.Data.SQLite.SQLiteTransaction,System.Data.CommandType,System.String,System.Data.DataSet,System.String[])">
+            <summary>
+            Execute a SQLiteCommand (that returns a resultset and takes no parameters) against the provided SQLiteTransaction. 
+            </summary>
+            <remarks>
+            e.g.:  
+             FillDataset(trans, CommandType.StoredProcedure, "GetOrders", ds, new string[] {"orders"});
+            </remarks>
+            <param name="transaction">A valid SQLiteTransaction</param>
+            <param name="commandType">The CommandType (stored procedure, text, etc.)</param>
+            <param name="commandText">The stored procedure name or T-SQL command</param>
+            <param name="dataSet">A dataset wich will contain the resultset generated by the command</param>
+            <param name="tableNames">This array will be used to create table mappings allowing the DataTables to be referenced
+            by a user defined name (probably the actual table name)
+            </param>
+        </member>
+        <member name="M:DawnXZ.DBUtility.SQLiteHelper.FillDataset(System.Data.SQLite.SQLiteTransaction,System.Data.CommandType,System.String,System.Data.DataSet,System.String[],System.Data.SQLite.SQLiteParameter[])">
+            <summary>
+            Execute a SQLiteCommand (that returns a resultset) against the specified SQLiteTransaction
+            using the provided parameters.
+            </summary>
+            <remarks>
+            e.g.:  
+             FillDataset(trans, CommandType.StoredProcedure, "GetOrders", ds, new string[] {"orders"}, new SQLiteParameter("@prodid", 24));
+            </remarks>
+            <param name="transaction">A valid SQLiteTransaction</param>
+            <param name="commandType">The CommandType (stored procedure, text, etc.)</param>
+            <param name="commandText">The stored procedure name or T-SQL command</param>
+            <param name="dataSet">A dataset wich will contain the resultset generated by the command</param>
+            <param name="tableNames">This array will be used to create table mappings allowing the DataTables to be referenced
+            by a user defined name (probably the actual table name)
+            </param>
+            <param name="commandParameters">An array of SQLiteParamters used to execute the command</param>
+        </member>
+        <member name="M:DawnXZ.DBUtility.SQLiteHelper.FillDataset(System.Data.SQLite.SQLiteConnection,System.Data.SQLite.SQLiteTransaction,System.Data.CommandType,System.String,System.Data.DataSet,System.String[],System.Data.SQLite.SQLiteParameter[])">
+            <summary>
+            Private helper method that execute a SQLiteCommand (that returns a resultset) against the specified SQLiteTransaction and SQLiteConnection
+            using the provided parameters.
+            </summary>
+            <remarks>
+            e.g.:  
+             FillDataset(conn, trans, CommandType.StoredProcedure, "GetOrders", ds, new string[] {"orders"}, new SQLiteParameter("@prodid", 24));
+            </remarks>
+            <param name="connection">A valid SQLiteConnection</param>
+            <param name="transaction">A valid SQLiteTransaction</param>
+            <param name="commandType">The CommandType (stored procedure, text, etc.)</param>
+            <param name="commandText">The stored procedure name or T-SQL command</param>
+            <param name="dataSet">A dataset wich will contain the resultset generated by the command</param>
+            <param name="tableNames">This array will be used to create table mappings allowing the DataTables to be referenced
+            by a user defined name (probably the actual table name)
+            </param>
+            <param name="commandParameters">An array of SQLiteParamters used to execute the command</param>
+        </member>
+        <member name="M:DawnXZ.DBUtility.SQLiteHelper.UpdateDataset(System.Data.SQLite.SQLiteCommand,System.Data.SQLite.SQLiteCommand,System.Data.SQLite.SQLiteCommand,System.Data.DataSet,System.String)">
+            <summary>
+            Executes the respective command for each inserted, updated, or deleted row in the DataSet.
+            </summary>
+            <remarks>
+            e.g.:  
+             UpdateDataset(conn, insertCommand, deleteCommand, updateCommand, dataSet, "Order");
+            </remarks>
+            <param name="insertCommand">A valid transact-SQL statement or stored procedure to insert new records into the data source</param>
+            <param name="deleteCommand">A valid transact-SQL statement or stored procedure to delete records from the data source</param>
+            <param name="updateCommand">A valid transact-SQL statement or stored procedure used to update records in the data source</param>
+            <param name="dataSet">The DataSet used to update the data source</param>
+            <param name="tableName">The DataTable used to update the data source.</param>
+        </member>
+    </members>
+</doc>

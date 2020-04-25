@@ -1,0 +1,813 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FormUtility</name>
+    </assembly>
+    <members>
+        <member name="T:DawnXZ.FormUtility.Action">
+            <summary>
+            Action
+            </summary>
+        </member>
+        <member name="T:DawnXZ.FormUtility.Action`2">
+            <summary>
+            Action
+            <para>T - T1</para>
+            </summary>
+            <typeparam name="T">T</typeparam>
+            <typeparam name="T1">T1</typeparam>
+            <param name="t">T</param>
+            <param name="t1">T1</param>
+        </member>
+        <member name="T:DawnXZ.FormUtility.Action`3">
+            <summary>
+            Action
+            <para>T - T1 - T2</para>
+            </summary>
+            <typeparam name="T">T</typeparam>
+            <typeparam name="T1">T1</typeparam>
+            <typeparam name="T2">T2</typeparam>
+            <param name="t">T</param>
+            <param name="t1">T1</param>
+            <param name="t2">T2</param>
+        </member>
+        <member name="T:DawnXZ.FormUtility.Action`4">
+            <summary>
+            Action
+            <para>T - T1 - T2 - T3</para>
+            </summary>
+            <typeparam name="T">T</typeparam>
+            <typeparam name="T1">T1</typeparam>
+            <typeparam name="T2">T2</typeparam>
+            <typeparam name="T3">T3</typeparam>
+            <param name="t">T</param>
+            <param name="t1">T1</param>
+            <param name="t2">T2</param>
+            <param name="t3">T3</param>
+        </member>
+        <member name="T:DawnXZ.FormUtility.Func`1">
+            <summary>
+            Func
+            <para>T</para>
+            </summary>
+            <typeparam name="T">T</typeparam>
+            <returns>T</returns>
+        </member>
+        <member name="T:DawnXZ.FormUtility.Func`2">
+            <summary>
+            Func
+            <para>T - T1</para>
+            </summary>
+            <typeparam name="T">T</typeparam>
+            <typeparam name="T1">T1</typeparam>
+            <returns>T1</returns>
+        </member>
+        <member name="T:DawnXZ.FormUtility.Func`3">
+            <summary>
+            Func
+            <para>T - T1 - T2</para>
+            </summary>
+            <typeparam name="T">T</typeparam>
+            <typeparam name="T1">T1</typeparam>
+            <typeparam name="T2">T2</typeparam>
+            <returns>T2</returns>
+        </member>
+        <member name="T:DawnXZ.FormUtility.Func`4">
+            <summary>
+            Func
+            <para>T - T1 - T2 - T3</para>
+            </summary>
+            <typeparam name="T">T</typeparam>
+            <typeparam name="T1">T1</typeparam>
+            <typeparam name="T2">T2</typeparam>
+            <typeparam name="T3">T3</typeparam>
+            <returns>T3</returns>
+        </member>
+        <member name="T:DawnXZ.FormUtility.BackgroundTask">
+            <summary>
+            后台执行事件
+            <para>使用方法：</para>
+            <para>private void loadData()</para>
+            <para>{</para>
+            <para>　　BackgroundTask.BackgroundWork(getData, null);</para>
+            <para>}</para>
+            <para>private void getData(object obj)</para>
+            <para>{</para>
+            <para>　　//这里执行耗时操作 的代码 譬如，加载远程数据之类，还有绑定数据到UI</para>
+            <para>　　//比如this.gridview.datasource = 之类的操作</para>
+            <para>}</para>
+            <para></para>
+            <para></para>
+            <para></para>
+            <para></para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FormUtility.BackgroundTask.LoadingDlgForm">
+            <summary>
+            加载提示窗口
+            </summary>
+        </member>
+        <member name="M:DawnXZ.FormUtility.BackgroundTask.BackgroundWork(System.Action{System.Object},System.Object)">
+            <summary>
+            后台执行事件
+            </summary>
+            <param name="action"></param>
+            <param name="obj"></param>
+        </member>
+        <member name="T:DawnXZ.FormUtility.BackgroundWorkerClass">
+            <summary>
+            单线程后台执行
+            <remarks>
+            <para>private BackgroundWorker m_BackgroundWorker;// 申明后台对象</para>
+            <para></para>
+            <para>m_BackgroundWorker = new BackgroundWorker(); // 实例化后台对象</para>
+            <para>m_BackgroundWorker.WorkerReportsProgress = true; // 设置可以通告进度</para>
+            <para>m_BackgroundWorker.WorkerSupportsCancellation = true; // 设置可以取消</para>
+            <para>m_BackgroundWorker.DoWork += new DoWorkEventHandler(DoWork);</para>
+            <para>m_BackgroundWorker.ProgressChanged += new ProgressChangedEventHandler(UpdateProgress);</para>
+            <para>m_BackgroundWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(CompletedWork);</para>
+            <para>m_BackgroundWorker.RunWorkerAsync(this);</para>
+            <para></para>
+            <para>private void DoWork(object sender, DoWorkEventArgs e)</para>
+            <para>{</para>
+            <para>　　BackgroundWorker bw = sender as BackgroundWorker;</para>
+            <para>　　MainWindow win = e.Argument as MainWindow;</para>
+            <para>　　int i = 0;</para>
+            <para>　　while (i 小于等于 100)</para>
+            <para>　　{</para>
+            <para>　　　　if (bw.CancellationPending)</para>
+            <para>　　　　{</para>
+            <para>　　　　　　e.Cancel = true;</para>
+            <para>　　　　　　break;</para>
+            <para>　　　　}</para>
+            <para>　　　　bw.ReportProgress(i++);</para>
+            <para>　　　　Thread.Sleep(1000);</para>
+            <para>　　}</para>
+            <para>}</para>
+            <para></para>
+            <para>private void UpdateProgress(object sender, ProgressChangedEventArgs e)</para>
+            <para>{</para>
+            <para>　　int progress = e.ProgressPercentage;</para>
+            <para>　　label1.Content = string.Format("{0}", progress);</para>
+            <para>}</para>
+            <para></para>
+            <para>private void CompletedWork(object sender, RunWorkerCompletedEventArgs e)</para>
+            <para>{</para>
+            <para>　　if (e.Error != null)</para>
+            <para>　　{</para>
+            <para>　　　　MessageBox.Show("Error");</para>
+            <para>　　}</para>
+            <para>　　else if (e.Cancelled)</para>
+            <para>　　{</para>
+            <para>　　　　MessageBox.Show("Canceled");</para>
+            <para>　　}</para>
+            <para>　　else</para>
+            <para>　　{</para>
+            <para>　　　　MessageBox.Show("Completed");</para>
+            <para>　　}</para>
+            <para>}</para>
+            <para></para>
+            <para>private void button1_Click(object sender, RoutedEventArgs e)</para>
+            <para>{</para>
+            <para>　　m_BackgroundWorker.CancelAsync();</para>
+            <para>}</para>
+            </remarks>
+            </summary>
+        </member>
+        <member name="T:DawnXZ.FormUtility.DelegateEx">
+            <summary>
+            委托操作类
+            </summary>
+        </member>
+        <member name="T:DawnXZ.FormUtility.DelegateEx.UpdateInfoEventHandler">
+            <summary>
+            定义一个委托
+            </summary>
+            <param name="sender">委托对象</param>
+            <param name="e">委托事件</param>
+        </member>
+        <member name="E:DawnXZ.FormUtility.DelegateEx.UpdateInfo">
+            <summary>
+            定义一个委托事件
+            </summary>
+        </member>
+        <member name="T:DawnXZ.FormUtility.DelegateEx.UpdateInfoEventArgs">
+            <summary>
+            委托事件类
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FormUtility.DelegateEx.UpdateInfoEventArgs.FStrInfo">
+            <summary>
+            更新信息
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FormUtility.DelegateEx.UpdateInfoEventArgs.FExFlag">
+            <summary>
+            错误消息标记
+            </summary>
+        </member>
+        <member name="M:DawnXZ.FormUtility.DelegateEx.UpdateInfoEventArgs.#ctor(System.String,System.Boolean)">
+            <summary>
+            构造函数
+            </summary>            
+            <param name="strInfo">更新信息</param>
+            <param name="exFlag">错误消息标记</param>
+        </member>
+        <member name="M:DawnXZ.FormUtility.DelegateEx.Register(DawnXZ.FormUtility.DelegateEx.UpdateInfoEventHandler)">
+            <summary>
+            To register more than one method for an event
+            </summary>
+            <param name="method">Method name</param>
+        </member>
+        <member name="M:DawnXZ.FormUtility.DelegateEx.RegisterOnly(DawnXZ.FormUtility.DelegateEx.UpdateInfoEventHandler)">
+            <summary>
+            Registered with the event a unique method
+            </summary>
+            <param name="method">Method name</param>
+        </member>
+        <member name="M:DawnXZ.FormUtility.DelegateEx.UnRegister(DawnXZ.FormUtility.DelegateEx.UpdateInfoEventHandler)">
+            <summary>
+            Registered with the event against method
+            </summary>
+            <param name="method">Method name</param>
+        </member>
+        <member name="M:DawnXZ.FormUtility.DelegateEx.UnRegister">
+            <summary>
+            Registered with the event against method
+            </summary>
+        </member>
+        <member name="M:DawnXZ.FormUtility.DelegateEx.OnUpdateInfo(System.Windows.Forms.Form,DawnXZ.FormUtility.DelegateEx.UpdateInfoEventArgs)">
+            <summary>
+            Can be overridden execute method
+            </summary>
+            <param name="form">System.Windows.Forms</param>
+            <param name="e">The delegate event</param>
+        </member>
+        <member name="M:DawnXZ.FormUtility.DelegateEx.Executes(System.Windows.Forms.Form,System.String,System.Boolean)">
+            <summary>
+            Executes a delegate method
+            </summary>
+            <param name="form">System.Windows.Forms</param>
+            <param name="strInfo">To update the information</param>
+            <param name="exFlag">Whether for error message</param>
+        </member>
+        <member name="T:DawnXZ.FormUtility.FEffects">
+            <summary>
+            窗体特效
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FormUtility.FEffects.AW_HOR_POSITIVE">
+            <summary>
+            从左到右打开窗口 
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FormUtility.FEffects.AW_HOR_NEGATIVE">
+            <summary>
+            从右到左打开窗口
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FormUtility.FEffects.AW_VER_POSITIVE">
+            <summary>
+            从上到下打开窗口
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FormUtility.FEffects.AW_VER_NEGATIVE">
+            <summary>
+            从下到上打开窗口
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FormUtility.FEffects.AW_CENTER">
+            <summary>
+            从中央打开 
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FormUtility.FEffects.AW_HIDE">
+            <summary>
+            隐藏窗体
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FormUtility.FEffects.AW_ACTIVATE">
+            <summary>
+            Display窗体 
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FormUtility.FEffects.AW_SLIDE">
+            <summary>
+            滑入效果
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FormUtility.FEffects.AW_BLEND">
+            <summary>
+            淡入淡出效果
+            </summary>
+        </member>
+        <member name="M:DawnXZ.FormUtility.FEffects.AnimateWindow(System.IntPtr,System.Int32,System.Int32)">
+            <summary>
+            窗体特效
+            </summary>
+            <param name="hwnd"></param>
+            <param name="dwTime"></param>
+            <param name="dwFlags"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DawnXZ.FormUtility.FEffects.ShowEff(System.IntPtr,System.Int32,System.Int32)">
+            <summary>
+            窗体特效
+            </summary>
+            <param name="hwnd">窗体句柄号</param>
+            <param name="dwTime">执行时间，单位：微秒</param>
+            <param name="dwFlags">动作标识</param>
+            <returns></returns>
+        </member>
+        <member name="T:DawnXZ.FormUtility.LicenseHelper">
+            <summary>
+            许可证管理辅助类
+            <para>应用程序目录 License.lic 文件。</para>
+            <para>使用方法：</para>
+            <para>类文件头部加上：[LicenseProvider(typeof(LicenseHelper))] 标识</para>
+            <para>构造函数中加上：LicenseManager.Validate(typeof(类名称), null);</para>
+            </summary>    
+        </member>
+        <member name="M:DawnXZ.FormUtility.LicenseHelper.GetLicense(System.ComponentModel.LicenseContext,System.Type,System.Object,System.Boolean)">
+            <summary>
+            许可证管理辅助类
+            </summary>
+            <param name="context">授权对象</param>
+            <param name="type">类型</param>
+            <param name="instance">实例对象</param>
+            <param name="allowExceptions">允许异常</param>
+            <returns>许可证实体</returns>
+        </member>
+        <member name="T:DawnXZ.FormUtility.LicenseMDL">
+            <summary>
+            许可证实体类
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FormUtility.LicenseMDL.FLicenseProvider">
+            <summary>
+            许可证管理辅助类
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FormUtility.LicenseMDL.FLicenseKey">
+            <summary>
+            许可证密钥
+            </summary>
+        </member>
+        <member name="M:DawnXZ.FormUtility.LicenseMDL.#ctor(DawnXZ.FormUtility.LicenseHelper,System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="licenseProvider">许可证管理辅助类</param>
+            <param name="licenseKey">许可证密钥</param>
+        </member>
+        <member name="P:DawnXZ.FormUtility.LicenseMDL.LicenseKey">
+            <summary>
+            许可证密钥
+            </summary>
+        </member>
+        <member name="M:DawnXZ.FormUtility.LicenseMDL.Dispose">
+            <summary>
+            资源释放
+            </summary>
+        </member>
+        <member name="T:DawnXZ.FormUtility.DownLoadQueueThread">
+            <summary>
+            下载线程队列举例
+            </summary>
+        </member>
+        <member name="M:DawnXZ.FormUtility.DownLoadQueueThread.#ctor(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+            构造函数
+            </summary>
+            <param name="list">下载的列表ID</param>
+        </member>
+        <member name="M:DawnXZ.FormUtility.DownLoadQueueThread.DoWork(System.Int32)">
+            <summary>
+            每次多线程都到这里来,处理多线程
+            </summary>
+            <param name="pendingID">列表ID></param>
+            <returns></returns>
+        </member>
+        <member name="T:DawnXZ.FormUtility.QueueThreadBase`1">
+            <summary>
+            队列多线程,T 代表处理的单个类型~
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:DawnXZ.FormUtility.QueueThreadBase`1.#ctor(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            构造函数
+            </summary>
+            <param name="collection">枚举集合</param>
+        </member>
+        <member name="T:DawnXZ.FormUtility.QueueThreadBase`1.PendingResult">
+            <summary>
+            待处理结果
+            </summary>
+        </member>
+        <member name="P:DawnXZ.FormUtility.QueueThreadBase`1.PendingResult.PendingValue">
+            <summary>
+            待处理值
+            </summary>
+        </member>
+        <member name="P:DawnXZ.FormUtility.QueueThreadBase`1.PendingResult.IsHad">
+            <summary>
+            是否有值
+            </summary>
+        </member>
+        <member name="P:DawnXZ.FormUtility.QueueThreadBase`1.ThreadCount">
+            <summary>
+            线程数
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FormUtility.QueueThreadBase`1.FThreadCount">
+            <summary>
+            线程数量
+            </summary>
+        </member>
+        <member name="P:DawnXZ.FormUtility.QueueThreadBase`1.Cancel">
+            <summary>
+            取消=True
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FormUtility.QueueThreadBase`1.FThreadList">
+            <summary>
+            线程列表
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FormUtility.QueueThreadBase`1.FCompletedCount">
+            <summary>
+            完成队列个数
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FormUtility.QueueThreadBase`1.FQueueCount">
+            <summary>
+            队列总数
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FormUtility.QueueThreadBase`1.FAllCompletedLock">
+            <summary>
+            全部完成锁
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FormUtility.QueueThreadBase`1.FCompetedCount">
+            <summary>
+            完成的线程数
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FormUtility.QueueThreadBase`1.FPendingQueueLock">
+            <summary>
+            队列锁
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FormUtility.QueueThreadBase`1.FInnerQueue">
+            <summary>
+            队列
+            </summary>
+        </member>
+        <member name="E:DawnXZ.FormUtility.QueueThreadBase`1.AllCompleted">
+            <summary>
+            全部完成事件
+            </summary>
+        </member>
+        <member name="E:DawnXZ.FormUtility.QueueThreadBase`1.OneCompleted">
+            <summary>
+            单个完成事件
+            </summary>
+        </member>
+        <member name="M:DawnXZ.FormUtility.QueueThreadBase`1.OnAllCompleted(DawnXZ.FormUtility.QueueThreadBase{`0}.CompetedEventArgs)">
+            <summary>
+            引发全部完成事件
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:DawnXZ.FormUtility.QueueThreadBase`1.OnOneCompleted(`0,DawnXZ.FormUtility.QueueThreadBase{`0}.CompetedEventArgs)">
+            <summary>
+            引发单个完成事件
+            </summary>
+            <param name="pendingValue"></param>
+            <param name="args"></param>
+        </member>
+        <member name="M:DawnXZ.FormUtility.QueueThreadBase`1.InitThread">
+            <summary>
+            初始化线程
+            </summary>
+        </member>
+        <member name="M:DawnXZ.FormUtility.QueueThreadBase`1.Start">
+            <summary>
+            开始
+            </summary>
+        </member>
+        <member name="M:DawnXZ.FormUtility.QueueThreadBase`1.InnerDoWork">
+            <summary>
+            线程工作
+            </summary>
+        </member>
+        <member name="M:DawnXZ.FormUtility.QueueThreadBase`1.DoWork(`0)">
+            <summary>
+            子类重写
+            </summary>
+            <param name="pendingValue"></param>
+            <returns></returns>
+        </member>
+        <member name="P:DawnXZ.FormUtility.QueueThreadBase`1.CurrentPendingQueue">
+            <summary>
+            获取当前结果
+            </summary>
+        </member>
+        <member name="T:DawnXZ.FormUtility.QueueThreadBase`1.DoWorkResult">
+            <summary>
+            dowork结果枚举
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FormUtility.QueueThreadBase`1.DoWorkResult.ContinueThread">
+            <summary>
+            继续运行，默认
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FormUtility.QueueThreadBase`1.DoWorkResult.AbortCurrentThread">
+            <summary>
+            终止当前线程
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FormUtility.QueueThreadBase`1.DoWorkResult.AbortAllThread">
+            <summary>
+            终止全部线程
+            </summary>
+        </member>
+        <member name="T:DawnXZ.FormUtility.QueueThreadBase`1.CompetedEventArgs">
+            <summary>
+            完成事件数据
+            </summary>
+        </member>
+        <member name="M:DawnXZ.FormUtility.QueueThreadBase`1.CompetedEventArgs.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="P:DawnXZ.FormUtility.QueueThreadBase`1.CompetedEventArgs.CompetedPrecent">
+            <summary>
+            完成百分率
+            </summary>
+        </member>
+        <member name="P:DawnXZ.FormUtility.QueueThreadBase`1.CompetedEventArgs.InnerException">
+            <summary>
+            异常信息
+            </summary>
+        </member>
+        <member name="T:DawnXZ.FormUtility.Toolskit">
+            <summary>
+            常用方法
+            </summary>
+        </member>
+        <member name="P:DawnXZ.FormUtility.Toolskit.GetVersion">
+            <summary>
+            软件版本号
+            </summary>
+        </member>
+        <member name="M:DawnXZ.FormUtility.Toolskit.SetProcessWorkingSetSize(System.IntPtr,System.Int32,System.Int32)">
+            <summary>
+            重新设定进程工作集大小
+            </summary>
+            <param name="process">进程句柄号</param>
+            <param name="minSize">最小值</param>
+            <param name="maxSize">最大值</param>
+            <returns></returns>
+        </member>
+        <member name="M:DawnXZ.FormUtility.Toolskit.ClearMemory">
+            <summary>
+            释放内存
+            </summary>
+        </member>
+        <member name="T:DawnXZ.FormUtility.InvokeItem">
+            <summary>
+            线程调用项
+            </summary>
+        </member>
+        <member name="P:DawnXZ.FormUtility.InvokeItem.Functions">
+            <summary>
+            功能
+            </summary>
+        </member>
+        <member name="P:DawnXZ.FormUtility.InvokeItem.Parameters">
+            <summary>
+            参数
+            </summary>
+        </member>
+        <member name="M:DawnXZ.FormUtility.InvokeItem.Invoke">
+            <summary>
+            调用
+            </summary>
+        </member>
+        <member name="T:DawnXZ.FormUtility.UpdateUIInvoke">
+            <summary>
+            线程调用更新界面UI数据
+            </summary>
+        </member>
+        <member name="T:DawnXZ.FormUtility.UpdateUIInvoke.UpdateUIInvokeEventHandler">
+            <summary>
+            线程调用更新界面UI数据
+            </summary>
+        </member>
+        <member name="T:DawnXZ.FormUtility.UpdateUIInvoke.UpdateUIInvokeEventHandler`1">
+            <summary>
+            线程调用更新界面UI数据
+            </summary>
+            <typeparam name="T">泛型对象</typeparam>
+            <param name="t">泛型对象</param>
+        </member>
+        <member name="T:DawnXZ.FormUtility.UpdateUIInvoke.UpdateUIInvokeEventHandler`2">
+            <summary>
+            线程调用更新界面UI数据
+            </summary>
+            <typeparam name="T">泛型对象</typeparam>
+            <typeparam name="T1">泛型对象</typeparam>
+            <param name="t">泛型对象</param>
+            <param name="t1">泛型对象</param>
+        </member>
+        <member name="T:DawnXZ.FormUtility.UpdateUIInvoke.UpdateUIInvokeEventHandler`3">
+            <summary>
+            线程调用更新界面UI数据
+            </summary>
+            <typeparam name="T">泛型对象</typeparam>
+            <typeparam name="T1">泛型对象</typeparam>
+            <typeparam name="T2">泛型对象</typeparam>
+            <param name="t">泛型对象</param>
+            <param name="t1">泛型对象</param>
+            <param name="t2">泛型对象</param>
+        </member>
+        <member name="T:DawnXZ.FormUtility.UpdateUIInvoke.UpdateUIInvokeEventHandler`4">
+            <summary>
+            线程调用更新界面UI数据
+            </summary>
+            <typeparam name="T">泛型对象</typeparam>
+            <typeparam name="T1">泛型对象</typeparam>
+            <typeparam name="T2">泛型对象</typeparam>
+            <typeparam name="T3">泛型对象</typeparam>
+            <param name="t">泛型对象</param>
+            <param name="t1">泛型对象</param>
+            <param name="t2">泛型对象</param>
+            <param name="t3">泛型对象</param>
+        </member>
+        <member name="T:DawnXZ.FormUtility.UpdateUIInvoke.UpdateUIInvokeEventHandler`5">
+            <summary>
+            线程调用更新界面UI数据
+            </summary>
+            <typeparam name="T">泛型对象</typeparam>
+            <typeparam name="T1">泛型对象</typeparam>
+            <typeparam name="T2">泛型对象</typeparam>
+            <typeparam name="T3">泛型对象</typeparam>
+            <typeparam name="T4">泛型对象</typeparam>
+            <param name="t">泛型对象</param>
+            <param name="t1">泛型对象</param>
+            <param name="t2">泛型对象</param>
+            <param name="t3">泛型对象</param>
+            <param name="t4">泛型对象</param>
+        </member>
+        <member name="F:DawnXZ.FormUtility.UpdateUIInvoke.FTimer">
+            <summary>
+            定时器
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FormUtility.UpdateUIInvoke.FItems">
+            <summary>
+            线程调用项队列
+            </summary>
+        </member>
+        <member name="F:DawnXZ.FormUtility.UpdateUIInvoke.FWorkItems">
+            <summary>
+            工作线程调用项队列
+            </summary>
+        </member>
+        <member name="P:DawnXZ.FormUtility.UpdateUIInvoke.FContainer">
+            <summary>
+            容器
+            </summary>
+        </member>
+        <member name="M:DawnXZ.FormUtility.UpdateUIInvoke.#ctor(System.Windows.Forms.Form,System.Int32)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="form">委托的界面对象</param>
+            <param name="interval">运行时间阀[毫秒]</param>
+        </member>
+        <member name="M:DawnXZ.FormUtility.UpdateUIInvoke.#ctor(System.Windows.Forms.Timer)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="timer">定时器</param>
+        </member>
+        <member name="M:DawnXZ.FormUtility.UpdateUIInvoke.FTimer_OnTick(System.Object,System.EventArgs)">
+            <summary>
+            定时器回调
+            </summary>
+            <param name="sender">执行对象</param>
+            <param name="e">事件参数对象</param>
+        </member>
+        <member name="M:DawnXZ.FormUtility.UpdateUIInvoke.Add(DawnXZ.FormUtility.InvokeItem)">
+            <summary>
+            添加线程调用项对象
+            </summary>
+            <param name="item">线程调用项对象</param>
+        </member>
+        <member name="M:DawnXZ.FormUtility.UpdateUIInvoke.Invoke(DawnXZ.FormUtility.UpdateUIInvoke.UpdateUIInvokeEventHandler)">
+            <summary>
+            更新调用
+            </summary>
+            <param name="eui">线程调用更新界面UI数据委托对象</param>
+        </member>
+        <member name="M:DawnXZ.FormUtility.UpdateUIInvoke.Invoke``1(DawnXZ.FormUtility.UpdateUIInvoke.UpdateUIInvokeEventHandler{``0},``0)">
+            <summary>
+            更新调用
+            </summary>
+            <typeparam name="T">泛型对象</typeparam>
+            <param name="eui">线程调用更新界面UI数据委托对象</param>
+            <param name="t">泛型对象</param>
+        </member>
+        <member name="M:DawnXZ.FormUtility.UpdateUIInvoke.Invoke``2(DawnXZ.FormUtility.UpdateUIInvoke.UpdateUIInvokeEventHandler{``0,``1},``0,``1)">
+            <summary>
+            更新调用
+            </summary>
+            <typeparam name="T">泛型对象</typeparam>
+            <typeparam name="T1">泛型对象</typeparam>
+            <param name="eui">线程调用更新界面UI数据委托对象</param>
+            <param name="t">泛型对象</param>
+            <param name="t1">泛型对象</param>
+        </member>
+        <member name="M:DawnXZ.FormUtility.UpdateUIInvoke.Invoke``3(DawnXZ.FormUtility.UpdateUIInvoke.UpdateUIInvokeEventHandler{``0,``1,``2},``0,``1,``2)">
+            <summary>
+            更新调用
+            </summary>
+            <typeparam name="T">泛型对象</typeparam>
+            <typeparam name="T1">泛型对象</typeparam>
+            <typeparam name="T2">泛型对象</typeparam>
+            <param name="eui">线程调用更新界面UI数据委托对象</param>
+            <param name="t">泛型对象</param>
+            <param name="t1">泛型对象</param>
+            <param name="t2">泛型对象</param>
+        </member>
+        <member name="M:DawnXZ.FormUtility.UpdateUIInvoke.Invoke``4(DawnXZ.FormUtility.UpdateUIInvoke.UpdateUIInvokeEventHandler{``0,``1,``2,``3},``0,``1,``2,``3)">
+            <summary>
+            更新调用
+            </summary>
+            <typeparam name="T">泛型对象</typeparam>
+            <typeparam name="T1">泛型对象</typeparam>
+            <typeparam name="T2">泛型对象</typeparam>
+            <typeparam name="T3">泛型对象</typeparam>
+            <param name="eui">线程调用更新界面UI数据委托对象</param>
+            <param name="t">泛型对象</param>
+            <param name="t1">泛型对象</param>
+            <param name="t2">泛型对象</param>
+            <param name="t3">泛型对象</param>
+        </member>
+        <member name="M:DawnXZ.FormUtility.UpdateUIInvoke.Invoke``5(DawnXZ.FormUtility.UpdateUIInvoke.UpdateUIInvokeEventHandler{``0,``1,``2,``3,``4},``0,``1,``2,``3,``4)">
+            <summary>
+            更新调用
+            </summary>
+            <typeparam name="T">泛型对象</typeparam>
+            <typeparam name="T1">泛型对象</typeparam>
+            <typeparam name="T2">泛型对象</typeparam>
+            <typeparam name="T3">泛型对象</typeparam>
+            <typeparam name="T4">泛型对象</typeparam>
+            <param name="eui">线程调用更新界面UI数据委托对象</param>
+            <param name="t">泛型对象</param>
+            <param name="t1">泛型对象</param>
+            <param name="t2">泛型对象</param>
+            <param name="t3">泛型对象</param>
+            <param name="t4">泛型对象</param>
+        </member>
+        <member name="T:DawnXZ.FormUtility.WaitDialogForm">
+            <summary>
+            加载提示窗口
+            </summary>
+        </member>
+        <member name="M:DawnXZ.FormUtility.WaitDialogForm.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:DawnXZ.FormUtility.WaitDialogForm.#ctor(System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="tipsInfo">提示信息</param>
+        </member>
+        <member name="F:DawnXZ.FormUtility.WaitDialogForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:DawnXZ.FormUtility.WaitDialogForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:DawnXZ.FormUtility.WaitDialogForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+    </members>
+</doc>

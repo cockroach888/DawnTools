@@ -1,0 +1,377 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NuclearUtility</name>
+    </assembly>
+    <members>
+        <member name="T:DawnXZ.NuclearUtility.EMailHelper">
+            <summary>
+            电子邮件操作帮助类
+            </summary>
+        </member>
+        <member name="M:DawnXZ.NuclearUtility.EMailHelper.#ctor(DawnXZ.NuclearUtility.EMailSrvInfo)">
+            <summary>
+            电子邮件操作帮助类
+            </summary>
+            <param name="srvInfo">服务器信息实体对象</param>
+        </member>
+        <member name="M:DawnXZ.NuclearUtility.EMailHelper.Finalize">
+            <summary>
+            析构函数
+            </summary>
+        </member>
+        <member name="M:DawnXZ.NuclearUtility.EMailHelper.Initialize">
+            <summary>
+            初始化
+            </summary>
+        </member>
+        <member name="F:DawnXZ.NuclearUtility.EMailHelper.FSmtpClient">
+            <summary>
+            电子邮件客户端对象
+            </summary>
+        </member>
+        <member name="P:DawnXZ.NuclearUtility.EMailHelper.IsSuccessful">
+            <summary>
+            操作是否成功
+            </summary>
+        </member>
+        <member name="P:DawnXZ.NuclearUtility.EMailHelper.LastErrorMessage">
+            <summary>
+            末次产生的错误信息
+            </summary>
+        </member>
+        <member name="P:DawnXZ.NuclearUtility.EMailHelper.ServerInfo">
+            <summary>
+            服务器信息实体对象
+            </summary>
+        </member>
+        <member name="M:DawnXZ.NuclearUtility.EMailHelper.CreateMail(DawnXZ.NuclearUtility.EMailInfo)">
+            <summary>
+            创建电子邮件信息对象
+            </summary>
+            <param name="mailInfo">邮件信息实体对象</param>
+            <returns>电子邮件信息对象</returns>
+        </member>
+        <member name="M:DawnXZ.NuclearUtility.EMailHelper.Checked(DawnXZ.NuclearUtility.EMailInfo)">
+            <summary>
+            验证检查事件处理
+            </summary>
+            <param name="mailInfo">邮件信息实体对象</param>
+            <returns>验证检查结果</returns>
+        </member>
+        <member name="M:DawnXZ.NuclearUtility.EMailHelper.Send(DawnXZ.NuclearUtility.EMailInfo)">
+            <summary>
+            发送电子邮件
+            </summary>
+            <param name="mailInfo">邮件信息实体对象</param>
+            <returns>发送结果</returns>
+        </member>
+        <member name="M:DawnXZ.NuclearUtility.EMailHelper.SendCompletedCallback(System.Object,System.ComponentModel.AsyncCompletedEventArgs)">
+            <summary>
+            电子邮件异步发送操作完成时
+            </summary>
+            <param name="sender">电子邮件客户端对象</param>
+            <param name="e">异步发送执行事件对象</param>
+        </member>
+        <member name="M:DawnXZ.NuclearUtility.EMailHelper.SendAsync(DawnXZ.NuclearUtility.EMailInfo)">
+            <summary>
+            发送电子邮件
+            </summary>
+            <param name="mailInfo">邮件信息实体对象</param>
+            <returns>发送结果</returns>
+        </member>
+        <member name="M:DawnXZ.NuclearUtility.EMailHelper.SendAsyncCancel">
+            <summary>
+            取消电子邮件异步发送事件
+            </summary>
+        </member>
+        <member name="T:DawnXZ.NuclearUtility.EMailSrvInfo">
+            <summary>
+            服务器信息实体类
+            </summary>
+        </member>
+        <member name="M:DawnXZ.NuclearUtility.EMailSrvInfo.#ctor">
+            <summary>
+            服务器信息实体类
+            </summary>
+        </member>
+        <member name="P:DawnXZ.NuclearUtility.EMailSrvInfo.DeliveryType">
+            <summary>
+            邮件服务器出站方式
+            <para>默认Network</para>
+            </summary>
+        </member>
+        <member name="P:DawnXZ.NuclearUtility.EMailSrvInfo.IsSSL">
+            <summary>
+            是否启用SSL加密
+            <para>默认启用</para>
+            <para>true为启用</para>
+            <para>false为不启用</para>
+            </summary>
+        </member>
+        <member name="P:DawnXZ.NuclearUtility.EMailSrvInfo.SMTPServer">
+            <summary>
+            SMTP服务器地址
+            <para>smtp.163.com</para>
+            <para>smtp.126.com</para>
+            <para>smtp.yeah.net</para>
+            <para>smtp.qq.com</para>
+            <para>smtp.sohu.com</para>
+            <para>smtp.sina.com.cn</para>
+            <para>smtp.hotmail.com</para>
+            <para>smtp.aliyun.com</para>
+            <para>smtp.outlook.com</para>
+            <para>smtp.gmail.com</para>
+            <para>smtp.10086.cn</para>
+            <para>smtp.21cn.com</para>
+            <para>smtp.sogou.com</para>
+            <para>smtp.263.net</para>
+            <para>smtp.wo.cn</para>
+            <para>smtp.189.cn</para>
+            </summary>
+        </member>
+        <member name="P:DawnXZ.NuclearUtility.EMailSrvInfo.SMTPPort">
+            <summary>
+            SMTP服务器端口号
+            <para>行规默认为25</para>
+            </summary>
+        </member>
+        <member name="P:DawnXZ.NuclearUtility.EMailSrvInfo.POPServer">
+            <summary>
+            POP服务器地址
+            <para>pop.163.com</para>
+            <para>pop.126.com</para>
+            <para>pop.yeah.net</para>
+            <para>pop.qq.com</para>
+            <para>pop.sohu.com</para>
+            <para>pop.sina.com.cn</para>
+            <para>pop.hotmail.com</para>
+            <para>pop.aliyun.com</para>
+            <para>pop.outlook.com</para>
+            <para>pop.gmail.com</para>
+            <para>pop.10086.cn</para>
+            <para>pop.21cn.com</para>
+            <para>pop.sogou.com</para>
+            <para>pop.263.net</para>
+            <para>pop.wo.cn</para>
+            <para>pop.189.cn</para>
+            </summary>
+        </member>
+        <member name="P:DawnXZ.NuclearUtility.EMailSrvInfo.POPPort">
+            <summary>
+            POP服务器端口号
+            <para>行规默认为110</para>
+            </summary>
+        </member>
+        <member name="P:DawnXZ.NuclearUtility.EMailSrvInfo.DisplayName">
+            <summary>
+            发件人的显示名称
+            <para>默认为系统管理员</para>
+            </summary>
+        </member>
+        <member name="P:DawnXZ.NuclearUtility.EMailSrvInfo.UserName">
+            <summary>
+            发件人的电子邮箱地址
+            <para>如：services@126.com</para>
+            </summary>
+        </member>
+        <member name="P:DawnXZ.NuclearUtility.EMailSrvInfo.Password">
+            <summary>
+            发件人的电子邮箱密码
+            <para>如：********</para>
+            </summary>
+        </member>
+        <member name="T:DawnXZ.NuclearUtility.EMailInfo">
+            <summary>
+            邮件信息实体类
+            </summary>
+        </member>
+        <member name="M:DawnXZ.NuclearUtility.EMailInfo.#ctor">
+            <summary>
+            电子邮件信息实体类
+            </summary>
+        </member>
+        <member name="P:DawnXZ.NuclearUtility.EMailInfo.Charset">
+            <summary>
+            邮件正文字符集
+            <para>默认中文（936）</para>
+            </summary>
+        </member>
+        <member name="P:DawnXZ.NuclearUtility.EMailInfo.Priority">
+            <summary>
+            邮件优先级
+            <para>默认Normal</para>
+            </summary>
+        </member>
+        <member name="P:DawnXZ.NuclearUtility.EMailInfo.Recipient">
+            <summary>
+            邮件收件人信息
+            </summary>
+        </member>
+        <member name="P:DawnXZ.NuclearUtility.EMailInfo.Cc">
+            <summary>
+            邮件抄送人信息
+            </summary>
+        </member>
+        <member name="P:DawnXZ.NuclearUtility.EMailInfo.Bcc">
+            <summary>
+            邮件密送人信息
+            </summary>
+        </member>
+        <member name="P:DawnXZ.NuclearUtility.EMailInfo.Subject">
+            <summary>
+            邮件主题信息
+            </summary>
+        </member>
+        <member name="P:DawnXZ.NuclearUtility.EMailInfo.IsHTML">
+            <summary>
+            邮件正文是否为HTML格式
+            <para>默认为文本格式</para>
+            <para>true为HTML格式</para>
+            <para>false为文件格式</para>
+            </summary>
+        </member>
+        <member name="P:DawnXZ.NuclearUtility.EMailInfo.Body">
+            <summary>
+            邮件正文信息
+            </summary>
+        </member>
+        <member name="P:DawnXZ.NuclearUtility.EMailInfo.Attachments">
+            <summary>
+            邮件附件信息
+            </summary>
+        </member>
+        <member name="T:DawnXZ.NuclearUtility.FTPHelper">
+            <summary>
+            FTP操作帮助类
+            </summary>
+        </member>
+        <member name="M:DawnXZ.NuclearUtility.FTPHelper.#ctor(System.String,System.Int32,System.String,System.String,System.String)">
+            <summary>
+            FTP操作帮助类
+            </summary>
+            <param name="server">FTP连接地址</param>
+            <param name="port">端口号</param>
+            <param name="user">用户名</param>
+            <param name="pass">密码</param>
+            <param name="currentPath">指定FTP连接成功后的当前目录, 如果不指定即默认为根目录</param>
+        </member>
+        <member name="P:DawnXZ.NuclearUtility.FTPHelper.FServer">
+            <summary>
+            FTP连接地址
+            </summary>
+        </member>
+        <member name="P:DawnXZ.NuclearUtility.FTPHelper.FUser">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="P:DawnXZ.NuclearUtility.FTPHelper.FPass">
+            <summary>
+            密码
+            </summary>
+        </member>
+        <member name="P:DawnXZ.NuclearUtility.FTPHelper.FCurrentPath">
+            <summary>
+            FTP当前目录
+            </summary>
+        </member>
+        <member name="P:DawnXZ.NuclearUtility.FTPHelper.FCurrentURI">
+            <summary>
+            FTP连接当前的完整路径
+            </summary>
+        </member>
+        <member name="M:DawnXZ.NuclearUtility.FTPHelper.Upload(System.String)">
+            <summary>
+            文件上传
+            </summary>
+            <param name="_fileName">需要上传的文件（绝对路径）</param>
+        </member>
+        <member name="M:DawnXZ.NuclearUtility.FTPHelper.Download(System.String,System.String)">
+            <summary>
+            文件下载
+            </summary>
+            <param name="_filePath">文件下载后的存放路径</param>
+            <param name="_fileName">需要下载的文件名称</param>
+        </member>
+        <member name="M:DawnXZ.NuclearUtility.FTPHelper.GetFilesDetailList">
+            <summary>
+            获取当前目录下明细(包含文件和文件夹)
+            </summary>
+            <returns>当前目录下明细(包含文件和文件夹)</returns>
+        </member>
+        <member name="M:DawnXZ.NuclearUtility.FTPHelper.GetAllList(System.String)">
+            <summary>
+            获取FTP文件列表(包括文件夹)
+            </summary>
+            <param name="ftpURI">FTP连接的完整路径</param>
+            <returns>FTP文件列表(包括文件夹)</returns>
+        </member>
+        <member name="M:DawnXZ.NuclearUtility.FTPHelper.GetFileList(System.String)">
+            <summary>
+            获取当前目录下文件列表(不包括文件夹)
+            </summary>
+            <param name="ftpURI">FTP连接的完整路径</param>
+            <returns>当前目录下文件列表(不包括文件夹)</returns>
+        </member>
+        <member name="M:DawnXZ.NuclearUtility.FTPHelper.Delete(System.String)">
+            <summary>
+            删除文件
+            </summary>
+            <param name="_fileName">需要删除的文件名称</param>
+        </member>
+        <member name="M:DawnXZ.NuclearUtility.FTPHelper.FileExist(System.String)">
+            <summary>
+            判断当前目录下指定的文件是否存在
+            </summary>
+            <param name="remoteFileName">远程文件名称</param>
+            <returns>判断结果</returns>
+        </member>
+        <member name="M:DawnXZ.NuclearUtility.FTPHelper.DirExist(System.String)">
+            <summary>
+            判断当前目录下指定的目录是否存在
+            </summary>
+            <param name="dirName">文件夹名称</param>
+            <returns>判断结果</returns>
+        </member>
+        <member name="M:DawnXZ.NuclearUtility.FTPHelper.MakeDir(System.String)">
+            <summary>
+            创建文件夹
+            </summary>
+            <param name="dirName">文件夹名称</param>
+        </member>
+        <member name="M:DawnXZ.NuclearUtility.FTPHelper.GetFileSize(System.String)">
+            <summary>
+            获取指定文件大小
+            </summary>
+            <param name="_filename">文件名称</param>
+            <returns>文件大小</returns>
+        </member>
+        <member name="M:DawnXZ.NuclearUtility.FTPHelper.RenName(System.String,System.String)">
+            <summary>
+            更改文件名
+            </summary>
+            <param name="currentFilename">当前文件名</param>
+            <param name="newFilename">更改后的文件名</param>
+        </member>
+        <member name="M:DawnXZ.NuclearUtility.FTPHelper.MovieFile(System.String,System.String)">
+            <summary>
+            移动文件
+            </summary>
+            <param name="currentFilename">移动前</param>
+            <param name="newDirectory">移动后</param>
+        </member>
+        <member name="M:DawnXZ.NuclearUtility.FTPHelper.GotoDirectory(System.String,System.Boolean)">
+            <summary>
+            切换当前目录
+            </summary>
+            <param name="dirName">目录名称</param>
+            <param name="isRoot">true:绝对路径 false:相对路径</param>
+        </member>
+        <member name="M:DawnXZ.NuclearUtility.FTPHelper.GotoRoot">
+            <summary>
+            切换至FTP根目录
+            </summary>
+        </member>
+    </members>
+</doc>

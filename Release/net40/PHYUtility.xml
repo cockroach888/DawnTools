@@ -1,0 +1,483 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PHYUtility</name>
+    </assembly>
+    <members>
+        <member name="T:DawnXZ.PHYUtility.CodeTimer">
+            <summary>
+            性能计数器（暂用于控制台应用程序）
+            <para>打印出花费时间、消耗的CPU时钟周期、以及各代垃圾收集的回收次数</para>
+            <para>使用方法：CodeTimer.Time("NormalString", 10, () => NormalString());</para>
+            <para>执行步骤：</para>
+            <para>1、保留当前控制台前景色，并使用黄色输出名称参数。</para>
+            <para>2、强制GC进行收集，并记录目前各代已经收集的次数。</para>
+            <para>3、执行代码，记录下消耗的时间及CPU时钟周期1。</para>
+            <para>4、恢复控制台默认前景色，并打印出消耗时间及CPU时钟周期。</para>
+            <para>5、打印执行过程中各代垃圾收集回收次数。</para>
+            </summary>
+        </member>
+        <member name="M:DawnXZ.PHYUtility.CodeTimer.Initialize">
+            <summary>
+            初始化
+            </summary>
+        </member>
+        <member name="M:DawnXZ.PHYUtility.CodeTimer.Time(System.String,System.Int32,System.Action)">
+            <summary>
+            时间
+            </summary>
+            <param name="name">名称</param>
+            <param name="iteration">循环次数</param>
+            <param name="action">需要执行的方法体</param>
+        </member>
+        <member name="M:DawnXZ.PHYUtility.CodeTimer.GetCycleCount">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DawnXZ.PHYUtility.CodeTimer.QueryThreadCycleTime(System.IntPtr,System.UInt64@)">
+            <summary>
+            
+            </summary>
+            <param name="threadHandle"></param>
+            <param name="cycleTime"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DawnXZ.PHYUtility.CodeTimer.GetCurrentThread">
+            <summary>
+            获得当前线程
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:DawnXZ.PHYUtility.IAction">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DawnXZ.PHYUtility.IAction.Action">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:DawnXZ.PHYUtility.CodeTimerEx">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DawnXZ.PHYUtility.CodeTimerEx.GetThreadTimes(System.IntPtr,System.Int64@,System.Int64@,System.Int64@,System.Int64@)">
+            <summary>
+            
+            </summary>
+            <param name="hThread"></param>
+            <param name="lpCreationTime"></param>
+            <param name="lpExitTime"></param>
+            <param name="lpKernelTime"></param>
+            <param name="lpUserTime"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DawnXZ.PHYUtility.CodeTimerEx.GetCurrentThread">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:DawnXZ.PHYUtility.CodeTimerEx.ActionDelegate">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DawnXZ.PHYUtility.CodeTimerEx.GetCurrentThreadTimes">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DawnXZ.PHYUtility.CodeTimerEx.#cctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DawnXZ.PHYUtility.CodeTimerEx.Time(System.String,System.Int32,DawnXZ.PHYUtility.CodeTimerEx.ActionDelegate)">
+            <summary>
+            
+            </summary>
+            <param name="name"></param>
+            <param name="iteration"></param>
+            <param name="action"></param>
+        </member>
+        <member name="M:DawnXZ.PHYUtility.CodeTimerEx.Time(System.String,System.Int32,DawnXZ.PHYUtility.IAction)">
+            <summary>
+            
+            </summary>
+            <param name="name"></param>
+            <param name="iteration"></param>
+            <param name="action"></param>
+        </member>
+        <member name="T:DawnXZ.PHYUtility.CpuHelper">
+            <summary>
+            CPU相关操作辅助类
+            </summary>
+        </member>
+        <member name="M:DawnXZ.PHYUtility.CpuHelper.GetCpuUsage">
+            <summary>
+            获得Cpu使用率
+            </summary>
+            <returns>返回使用率</returns>
+        </member>
+        <member name="T:DawnXZ.PHYUtility.CpuUsage">
+            <summary>
+            定义 CPU 使用情况计数器实现的抽象的基类。
+            </summary>
+        </member>
+        <member name="M:DawnXZ.PHYUtility.CpuUsage.Create">
+            <summary>
+            创建并返回一个 CpuUsage 实例可以用于查询在此操作系统上的 CPU 时间。
+            </summary>
+            <returns>CpuUsage 类的实例。</returns>
+            <exception cref="T:System.NotSupportedException">不支持这个平台-或者-CPUUsage 对象的初始化失败。</exception>
+        </member>
+        <member name="M:DawnXZ.PHYUtility.CpuUsage.Query">
+            <summary>
+            确定当前的平均 CPU 负载。
+            </summary>
+            <returns>一个整数，持有的 CPU 负载百分比。</returns>
+            <exception cref="T:System.NotSupportedException">其中一个系统调用失败。不能获得的 CPU 时间。</exception>
+        </member>
+        <member name="F:DawnXZ.PHYUtility.CpuUsage.m_CpuUsage">
+            <summary>
+            持有 CPUUsage 类的一个实例。
+            </summary>
+        </member>
+        <member name="T:DawnXZ.PHYUtility.CpuUsage9x">
+            <summary>
+            继承 CPUUsage 类并实现 Windows 9x 系统的查询方法。
+            </summary>
+            <remarks>
+            <p>此类工作在 Windows 98 和 Windows 的千年版。</p>
+            <p>不应直接在您的代码中使用此类。使用 CPUUsage.Create() 方法来实例化一个 CPUUsage 对象。</p>
+            </remarks>
+        </member>
+        <member name="M:DawnXZ.PHYUtility.CpuUsage9x.#ctor">
+            <summary>
+            初始化一个新的 CPUUsage9x 实例。
+            </summary>
+            <exception cref="T:System.NotSupportedException">其中一个系统调用失败。</exception>
+        </member>
+        <member name="M:DawnXZ.PHYUtility.CpuUsage9x.Query">
+            <summary>
+            确定当前的平均 CPU 负载。
+            </summary>
+            <returns>一个整数，持有的 CPU 负载百分比。</returns>
+            <exception cref="T:System.NotSupportedException">其中一个系统调用失败。不能获得的 CPU 时间。</exception>
+        </member>
+        <member name="M:DawnXZ.PHYUtility.CpuUsage9x.Finalize">
+            <summary>
+            关闭已分配的资源。
+            </summary>
+        </member>
+        <member name="F:DawnXZ.PHYUtility.CpuUsage9x.m_StatData">
+            <summary>
+            保存的注册表项用来读取 CPU 负载。
+            </summary>
+        </member>
+        <member name="T:DawnXZ.PHYUtility.CpuUsageNt">
+            <summary>
+            继承 CPUUsage 类并实现 Windows NT 系统的查询方法。
+            </summary>
+            <remarks>
+            <p>此类在 Windows NT4，Windows 2000、 Windows XP、 Windows.NET 服务器上的工作和较高。</p>
+            <p>不应直接在您的代码中使用此类。使用 CPUUsage.Create() 方法来实例化一个 CPUUsage 对象。</p>
+            </remarks>
+        </member>
+        <member name="M:DawnXZ.PHYUtility.CpuUsageNt.#ctor">
+            <summary>
+            初始化一个新的 CpuUsageNt 实例。
+            </summary>
+            <exception cref="T:System.NotSupportedException">其中一个系统调用失败。</exception>
+        </member>
+        <member name="M:DawnXZ.PHYUtility.CpuUsageNt.Query">
+            <summary>
+            确定当前的平均 CPU 负载。
+            </summary>
+            <returns>一个整数，持有的 CPU 负载百分比。</returns>
+            <exception cref="T:System.NotSupportedException">其中一个系统调用失败。不能获得的 CPU 时间。</exception>
+        </member>
+        <member name="M:DawnXZ.PHYUtility.CpuUsageNt.NtQuerySystemInformation(System.Int32,System.Byte[],System.Int32,System.IntPtr)">
+            <summary>
+            NtQuerySystemInformation 是一个内部的 Windows 函数，检索的各种系统信息。
+            </summary>
+            <param name="dwInfoType">SYSTEM_INFORMATION_CLASS，指示要检索的系统信息的种类中列举的值之一。</param>
+            <param name="lpStructure">指向所请求的信息在哪里要返回的缓冲区。大小和结构的这一信息而异 SystemInformationClass 参数的值。</param>
+            <param name="dwSize">请参见参数指向的缓冲区的长度。</param>
+            <param name="returnLength">可选的指针，指向哪里该函数写入请求的信息的实际大小的位置。</param>
+            <returns>返回一个成功如果成功的话，NTSTATUS 和 NTSTATUS 错误代码否则。</returns>
+        </member>
+        <member name="F:DawnXZ.PHYUtility.CpuUsageNt.SYSTEM_BASICINFORMATION">
+            <summary>
+            返回在一个 SYSTEM_BASIC_INFORMATION 结构系统中的处理器数。
+            </summary>
+        </member>
+        <member name="F:DawnXZ.PHYUtility.CpuUsageNt.SYSTEM_PERFORMANCEINFORMATION">
+            <summary>
+            返回一个不透明的 SYSTEM_PERFORMANCE_INFORMATION 结构。
+            </summary>
+        </member>
+        <member name="F:DawnXZ.PHYUtility.CpuUsageNt.SYSTEM_TIMEINFORMATION">
+            <summary>
+            返回一个不透明的 SYSTEM_TIMEOFDAY_INFORMATION 结构。
+            </summary>
+        </member>
+        <member name="F:DawnXZ.PHYUtility.CpuUsageNt.NO_ERROR">
+            <summary>
+            由 NtQuerySystemInformation 没有发生错误时返回的值。
+            </summary>
+        </member>
+        <member name="F:DawnXZ.PHYUtility.CpuUsageNt.oldIdleTime">
+            <summary>
+            保存的旧的空闲时间。
+            </summary>
+        </member>
+        <member name="F:DawnXZ.PHYUtility.CpuUsageNt.oldSystemTime">
+            <summary>
+            保存旧的系统时间。
+            </summary>
+        </member>
+        <member name="F:DawnXZ.PHYUtility.CpuUsageNt.processorCount">
+            <summary>
+            在系统中保存处理器的数。
+            </summary>
+        </member>
+        <member name="T:DawnXZ.PHYUtility.HddHelper">
+            <summary>
+            硬盘相关操作辅助类
+            </summary>
+        </member>
+        <member name="M:DawnXZ.PHYUtility.HddHelper.GetSerialNumberAll">
+            <summary>
+            获取硬盘相应分区的序列号
+            </summary>
+            <returns>序列号</returns>
+        </member>
+        <member name="M:DawnXZ.PHYUtility.HddHelper.GetSerialNumber(System.String)">
+            <summary>
+            获取硬盘相应分区的序列号
+            </summary>
+            <param name="Drive">盘符（如 C）</param> 
+            <returns>序列号</returns>
+        </member>
+        <member name="T:DawnXZ.PHYUtility.ManagementHelper">
+            <summary>
+            物理硬件相关操作辅助类
+            </summary>
+        </member>
+        <member name="M:DawnXZ.PHYUtility.ManagementHelper.Instance">
+            <summary>
+            执行
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DawnXZ.PHYUtility.ManagementHelper.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:DawnXZ.PHYUtility.ManagementHelper.GetCpuID">
+            <summary>
+            CPU序列号（ID）
+            </summary>
+            <returns>CPU序列号</returns>
+        </member>
+        <member name="M:DawnXZ.PHYUtility.ManagementHelper.GetMacAddress">
+            <summary>
+            网卡MAC地址
+            </summary>
+            <returns>网卡MAC地址</returns>
+        </member>
+        <member name="M:DawnXZ.PHYUtility.ManagementHelper.GetIPAddress">
+            <summary>
+            计算机IP地址
+            </summary>
+            <returns>计算机IP地址</returns>
+        </member>
+        <member name="M:DawnXZ.PHYUtility.ManagementHelper.GetDiskID">
+            <summary>
+            硬盘序列号（ID）
+            </summary>
+            <returns>硬盘序列号</returns>
+        </member>
+        <member name="M:DawnXZ.PHYUtility.ManagementHelper.GetDiskVolumeSerialNumber">
+            <summary>
+            取得设备硬盘C盘的卷标号
+            </summary>
+            <returns>C盘卷标号</returns>
+        </member>
+        <member name="M:DawnXZ.PHYUtility.ManagementHelper.GetUserName">
+            <summary>
+            操作系统的登录用户名
+            </summary>
+            <returns>登录用户名</returns>
+        </member>
+        <member name="M:DawnXZ.PHYUtility.ManagementHelper.GetSystemType">
+            <summary>
+            PC类型
+            </summary>
+            <returns>PC系统类型</returns>
+        </member>
+        <member name="M:DawnXZ.PHYUtility.ManagementHelper.GetTotalPhysicalMemory">
+            <summary>
+            物理内存
+            </summary>
+            <returns>物理内存</returns>
+        </member>
+        <member name="M:DawnXZ.PHYUtility.ManagementHelper.GetComputerName">
+            <summary>
+            计算机名称
+            </summary>
+            <returns>计算机名称</returns>
+        </member>
+        <member name="P:DawnXZ.PHYUtility.ManagementHelper.CpuID">
+            <summary>
+            CPU序列号（ID）
+            </summary>
+        </member>
+        <member name="P:DawnXZ.PHYUtility.ManagementHelper.MacAddress">
+            <summary>
+            网卡MAC地址
+            </summary>
+        </member>
+        <member name="P:DawnXZ.PHYUtility.ManagementHelper.DiskID">
+            <summary>
+            硬盘序列号（ID）
+            </summary>
+        </member>
+        <member name="P:DawnXZ.PHYUtility.ManagementHelper.DiskVolume">
+            <summary>
+            硬盘卷标号（C盘）
+            </summary>
+        </member>
+        <member name="P:DawnXZ.PHYUtility.ManagementHelper.IpAddress">
+            <summary>
+            计算机IP地址
+            </summary>
+        </member>
+        <member name="P:DawnXZ.PHYUtility.ManagementHelper.LoginUserName">
+            <summary>
+            当前登录用户名名称
+            </summary>
+        </member>
+        <member name="P:DawnXZ.PHYUtility.ManagementHelper.ComputerName">
+            <summary>
+            计算机名称
+            </summary>
+        </member>
+        <member name="P:DawnXZ.PHYUtility.ManagementHelper.SystemType">
+            <summary>
+            系统型号（操作系统·版本号）
+            </summary>
+        </member>
+        <member name="P:DawnXZ.PHYUtility.ManagementHelper.TotalPhysicalMemory">
+            <summary>
+            总物理内存（单位：MB）
+            </summary>
+        </member>
+        <member name="P:DawnXZ.PHYUtility.ManagementHelper.FInstance">
+            <summary>
+            执行
+            </summary>
+        </member>
+        <member name="T:DawnXZ.PHYUtility.PerfCounter">
+            <summary>
+            性能计数器操作辅助类
+            </summary>
+        </member>
+        <member name="M:DawnXZ.PHYUtility.PerfCounter.#ctor(System.Boolean)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="startTimer">是否立即执行Start()方法</param>
+        </member>
+        <member name="F:DawnXZ.PHYUtility.PerfCounter.Freq">
+            <summary>
+            性能计数
+            </summary>
+        </member>
+        <member name="F:DawnXZ.PHYUtility.PerfCounter.FStartTime">
+            <summary>
+            开始时间
+            </summary>
+        </member>
+        <member name="F:DawnXZ.PHYUtility.PerfCounter.FStopTime">
+            <summary>
+            停止时间
+            </summary>
+        </member>
+        <member name="M:DawnXZ.PHYUtility.PerfCounter.QueryPerformanceFrequency(System.Int64@)">
+            <summary>
+            查询性能频率
+            </summary>
+            <param name="lpFrequency">频率</param>
+            <returns></returns>
+        </member>
+        <member name="M:DawnXZ.PHYUtility.PerfCounter.QueryPerformanceCounter(System.Int64@)">
+            <summary>
+            查询性能计数器
+            </summary>
+            <param name="lpPerformanceCount">性能计数</param>
+            <returns></returns>
+        </member>
+        <member name="M:DawnXZ.PHYUtility.PerfCounter.Stop">
+            <summary>
+            停止计数
+            </summary>
+        </member>
+        <member name="M:DawnXZ.PHYUtility.PerfCounter.Start">
+            <summary>
+            开始计时
+            </summary>
+        </member>
+        <member name="P:DawnXZ.PHYUtility.PerfCounter.Duration">
+            <summary>
+            返回运行时间，单位是秒
+            </summary>
+            <value>运行时间</value>
+        </member>
+        <member name="T:DawnXZ.PHYUtility.RegcodeHelper">
+            <summary>
+            软件注册码辅助类
+            </summary>
+        </member>
+        <member name="M:DawnXZ.PHYUtility.RegcodeHelper.GetMNum">
+            <summary>
+            生成机器码
+            </summary>
+            <returns>机器码</returns>
+        </member>
+        <member name="F:DawnXZ.PHYUtility.RegcodeHelper.intCode">
+            <summary>
+            存储密钥
+            </summary>
+        </member>
+        <member name="F:DawnXZ.PHYUtility.RegcodeHelper.intNumber">
+            <summary>
+            存机器码的Ascii值
+            </summary>
+        </member>
+        <member name="F:DawnXZ.PHYUtility.RegcodeHelper.Charcode">
+            <summary>
+            存储机器码字
+            </summary>
+        </member>
+        <member name="M:DawnXZ.PHYUtility.RegcodeHelper.SetIntCode">
+            <summary>
+            给数组赋值小于10的数
+            </summary>
+        </member>
+        <member name="M:DawnXZ.PHYUtility.RegcodeHelper.GetRNum">
+            <summary>
+            生成注册码
+            </summary>
+            <returns>注册码</returns>
+        </member>
+    </members>
+</doc>

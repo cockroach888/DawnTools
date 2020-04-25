@@ -1,0 +1,551 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PagerUtility</name>
+    </assembly>
+    <members>
+        <member name="T:DawnXZ.PagerUtility.PagerBootstrapChs">
+            <summary>
+            数据分页[HTML标签模式]
+            <para>中文字样</para>
+            </summary>
+        </member>
+        <member name="M:DawnXZ.PagerUtility.PagerBootstrapChs.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:DawnXZ.PagerUtility.PagerBootstrapChs.#ctor(System.Int32)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="digitalpagesize">数字分页—每页个数</param>
+        </member>
+        <member name="M:DawnXZ.PagerUtility.PagerBootstrapChs.#ctor(System.Int32,System.Int32)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="pagesize">每页显示记录数</param>
+            <param name="digitalpagesize">数字分页—每页个数</param>
+        </member>
+        <member name="M:DawnXZ.PagerUtility.PagerBootstrapChs.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            构造函数
+            </summary>
+            <remarks>
+            <para>无数据时，传入-1</para>
+            </remarks>
+            <param name="pagecurrent">当前页码</param>
+            <param name="pagecount">总页数</param>
+            <param name="pagesize">每页显示记录数</param>
+            <param name="digitalpagesize">数字分页—每页个数</param>
+        </member>
+        <member name="F:DawnXZ.PagerUtility.PagerBootstrapChs.FPageCurrent">
+            <summary>
+            当前页码
+            </summary>
+        </member>
+        <member name="P:DawnXZ.PagerUtility.PagerBootstrapChs.PageCurrent">
+            <summary>
+            当前页码
+            </summary>
+        </member>
+        <member name="P:DawnXZ.PagerUtility.PagerBootstrapChs.PageCount">
+            <summary>
+            总页数
+            </summary>
+        </member>
+        <member name="P:DawnXZ.PagerUtility.PagerBootstrapChs.PageSize">
+            <summary>
+            每页显示记录数
+            </summary>
+        </member>
+        <member name="P:DawnXZ.PagerUtility.PagerBootstrapChs.RecordCount">
+            <summary>
+            总记录数
+            </summary>
+        </member>
+        <member name="P:DawnXZ.PagerUtility.PagerBootstrapChs.PageRecordCount">
+            <summary>
+            当前页总记录数
+            </summary>
+        </member>
+        <member name="P:DawnXZ.PagerUtility.PagerBootstrapChs.DigitalPageSize">
+            <summary>
+            数字分页—每页个数
+            </summary>
+        </member>
+        <member name="P:DawnXZ.PagerUtility.PagerBootstrapChs.DigitalPageCount">
+            <summary>
+            数字分页—总页数
+            </summary>
+        </member>
+        <member name="P:DawnXZ.PagerUtility.PagerBootstrapChs.DigitalPageFlag">
+            <summary>
+            数字分页—翻页标记
+            </summary>
+        </member>
+        <member name="M:DawnXZ.PagerUtility.PagerBootstrapChs.CalculatePageCount">
+            <summary>
+            计算总页数
+            （无总页数传入时需单独调用此方法）
+            </summary>
+        </member>
+        <member name="M:DawnXZ.PagerUtility.PagerBootstrapChs.BalefulToPager">
+            <summary>
+            恶意使用分页控件
+            </summary>
+            <returns>执行结果</returns>
+        </member>
+        <member name="M:DawnXZ.PagerUtility.PagerBootstrapChs.ShowPager(System.String,System.String,System.Boolean,System.Boolean,System.String)">
+            <summary>
+            输出分页HTML标记
+            <para>基于Bootstrap数字分页功能</para>
+            </summary>
+            <param name="urlPath">URL路径（或页面名称）</param>
+            <param name="parameter">URL参数，分页模式的特定格式，详见JS文件</param>
+            <param name="outCount">是否输出实时页总条数，需要给PageRecordCount实时赋值</param>
+            <param name="outGoto">是否输出分页跳转功能代码</param>
+            <param name="controlName">控件ID名称</param>
+            <returns>HTML标签</returns>
+        </member>
+        <member name="T:DawnXZ.PagerUtility.PagerHelperCHS">
+            <summary>
+            数据分页[HTML标签模式]
+            <para>中文字样</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.PagerUtility.PagerHelperCHS.FPageCurrent">
+            <summary>
+            当前页码
+            </summary>
+        </member>
+        <member name="P:DawnXZ.PagerUtility.PagerHelperCHS.PageCurrent">
+            <summary>
+            当前页码
+            </summary>
+        </member>
+        <member name="P:DawnXZ.PagerUtility.PagerHelperCHS.PageCount">
+            <summary>
+            总页数
+            </summary>
+        </member>
+        <member name="P:DawnXZ.PagerUtility.PagerHelperCHS.PageSize">
+            <summary>
+            每页显示记录数
+            </summary>
+        </member>
+        <member name="P:DawnXZ.PagerUtility.PagerHelperCHS.RecordCount">
+            <summary>
+            总记录数
+            </summary>
+        </member>
+        <member name="P:DawnXZ.PagerUtility.PagerHelperCHS.PageRecordCount">
+            <summary>
+            当前页总记录数
+            </summary>
+        </member>
+        <member name="P:DawnXZ.PagerUtility.PagerHelperCHS.DigitalPageSize">
+            <summary>
+            数字分页—每页个数
+            </summary>
+        </member>
+        <member name="P:DawnXZ.PagerUtility.PagerHelperCHS.DigitalPageCount">
+            <summary>
+            数字分页—总页数
+            </summary>
+        </member>
+        <member name="P:DawnXZ.PagerUtility.PagerHelperCHS.DigitalPageFlag">
+            <summary>
+            数字分页—翻页标记
+            </summary>
+        </member>
+        <member name="M:DawnXZ.PagerUtility.PagerHelperCHS.CalculatePageCount">
+            <summary>
+            计算总页数
+            （无总页数传入时需单独调用此方法）
+            </summary>
+        </member>
+        <member name="M:DawnXZ.PagerUtility.PagerHelperCHS.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:DawnXZ.PagerUtility.PagerHelperCHS.#ctor(System.Int32)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="digitalpagesize">数字分页—每页个数</param>
+        </member>
+        <member name="M:DawnXZ.PagerUtility.PagerHelperCHS.#ctor(System.Int32,System.Int32)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="pagesize">每页显示记录数</param>
+            <param name="digitalpagesize">数字分页—每页个数</param>
+        </member>
+        <member name="M:DawnXZ.PagerUtility.PagerHelperCHS.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            构造函数
+            </summary>
+            <remarks>
+            <para>无数据时，传入-1</para>
+            </remarks>
+            <param name="pagecurrent">当前页码</param>
+            <param name="pagecount">总页数</param>
+            <param name="pagesize">每页显示记录数</param>
+            <param name="digitalpagesize">数字分页—每页个数</param>
+        </member>
+        <member name="M:DawnXZ.PagerUtility.PagerHelperCHS.BalefulToPager">
+            <summary>
+            恶意使用分页控件
+            </summary>
+            <returns>执行结果</returns>
+        </member>
+        <member name="M:DawnXZ.PagerUtility.PagerHelperCHS.ShowPagerByForward(System.String,System.String,System.String,System.Boolean,System.Boolean,System.Boolean,System.String)">
+            <summary>
+            输出分页HTML标记
+            <remarks>
+            <para>方向链接分页[页面传参]</para>
+            <para>格式：首页 上一页 下一页 末页</para>
+            <para>引用 DawnPagerUI.css 文件</para>
+            </remarks>
+            </summary>
+            <param name="urlPath">URL路径（或页面名称）</param>
+            <param name="pagerName">数据分页标识名称</param>
+            <param name="parameter">URL参数，分页模式的特定格式，详见JS文件</param>
+            <param name="outPageCount">是否输出实时页总条数，需要给PageRecordCount实时赋值</param>
+            <param name="showSelect">是否输出页码选择器</param>
+            <param name="outPageGoto">是否输出分页跳转功能代码</param>
+            <param name="outPageGotoFun">分页跳转功能函数名称</param>
+            <returns>HTML</returns>
+        </member>
+        <member name="M:DawnXZ.PagerUtility.PagerHelperCHS.ShowPagerByNumeric(System.String,System.String,System.String,System.Boolean,System.Boolean,System.String)">
+            <summary>
+            输出分页HTML标记
+            <remarks>
+            <para>数字链接分页[页面传参]</para>
+            <para>默认每页9链接，必须为单数</para>
+            <para>格式：上一页 1 2...10 下一页</para>
+            <para>引用 DawnPagerUI.css 文件</para>
+            </remarks>
+            </summary>
+            <param name="urlPath">URL路径（或页面名称）</param>
+            <param name="pagerName">数据分页标识名称</param>
+            <param name="parameter">URL参数，分页模式的特定格式，详见JS文件</param>
+            <param name="outPageCount">是否输出实时页总条数，需要给PageRecordCount实时赋值</param>
+            <param name="outPageGoto">是否输出分页跳转功能代码</param>
+            <param name="outPageGotoFun">分页跳转功能函数名称</param>
+            <returns>HTML</returns>
+        </member>
+        <member name="M:DawnXZ.PagerUtility.PagerHelperCHS.ShowPagerByScriptByForward(System.String,System.String,System.Boolean,System.Boolean,DawnXZ.PagerUtility.PagerType,System.Boolean,System.String)">
+            <summary>
+            输出分页HTML标记
+            <remarks>
+            <para>方向链接分页[Ajax、MVC、静态URL]</para>
+            <para>格式：首页 上一页 下一页 末页</para>
+            <para>引用 DawnPagerUI.css 文件</para>
+            <para>引用 DawnPagerJS.js 文件</para>
+            </remarks>
+            </summary>
+            <param name="urlPath">URL路径（或页面名称）</param>
+            <param name="parameter">URL参数，分页模式的特定格式，详见JS文件</param>
+            <param name="outPageCount">是否输出实时页总条数，需要给PageRecordCount实时赋值</param>
+            <param name="showSelect">是否输出页码选择器</param>
+            <param name="pagerType">数据分页模式</param>
+            <param name="outPageGoto">是否输出分页跳转功能代码</param>
+            <param name="outPageGotoFun">分页跳转功能函数名称</param>
+            <returns>HTML</returns>
+        </member>
+        <member name="M:DawnXZ.PagerUtility.PagerHelperCHS.ShowPagerByScriptByNumeric(System.String,System.String,System.Boolean,DawnXZ.PagerUtility.PagerType,System.Boolean,System.String)">
+            <summary>
+            输出分页HTML标记
+            <remarks>
+            <para>数字链接分页[Ajax、MVC、静态URL]</para>
+            <para>默认每页9链接，必须为单数</para>
+            <para>格式：上一页 1 2...10 下一页</para>
+            <para>引用 DawnPagerUI.css 文件</para>
+            <para>引用 DawnPagerJS.js 文件</para>
+            </remarks>
+            </summary>
+            <param name="urlPath">URL路径（或页面名称）</param>
+            <param name="parameter">URL参数，分页模式的特定格式，详见JS文件</param>
+            <param name="outPageCount">是否输出实时页总条数，需要给PageRecordCount实时赋值</param>
+            <param name="pagerType">数据分页模式</param>
+            <param name="outPageGoto">是否输出分页跳转功能代码</param>
+            <param name="outPageGotoFun">分页跳转功能函数名称</param>
+            <returns>HTML</returns>
+        </member>
+        <member name="M:DawnXZ.PagerUtility.PagerHelperCHS.ShowPagerByScriptByForwardOf(System.String,System.Boolean,System.Boolean,DawnXZ.PagerUtility.PagerType,System.Boolean,System.String)">
+            <summary>
+            输出分页HTML标记
+            <remarks>
+            <para>方向链接分页·无地址[Ajax、MVC、静态URL]</para>
+            <para>格式：首页 上一页 下一页 末页</para>
+            <para>引用 DawnPagerUI.css 文件</para>
+            <para>引用 DawnPagerJS.js 文件</para>
+            </remarks>
+            </summary>
+            <param name="parameter">URL参数，分页模式的特定格式，详见JS文件</param>
+            <param name="outPageCount">是否输出实时页总条数，需要给PageRecordCount实时赋值</param>
+            <param name="showSelect">是否输出页码选择器</param>
+            <param name="pagerType">数据分页模式</param>
+            <param name="outPageGoto">是否输出分页跳转功能代码</param>
+            <param name="outPageGotoFun">分页跳转功能函数名称</param>
+            <returns>HTML</returns>
+        </member>
+        <member name="M:DawnXZ.PagerUtility.PagerHelperCHS.ShowPagerByScriptByNumericOf(System.String,System.Boolean,DawnXZ.PagerUtility.PagerType,System.Boolean,System.String)">
+            <summary>
+            输出分页HTML标记
+            <remarks>
+            <para>数字链接分页·无地址[Ajax、MVC、静态URL]</para>
+            <para>默认每页9链接，必须为单数</para>
+            <para>格式：上一页 1 2...10 下一页</para>
+            <para>引用 DawnPagerUI.css 文件</para>
+            <para>引用 DawnPagerJS.js 文件</para>
+            </remarks>
+            </summary>
+            <param name="parameter">URL参数，分页模式的特定格式，详见JS文件</param>
+            <param name="outPageCount">是否输出实时页总条数，需要给PageRecordCount实时赋值</param>
+            <param name="pagerType">数据分页模式</param>
+            <param name="outPageGoto">是否输出分页跳转功能代码</param>
+            <param name="outPageGotoFun">分页跳转功能函数名称</param>
+            <returns>HTML</returns>
+        </member>
+        <member name="M:DawnXZ.PagerUtility.PagerHelperCHS.ShowPagerByScriptByCustomAt(System.String,System.String,System.Boolean,System.Boolean,System.String)">
+            <summary>
+            输出分页HTML标记
+            <remarks>
+            <para>函数：funName(currentIndex,parameter)</para>
+            <para>数字链接分页·无地址[Ajax、MVC、静态URL]</para>
+            <para>默认每页9链接，必须为单数</para>
+            <para>格式：上一页 1 2...10 下一页</para>
+            <para>引用 DawnPagerUI.css 文件</para>
+            <para>引用 DawnPagerJS.js 文件</para>
+            </remarks>
+            </summary>
+            <param name="functionName">前端调用函数名称</param>
+            <param name="parameter">URL参数，分页模式的特定格式，详见JS文件</param>
+            <param name="outPageCount">是否输出实时页总条数，需要给PageRecordCount实时赋值</param>
+            <param name="outPageGoto">是否输出分页跳转功能代码</param>
+            <param name="outPageGotoFun">分页跳转功能函数名称</param>
+            <returns>HTML</returns>
+        </member>
+        <member name="T:DawnXZ.PagerUtility.PagerHelperENG">
+            <summary>
+            数据分页[HTML标签模式]
+            <para>中文字样</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.PagerUtility.PagerHelperENG.FPageCurrent">
+            <summary>
+            当前页码
+            </summary>
+        </member>
+        <member name="P:DawnXZ.PagerUtility.PagerHelperENG.PageCurrent">
+            <summary>
+            当前页码
+            </summary>
+        </member>
+        <member name="P:DawnXZ.PagerUtility.PagerHelperENG.PageCount">
+            <summary>
+            总页数
+            </summary>
+        </member>
+        <member name="P:DawnXZ.PagerUtility.PagerHelperENG.PageSize">
+            <summary>
+            每页显示记录数
+            </summary>
+        </member>
+        <member name="P:DawnXZ.PagerUtility.PagerHelperENG.RecordCount">
+            <summary>
+            总记录数
+            </summary>
+        </member>
+        <member name="P:DawnXZ.PagerUtility.PagerHelperENG.PageRecordCount">
+            <summary>
+            当前页总记录数
+            </summary>
+        </member>
+        <member name="P:DawnXZ.PagerUtility.PagerHelperENG.DigitalPageSize">
+            <summary>
+            数字分页—每页个数
+            </summary>
+        </member>
+        <member name="P:DawnXZ.PagerUtility.PagerHelperENG.DigitalPageCount">
+            <summary>
+            数字分页—总页数
+            </summary>
+        </member>
+        <member name="P:DawnXZ.PagerUtility.PagerHelperENG.DigitalPageFlag">
+            <summary>
+            数字分页—翻页标记
+            </summary>
+        </member>
+        <member name="M:DawnXZ.PagerUtility.PagerHelperENG.CalculatePageCount">
+            <summary>
+            计算总页数
+            （无总页数传入时需单独调用此方法）
+            </summary>
+        </member>
+        <member name="M:DawnXZ.PagerUtility.PagerHelperENG.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:DawnXZ.PagerUtility.PagerHelperENG.#ctor(System.Int32)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="digitalpagesize">数字分页—每页个数</param>
+        </member>
+        <member name="M:DawnXZ.PagerUtility.PagerHelperENG.#ctor(System.Int32,System.Int32)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="pagesize">每页显示记录数</param>
+            <param name="digitalpagesize">数字分页—每页个数</param>
+        </member>
+        <member name="M:DawnXZ.PagerUtility.PagerHelperENG.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            构造函数
+            </summary>
+            <remarks>
+            <para>无数据时，传入-1</para>
+            </remarks>
+            <param name="pagecurrent">当前页码</param>
+            <param name="pagecount">总页数</param>
+            <param name="pagesize">每页显示记录数</param>
+            <param name="digitalpagesize">数字分页—每页个数</param>
+        </member>
+        <member name="M:DawnXZ.PagerUtility.PagerHelperENG.ShowPagerByForward(System.String,System.String,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            输出分页HTML标记
+            <remarks>
+            <para>方向链接分页[页面传参]</para>
+            <para>格式：首页 上一页 下一页 末页</para>
+            <para>引用 DawnPagerUI.css 文件</para>
+            </remarks>
+            </summary>
+            <param name="urlPath">URL路径（或页面名称）</param>
+            <param name="pagerName">数据分页标识名称</param>
+            <param name="parameter">URL参数，分页模式的特定格式，详见JS文件</param>
+            <param name="outPageCount">是否输出实时页总条数，需要给PageRecordCount实时赋值</param>
+            <param name="showSelect">是否输出页码选择器</param>
+            <returns>HTML</returns>
+        </member>
+        <member name="M:DawnXZ.PagerUtility.PagerHelperENG.ShowPagerByNumeric(System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            输出分页HTML标记
+            <remarks>
+            <para>数字链接分页[页面传参]</para>
+            <para>默认每页9链接，必须为单数</para>
+            <para>格式：上一页 1 2...10 下一页</para>
+            <para>引用 DawnPagerUI.css 文件</para>
+            </remarks>
+            </summary>
+            <param name="urlPath">URL路径（或页面名称）</param>
+            <param name="pagerName">数据分页标识名称</param>
+            <param name="parameter">URL参数，分页模式的特定格式，详见JS文件</param>
+            <param name="outPageCount">是否输出实时页总条数，需要给PageRecordCount实时赋值</param>
+            <returns>HTML</returns>
+        </member>
+        <member name="M:DawnXZ.PagerUtility.PagerHelperENG.ShowPagerByScriptByForward(System.String,System.String,System.Boolean,System.Boolean,DawnXZ.PagerUtility.PagerType)">
+            <summary>
+            输出分页HTML标记
+            <remarks>
+            <para>方向链接分页[Ajax、MVC、静态URL]</para>
+            <para>格式：首页 上一页 下一页 末页</para>
+            <para>引用 DawnPagerUI.css 文件</para>
+            <para>引用 DawnPagerJS.js 文件</para>
+            </remarks>
+            </summary>
+            <param name="urlPath">URL路径（或页面名称）</param>
+            <param name="parameter">URL参数，分页模式的特定格式，详见JS文件</param>
+            <param name="outPageCount">是否输出实时页总条数，需要给PageRecordCount实时赋值</param>
+            <param name="showSelect">是否输出页码选择器</param>
+            <param name="pagerType">数据分页模式</param>
+            <returns>HTML</returns>
+        </member>
+        <member name="M:DawnXZ.PagerUtility.PagerHelperENG.ShowPagerByScriptByNumeric(System.String,System.String,System.Boolean,DawnXZ.PagerUtility.PagerType)">
+            <summary>
+            输出分页HTML标记
+            <remarks>
+            <para>数字链接分页[Ajax、MVC、静态URL]</para>
+            <para>默认每页9链接，必须为单数</para>
+            <para>格式：上一页 1 2...10 下一页</para>
+            <para>引用 DawnPagerUI.css 文件</para>
+            <para>引用 DawnPagerJS.js 文件</para>
+            </remarks>
+            </summary>
+            <param name="urlPath">URL路径（或页面名称）</param>
+            <param name="parameter">URL参数，分页模式的特定格式，详见JS文件</param>
+            <param name="outPageCount">是否输出实时页总条数，需要给PageRecordCount实时赋值</param>
+            <param name="pagerType">数据分页模式</param>
+            <returns>HTML</returns>
+        </member>
+        <member name="M:DawnXZ.PagerUtility.PagerHelperENG.ShowPagerByScriptByForwardOf(System.String,System.Boolean,System.Boolean,DawnXZ.PagerUtility.PagerType)">
+            <summary>
+            输出分页HTML标记
+            <remarks>
+            <para>方向链接分页·无地址[Ajax、MVC、静态URL]</para>
+            <para>格式：首页 上一页 下一页 末页</para>
+            <para>引用 DawnPagerUI.css 文件</para>
+            <para>引用 DawnPagerJS.js 文件</para>
+            </remarks>
+            </summary>
+            <param name="parameter">URL参数，分页模式的特定格式，详见JS文件</param>
+            <param name="outPageCount">是否输出实时页总条数，需要给PageRecordCount实时赋值</param>
+            <param name="showSelect">是否输出页码选择器</param>
+            <param name="pagerType">数据分页模式</param>
+            <returns>HTML</returns>
+        </member>
+        <member name="M:DawnXZ.PagerUtility.PagerHelperENG.ShowPagerByScriptByNumericOf(System.String,System.Boolean,DawnXZ.PagerUtility.PagerType)">
+            <summary>
+            输出分页HTML标记
+            <remarks>
+            <para>数字链接分页·无地址[Ajax、MVC、静态URL]</para>
+            <para>默认每页9链接，必须为单数</para>
+            <para>格式：上一页 1 2...10 下一页</para>
+            <para>引用 DawnPagerUI.css 文件</para>
+            <para>引用 DawnPagerJS.js 文件</para>
+            </remarks>
+            </summary>
+            <param name="parameter">URL参数，分页模式的特定格式，详见JS文件</param>
+            <param name="outPageCount">是否输出实时页总条数，需要给PageRecordCount实时赋值</param>
+            <param name="pagerType">数据分页模式</param>
+            <returns>HTML</returns>
+        </member>
+        <member name="T:DawnXZ.PagerUtility.PagerType">
+            <summary>
+            数据分页模式
+            </summary>
+        </member>
+        <member name="F:DawnXZ.PagerUtility.PagerType.Ajax">
+            <summary>
+            Ajax模式，Json数据模式
+            </summary>
+        </member>
+        <member name="F:DawnXZ.PagerUtility.PagerType.Mvc">
+            <summary>
+            MVC 模式，Json数据模式
+            </summary>
+        </member>
+        <member name="F:DawnXZ.PagerUtility.PagerType.Url">
+            <summary>
+            URL 链接传参，URL必须静态化
+            </summary>
+        </member>
+        <member name="F:DawnXZ.PagerUtility.PagerType.Custom">
+            <summary>
+            自定义前端函数模式
+            <para>未使用</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.PagerUtility.PagerType.None">
+            <summary>
+            无分页模式
+            </summary>
+        </member>
+    </members>
+</doc>

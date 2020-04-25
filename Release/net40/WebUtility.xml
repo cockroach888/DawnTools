@@ -1,0 +1,954 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WebUtility</name>
+    </assembly>
+    <members>
+        <member name="T:DawnXZ.WebUtility.CacheHelper">
+            <summary>
+            缓存操作辅助类
+            </summary>
+        </member>
+        <member name="M:DawnXZ.WebUtility.CacheHelper.Get(System.String)">
+            <summary>
+            获取缓存对象
+            </summary>
+            <param name="keyName">引用该项的缓存键</param>
+            <returns>缓存数据对象</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.CacheHelper.AddHalf(System.String,System.Object)">
+            <summary>
+            添加缓存对象
+            <para>半小时不访问便移除</para>
+            </summary>
+            <param name="keyName">引用该项的缓存键</param>
+            <param name="keyValue">要添加到缓存的项</param>
+            <returns>缓存数据对象</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.CacheHelper.AddHour(System.String,System.Object)">
+            <summary>
+            添加缓存对象
+            <para>一小时不访问便移除</para>
+            </summary>
+            <param name="keyName">引用该项的缓存键</param>
+            <param name="keyValue">要添加到缓存的项</param>
+            <returns>缓存数据对象</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.CacheHelper.Add(System.String,System.Object,System.Double)">
+            <summary>
+            添加缓存对象
+            <para>定时不访问便移除</para>
+            </summary>
+            <param name="keyName">引用该项的缓存键</param>
+            <param name="keyValue">要添加到缓存的项</param>
+            <param name="times">缓存过期时间间隔[分钟]</param>
+            <returns>缓存数据对象</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.CacheHelper.Add(System.String,System.Object,System.Web.Caching.CacheItemPriority)">
+            <summary>
+            添加缓存对象
+            <para>永久不到期</para>
+            </summary>
+            <param name="keyName">引用该项的缓存键</param>
+            <param name="keyValue">要添加到缓存的项</param>
+            <param name="priority">具有较低成本的对象在具有较高成本的对象之前从缓存被移除</param>
+            <returns>缓存数据对象</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.CacheHelper.Add(System.String,System.Object,System.TimeSpan,System.Web.Caching.CacheItemPriority)">
+            <summary>
+            添加缓存对象
+            <para>定时不访问便移除</para>
+            </summary>
+            <param name="keyName">引用该项的缓存键</param>
+            <param name="keyValue">要添加到缓存的项</param>
+            <param name="slidingExpiration">缓存过期时间间隔[分钟]</param>
+            <param name="priority">具有较低成本的对象在具有较高成本的对象之前从缓存被移除</param>
+            <returns>缓存数据对象</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.CacheHelper.Add(System.String,System.Object,System.DateTime,System.TimeSpan,System.Web.Caching.CacheItemPriority,System.Web.Caching.CacheItemRemovedCallback)">
+            <summary>
+            添加缓存对象
+            <para>在移除时执行指定事件</para>
+            </summary>
+            <param name="keyName">引用该项的缓存键</param>
+            <param name="keyValue">要添加到缓存的项</param>
+            <param name="absoluteExpiration">添加对象将到期并被从缓存中移除的时间</param>
+            <param name="slidingExpiration">缓存过期时间间隔[分钟]</param>
+            <param name="priority">具有较低成本的对象在具有较高成本的对象之前从缓存被移除</param>
+            <param name="onRemovedCallback">移除对象时所调用的委托</param>
+            <returns>缓存数据对象</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.CacheHelper.Remove(System.String)">
+            <summary>
+            移除缓存对象
+            <para>移除指定键值名称</para>
+            </summary>
+            <param name="keyName">缓存键值名称</param>
+            <returns>缓存数据对象</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.CacheHelper.RemoveAt(System.String)">
+            <summary>
+            移除缓存对象
+            <para>移除具有指定键值名称</para>
+            </summary>
+            <param name="keyName">缓存键值名称</param>
+        </member>
+        <member name="M:DawnXZ.WebUtility.CacheHelper.Remove">
+            <summary>
+            移除缓存对象
+            <para>移除所有</para>
+            </summary>
+        </member>
+        <member name="T:DawnXZ.WebUtility.CookieHelper">
+            <summary>
+            Cookies操作辅助类
+            </summary>
+        </member>
+        <member name="M:DawnXZ.WebUtility.CookieHelper.Get(System.String)">
+            <summary>
+            获取 Cookies 对象
+            </summary>
+            <param name="cookieName">Cookies 名称</param>
+            <returns>Cookies 数据对象</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.CookieHelper.Get(System.String,System.String)">
+            <summary>
+            获取 Cookies 对象
+            <para>支持 Cookies 跨域</para>
+            </summary>
+            <param name="cookieName">Cookies 名称</param>
+            <param name="cookieKey">Cookies 键名</param>
+            <returns>Cookies 数据对象</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.CookieHelper.Add(System.String,System.String)">
+            <summary>
+            添加 Cookies 对象
+            </summary>
+            <param name="cookieName">Cookies 名称</param>
+            <param name="cookieValue">Cookies 数值</param>
+        </member>
+        <member name="M:DawnXZ.WebUtility.CookieHelper.Add(System.String,System.String,System.String)">
+            <summary>
+            添加 Cookies 对象
+            </summary>
+            <param name="cookieName">Cookies 名称</param>
+            <param name="cookieKey">Cookies 键名</param>
+            <param name="cookieValue">Cookies 数值</param>
+        </member>
+        <member name="M:DawnXZ.WebUtility.CookieHelper.Add(System.String,System.String,System.Int32)">
+            <summary>
+            添加 Cookies 对象
+            </summary>
+            <param name="cookieName">Cookies 名称</param>
+            <param name="cookieValue">Cookies 数值</param>
+            <param name="expires">过期时间(分钟)</param>
+        </member>
+        <member name="M:DawnXZ.WebUtility.CookieHelper.Add(System.String,System.String,System.Int32,System.String)">
+            <summary>
+            添加 Cookies 对象
+            <para>支持 Cookies 跨域</para>
+            </summary>
+            <param name="cookieName">Cookies 名称</param>
+            <param name="cookieValue">Cookies 数值</param>
+            <param name="expires">过期时间(分钟)</param>
+            <param name="strDomain">Cookies 跨域名称</param>
+        </member>
+        <member name="M:DawnXZ.WebUtility.CookieHelper.Add(System.String,System.String,System.String,System.Int32,System.String)">
+            <summary>
+            添加 Cookies 对象
+            <para>支持 Cookies 跨域</para>
+            </summary>
+            <param name="cookieName">Cookies 名称</param>
+            <param name="cookieKey">Cookies 键名</param>
+            <param name="cookieValue">Cookies 数值</param>
+            <param name="expires">过期时间(分钟)</param>
+            <param name="strDomain">Cookies 跨域名称</param>
+        </member>
+        <member name="M:DawnXZ.WebUtility.CookieHelper.Remove(System.String)">
+            <summary>
+            移除 Cookies 对象
+            <para>移除指定名称</para>
+            </summary>
+            <param name="cookieName">Cookies 名称</param>
+            <returns>Cookies 数据对象</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.CookieHelper.RemoveAt(System.String)">
+            <summary>
+            移除 Cookies 对象
+            <para>移除具有指定名称</para>
+            </summary>
+            <param name="cookieName">Cookies 名称</param>
+        </member>
+        <member name="M:DawnXZ.WebUtility.CookieHelper.Remove">
+            <summary>
+            移除 Cookies 对象
+            <para>移除所有</para>
+            </summary>
+        </member>
+        <member name="M:DawnXZ.WebUtility.CookieHelper.GetOf(System.String)">
+            <summary>
+            获取 Cookies 对象
+            <para>UrlDecode UTF-8</para>
+            </summary>
+            <param name="cookieName">Cookies 名称</param>
+            <returns>Cookies 数据对象</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.CookieHelper.GetOf(System.String,System.String)">
+            <summary>
+            获取 Cookies 对象
+            <para>支持 Cookies 跨域</para>
+            <para>UrlDecode UTF-8</para>
+            </summary>
+            <param name="cookieName">Cookies 名称</param>
+            <param name="cookieKey">Cookies 键名</param>
+            <returns>Cookies 数据对象</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.CookieHelper.AddOf(System.String,System.String)">
+            <summary>
+            添加 Cookies 对象
+            <para>UrlEncode UTF-8</para>
+            </summary>
+            <param name="cookieName">Cookies 名称</param>
+            <param name="cookieValue">Cookies 数值</param>
+        </member>
+        <member name="M:DawnXZ.WebUtility.CookieHelper.AddOf(System.String,System.String,System.String)">
+            <summary>
+            添加 Cookies 对象
+            <para>UrlEncode UTF-8</para>
+            </summary>
+            <param name="cookieName">Cookies 名称</param>
+            <param name="cookieKey">Cookies 键名</param>
+            <param name="cookieValue">Cookies 数值</param>
+        </member>
+        <member name="M:DawnXZ.WebUtility.CookieHelper.AddOf(System.String,System.String,System.Int32)">
+            <summary>
+            添加 Cookies 对象
+            <para>UrlEncode UTF-8</para>
+            </summary>
+            <param name="cookieName">Cookies 名称</param>
+            <param name="cookieValue">Cookies 数值</param>
+            <param name="expires">过期时间(分钟)</param>
+        </member>
+        <member name="M:DawnXZ.WebUtility.CookieHelper.AddOf(System.String,System.String,System.Int32,System.String)">
+            <summary>
+            添加 Cookies 对象
+            <para>支持 Cookies 跨域</para>
+            <para>UrlEncode UTF-8</para>
+            </summary>
+            <param name="cookieName">Cookies 名称</param>
+            <param name="cookieValue">Cookies 数值</param>
+            <param name="expires">过期时间(分钟)</param>
+            <param name="strDomain">Cookies 跨域名称</param>
+        </member>
+        <member name="M:DawnXZ.WebUtility.CookieHelper.AddOf(System.String,System.String,System.String,System.Int32,System.String)">
+            <summary>
+            添加 Cookies 对象
+            <para>支持 Cookies 跨域</para>
+            <para>UrlEncode UTF-8</para>
+            </summary>
+            <param name="cookieName">Cookies 名称</param>
+            <param name="cookieKey">Cookies 键名</param>
+            <param name="cookieValue">Cookies 数值</param>
+            <param name="expires">过期时间(分钟)</param>
+            <param name="strDomain">Cookies 跨域名称</param>
+        </member>
+        <member name="T:DawnXZ.WebUtility.PageElapsed">
+            <summary>
+            页面运行时间辅助类
+            <remarks>
+            <para>在 Web.config 文件中的 <httpModules></httpModules> 中加入下面代码</para>
+            <para>&lt;add name="IsPageElapsed" type="DawnXZ.WebUtility.PageElapsed, WebUtility" /&gt;</para>
+            <para>需要显示的地方加入下面代码</para>
+            <para>&lt;div datasrc="#PageElapseTime" datafld="ElapseTime"&gt;&lt;/div&gt;</para>
+            </remarks>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.WebUtility.PageElapsed.FStartTime">
+            <summary>
+            开始时间
+            </summary>
+        </member>
+        <member name="M:DawnXZ.WebUtility.PageElapsed.Init(System.Web.HttpApplication)">
+            <summary>
+            启动
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:DawnXZ.WebUtility.PageElapsed.Dispose">
+            <summary>
+            释放
+            </summary>
+        </member>
+        <member name="M:DawnXZ.WebUtility.PageElapsed.OnBeginRequest(System.Object,System.EventArgs)">
+            <summary>
+            在开始时
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:DawnXZ.WebUtility.PageElapsed.OnEndRequest(System.Object,System.EventArgs)">
+            <summary>
+            在结束时
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="T:DawnXZ.WebUtility.RequestHelper">
+            <summary>
+            请求对象操作辅助类
+            </summary>
+        </member>
+        <member name="F:DawnXZ.WebUtility.RequestHelper.RegexBr">
+            <summary>
+            换行符
+            </summary>
+        </member>
+        <member name="F:DawnXZ.WebUtility.RequestHelper.RegexFont">
+            <summary>
+            格式化字体HTML标记
+            </summary>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.GetRegexCompiledOptions">
+            <summary>
+            得到正则编译参数设置
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.IsIPAddress(System.String)">
+            <summary>
+            判断字符串是否为正确的IP地址格式
+            </summary>
+            <param name="strVerify">需要验证的字符串</param>
+            <returns>True/False，是/否</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.GetIPAddress">
+            <summary>
+            获取请求客户端IP地址
+            </summary>
+            <returns>客户端IP地址</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.GetIPAddressAt">
+            <summary>
+            获取请求客户端IP地址
+            <para>取得客户端真实IP</para>
+            <para>如果有代理则取第一个非内网地址</para>
+            </summary>
+            <returns>客户端IP地址</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.GetMacAddress(System.String)">
+            <summary>
+            获取请求客户端MAC地址
+            </summary>
+            <param name="strIP">客户端IP地址</param>
+            <returns>客户端MAC地址</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.GetUrlOfReferrer">
+            <summary>
+            返回上一个页面的URL地址
+            </summary>
+            <returns>页面的URL地址</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.GetUrlOfRaw">
+            <summary>
+            获取当前请求的原始URL地址
+            <para>URL中域信息之后的部分,包括查询字符串(如果存在)</para>
+            </summary>
+            <returns>页面的原始URL地址</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.GetUrlByFilename(System.String)">
+            <summary>
+            返回URL中结尾的文件名
+            </summary>
+            <param name="strUrl">页面的URL地址</param>
+            <returns>文件名</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.GetUrl">
+            <summary>
+            获得当前完整Url地址
+            </summary>
+            <returns>页面的URL地址</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.GetParamCountOfQuery">
+            <summary>
+            获取URL页面中的QueryString参数数量
+            </summary>
+            <returns>QueryString参数数量</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.GetParamCountOfForm">
+            <summary>
+            获取URL页面中的Form参数数量
+            </summary>
+            <returns>Form参数数量</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.GetParamCount">
+            <summary>
+            获取URL页面中的参数总个数
+            </summary>
+            <returns>参数总个数</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.GetParamQueryOfString(System.String)">
+            <summary>
+            获取页面中指定QueryString参数值
+            <para>字符串类型</para>
+            </summary>
+            <param name="strName">参数名称</param>
+            <returns>参数值</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.GetParamQueryOfInt(System.String,System.Int32)">
+            <summary>
+            获取页面中指定QueryString参数值
+            <para>整数类型</para>
+            </summary>
+            <param name="strName">参数名称</param>
+            <param name="defValue">缺省值</param>
+            <returns>参数值</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.GetParamQueryOfFloat(System.String,System.Single)">
+            <summary>
+            获取页面中指定QueryString参数值
+            <para>浮点数类型</para>
+            </summary>
+            <param name="strName">参数名称</param>
+            <param name="defValue">缺省值</param>
+            <returns>参数值</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.GetParamFormOfString(System.String)">
+            <summary>
+            获取页面中指定Form参数值
+            <para>字符串类型</para>
+            </summary>
+            <param name="strName">参数名称</param>
+            <returns>参数值</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.GetParamFormOfInt(System.String,System.Int32)">
+            <summary>
+            获取页面中指定Form参数值
+            <para>整数类型</para>
+            </summary>
+            <param name="strName">参数名称</param>
+            <param name="defValue">缺省值</param>
+            <returns>参数值</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.GetParamFormOfFloat(System.String,System.Single)">
+            <summary>
+            获取页面中指定Form参数值
+            <para>浮点数类型</para>
+            </summary>
+            <param name="strName">参数名称</param>
+            <param name="defValue">缺省值</param>
+            <returns>参数值</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.GetParamOfString(System.String)">
+            <summary>
+            获取页面中指定参数名称的值
+            <para>字符串类型</para>
+            <para>先判断QueryString参数，如果为空则取Form参数</para>
+            </summary>
+            <param name="strName">参数名称</param>
+            <returns>参数值</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.GetParamOfInt(System.String,System.Int32)">
+            <summary>
+            获取页面中指定参数名称的值
+            <para>整数类型</para>
+            <para>先判断QueryString参数，如果为空则取Form参数</para>
+            </summary>
+            <param name="strName">参数名称</param>
+            <param name="defValue">缺省值</param>
+            <returns>参数值</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.GetParamOfFloat(System.String,System.Single)">
+            <summary>
+            获取页面中指定参数名称的值
+            <para>浮点数类型</para>
+            <para>先判断QueryString参数，如果为空则取Form参数</para>
+            </summary>
+            <param name="strName">参数名称</param>
+            <param name="defValue">缺省值</param>
+            <returns>参数值</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.EncodeOfHtml(System.String)">
+            <summary>
+            返回 HTML 方式的编码结果
+            </summary>
+            <param name="strVal">需要编码的字符串</param>
+            <returns>编码结果</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.DecodeOfHtml(System.String)">
+            <summary>
+            返回 HTML 方式的解码结果
+            </summary>
+            <param name="strVal">需要编码的字符串</param>
+            <returns>解码结果</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.EncodeOfUrl(System.String)">
+            <summary>
+            返回 URL 方式的编码结果
+            </summary>
+            <param name="strVal">需要编码的字符串</param>
+            <returns>编码结果</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.DecodeOfUrl(System.String)">
+            <summary>
+            返回 URL 方式的解码结果
+            </summary>
+            <param name="strVal">需要编码的字符串</param>
+            <returns>解码结果</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.MarkSpacesOfSingle(System.Int32)">
+            <summary>
+            生成指定数量的HTML空格转义字符
+            <para>单空格模式</para>
+            </summary>
+            <param name="spacesCount">生成数量</param>
+            <returns>HTML空格转义字符</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.MarkSpacesOfDouble(System.Int32)">
+            <summary>
+            生成指定数量的HTML空格转义字符
+            <para>双空格模式</para>
+            </summary>
+            <param name="spacesCount">生成数量</param>
+            <returns>HTML空格转义字符</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.RequestIsPost">
+            <summary>
+            判断当前页面是否接收到了Post请求
+            </summary>
+            <returns>是否接收到了Post请求</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.RequestIsGet">
+            <summary>
+            判断当前页面是否接收到了Get请求
+            </summary>
+            <returns>是否接收到了Get请求</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.GetPageName">
+            <summary>
+            获得当前页面的名称
+            </summary>
+            <returns>当前页面的名称</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.GetServerString(System.String)">
+            <summary>
+            返回指定的服务器变量信息
+            </summary>
+            <param name="strName">服务器变量名</param>
+            <returns>服务器变量信息</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.GetServerFullHost">
+            <summary>
+            得到当前完整主机头
+            </summary>
+            <returns>完整主机头</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.GetServerHost">
+            <summary>
+            得到主机头
+            </summary>
+            <returns>主机头</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.GetClientOfUserAgent">
+            <summary>
+            获取客户端浏览器的原始用户代理信息
+            </summary>
+            <returns>客户端浏览器的原始用户代理信息</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.GetClientOfUserHostAddress">
+            <summary>
+            获取远程客户端的IP主机地址
+            </summary>
+            <returns>远程客户端的IP主机地址</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.GetClientOfUserHostName">
+            <summary>
+            获取远程客户端的DNS名称
+            </summary>
+            <returns>远程客户端的DNS名称</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.GetClientOfUserLanguages">
+            <summary>
+            获取客户端语言首选项的排序字符串数组
+            </summary>
+            <returns>客户端语言首选项的排序字符串数组</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.GetClientOfType">
+            <summary>
+            获取客户端浏览器类型
+            </summary>
+            <returns>客户端浏览器类型</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.GetClientOfBrowser">
+            <summary>
+            获取客户端浏览器名称
+            </summary>
+            <returns>客户端浏览器名称</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.GetClientOfMajorVersion">
+            <summary>
+            获取客户端浏览器（主）版本号
+            </summary>
+            <returns>客户端浏览器完整（主）版本号</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.GetClientOfVersion">
+            <summary>
+            获取客户端浏览器完整版本号
+            </summary>
+            <returns>客户端浏览器完整版本号</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.GetClientOfPlatform">
+            <summary>
+            获取客户端使用平台名称
+            </summary>
+            <returns>客户端使用平台名称</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.GetClientOfBeta">
+            <summary>
+            获取客户端浏览器是否为测试版本
+            </summary>
+            <returns>客户端浏览器是否为测试版本</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.GetClientOfWin16">
+            <summary>
+            获取客户端是否为16位的环境
+            </summary>
+            <returns>客户端是否为16位的环境</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.GetClientOfWin32">
+            <summary>
+            获取客户端是否为32位的环境
+            </summary>
+            <returns>客户端是否为32位的环境</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.GetClientOfFrames">
+            <summary>
+            获取客户端是否支持框架（Frame）
+            </summary>
+            <returns>客户端是否支持框架（Frame）</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.GetClientOfTables">
+            <summary>
+            获取客户端是否支持表格（table）
+            </summary>
+            <returns>客户端是否支持表格（table）</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.GetClientOfCookies">
+            <summary>
+            获取客户端是否支持Cookie会话
+            </summary>
+            <returns>客户端是否支持Cookie会话</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.GetClientOfVBScript">
+            <summary>
+            获取客户端是否支持VB Script脚本
+            </summary>
+            <returns>客户端是否支持VB Script脚本</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.GetClientOfJavaScript">
+            <summary>
+            获取客户端是否支持Java Script脚本
+            </summary>
+            <returns>客户端是否支持Java Script脚本</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.GetClientOfJavaApplets">
+            <summary>
+            获取客户端是否支持Java Applets小应用程序
+            </summary>
+            <returns>客户端是否支持Java Applets小应用程序</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.GetClientOfActiveXControls">
+            <summary>
+            获取客户端是否支持Activex Controls控件
+            <para>微软网络化多媒体对象技术</para>
+            </summary>
+            <returns>客户端是否支持Activex Controls控件</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.IsBrowserGet(System.String)">
+            <summary>
+            判断当前访问是否来自浏览器软件
+            <para>默认判断：IE、Chrome、Mozilla、Firefox、Opera、Safari、Netscape、Konqueror</para>
+            <para>可扩展，传入参数即可，以“|”分隔</para>
+            </summary>
+            <param name="extBrowserName">扩展浏览器类型判断字符串</param>
+            <returns>当前访问是否来自浏览器软件</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.IsSearchEnginesGet(System.String)">
+            <summary>
+            判断是否来自搜索引擎链接
+            <para>默认判断：google、yahoo、msn、baidu、sogou、sohu、sina、163、lycos、tom、yisou、iask、soso、gougou、zhongsou</para>
+            <para>可扩展，传入参数即可，以“|”分隔</para>
+            </summary>
+            <param name="extSearchName">扩展搜索引擎类型判断字符串</param>
+            <returns>是否来自搜索引擎链接</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.ValidateIsNull(System.Web.HttpRequest,System.String[])">
+            <summary>
+            判定接受参数是否为空
+            </summary>
+            <param name="httpRequest">request对象</param>
+            <param name="validateparamaters">参数名数组</param>
+            <returns>判断是否合法</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.ValidateIsLength(System.Web.HttpRequest,System.String[])">
+            <summary>
+            判定接受参数长度是否正确
+            </summary>
+            <param name="httpRequest">request对象</param>
+            <param name="validateparamaters">参数名数组</param>
+            <returns>判断是否合法</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.IsWebImage(System.String)">
+            <summary>
+            判断文件名是否为浏览器可以直接显示的图片文件名
+            </summary>
+            <param name="filename">文件名</param>
+            <returns>是否可以直接显示</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.FileFindNoUTF8FileHtm(System.String)">
+            <summary>
+            返回指定目录下的非 UTF8 字符集文件
+            扩展名：htm
+            </summary>
+            <param name="dirPath">文件目录路径</param>
+            <returns>文件名的字符串数组</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.FileFindNoUTF8FileHtml(System.String)">
+            <summary>
+            返回指定目录下的非 UTF8 字符集文件
+            扩展名：html
+            </summary>
+            <param name="dirPath">文件目录路径</param>
+            <returns>文件名的字符串数组</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.IsUTF8(System.IO.FileStream)">
+            <summary>
+            判断文件流是否为UTF8字符集
+            </summary>
+            <param name="sbInputStream">文件流</param>
+            <returns>判断结果</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.SplitString(System.String,System.String)">
+            <summary>
+            分割字符串
+            </summary>
+            <param name="strContent">要分割的字符串</param>
+            <param name="strSplit">分割标识</param>
+            <returns>字符串数组</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.StrFormat(System.String)">
+            <summary>
+            替换回车换行符为html换行符
+            </summary>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.EncodeHtml(System.String)">
+            <summary>
+            替换html字符
+            </summary>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.StrFilter(System.String,System.String)">
+            <summary>
+            进行指定的替换(脏字过滤)
+            </summary>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.ClearAllHTML(System.String)">
+            <summary>
+            清除所有HTML函数 
+            </summary>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.RemoveHtml(System.String)">
+            <summary>
+            移除Html标记
+            </summary>
+            <param name="content">原内容</param>
+            <returns></returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.RemoveUnsafeHtml(System.String)">
+            <summary>
+            过滤HTML中的不安全标签
+            </summary>
+            <param name="content">原内容</param>
+            <returns></returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.RemoveFontTag(System.String)">
+            <summary>
+            将用户组Title中的font标签去掉
+            </summary>
+            <param name="title">用户组Title</param>
+            <returns></returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.GetTextFromHTML(System.String)">
+            <summary>
+            从HTML中获取文本,保留br,p,img
+            </summary>
+            <param name="HTML"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.ReplaceStrToScript(System.String)">
+            <summary>
+            为脚本替换特殊字符串
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.GetMapPath(System.String,System.String)">
+            <summary>
+            获得当前绝对路径
+            </summary>
+            <param name="absoluteUrl">URL地址</param>
+            <param name="relativeUrl">相对路径</param>
+            <returns>绝对路径</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.GetMapPath(System.String)">
+            <summary>
+            获得当前绝对路径
+            </summary>
+            <param name="strPath">指定的路径</param>
+            <returns>绝对路径</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.GetRootUrl(System.String)">
+            <summary>
+            获取站点根目录URL
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.GetSourceTextByUrl(System.String)">
+            <summary>
+            根据Url获得源文件内容
+            </summary>
+            <param name="strUrl">合法的Url地址</param>
+            <returns></returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.GetHttpWebResponse(System.String)">
+            <summary>
+            HTTP POST 请求 URL
+            </summary>
+            <param name="strUrl">URL 地址</param>
+            <returns></returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.GetHttpWebResponse(System.String,System.String)">
+            <summary>
+            HTTP POST 请求 URL
+            </summary>
+            <param name="strUrl">URL 地址</param>
+            <param name="postData">POST 请求内容</param>
+            <returns></returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.SubassemblyCheck(System.String)">
+            <summary>
+            组件检测场
+            </summary>
+            <param name="objName">要检测的组件名称</param>
+            <returns>是否支持 true/false</returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.RequestHelper.SubassemblyAssembly(System.String)">
+            <summary>
+            组件检测场
+            </summary>
+            <param name="objName">要检测的组件名称</param>
+            <returns>是否支持 true/false</returns>
+        </member>
+        <member name="T:DawnXZ.WebUtility.ServiceHelper">
+            <summary>
+            WebService动态调用操作辅助类
+            </summary>
+        </member>
+        <member name="P:DawnXZ.WebUtility.ServiceHelper.Url">
+            <summary>
+            web服务的地址
+            </summary>
+        </member>
+        <member name="P:DawnXZ.WebUtility.ServiceHelper.MethodName">
+            <summary>
+            web服务的方法名
+            </summary>
+        </member>
+        <member name="P:DawnXZ.WebUtility.ServiceHelper.Args">
+            <summary>
+            web服务的方法参数
+            </summary>
+        </member>
+        <member name="P:DawnXZ.WebUtility.ServiceHelper.Username">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="P:DawnXZ.WebUtility.ServiceHelper.Password">
+            <summary>
+            密码
+            </summary>
+        </member>
+        <member name="P:DawnXZ.WebUtility.ServiceHelper.Domain">
+            <summary>
+            域名
+            </summary>
+        </member>
+        <member name="P:DawnXZ.WebUtility.ServiceHelper.NeedCredential">
+            <summary>
+            是否需要身份验证
+            </summary>
+        </member>
+        <member name="M:DawnXZ.WebUtility.ServiceHelper.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:DawnXZ.WebUtility.ServiceHelper.Response">
+            <summary>
+            调用WebService
+            </summary>
+        </member>
+        <member name="T:DawnXZ.WebUtility.ServiceProxy">
+            <summary>
+            WebService代理操作辅助类
+            </summary>
+        </member>
+        <member name="P:DawnXZ.WebUtility.ServiceProxy.Url">
+            <summary>
+            web服务的地址
+            </summary>
+        </member>
+        <member name="P:DawnXZ.WebUtility.ServiceProxy.MethodName">
+            <summary>
+            web服务的方法名
+            </summary>
+        </member>
+        <member name="P:DawnXZ.WebUtility.ServiceProxy.Args">
+            <summary>
+            web服务的方法参数
+            </summary>
+        </member>
+        <member name="P:DawnXZ.WebUtility.ServiceProxy.Username">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="P:DawnXZ.WebUtility.ServiceProxy.Password">
+            <summary>
+            密码
+            </summary>
+        </member>
+        <member name="P:DawnXZ.WebUtility.ServiceProxy.Domain">
+            <summary>
+            域名
+            </summary>
+        </member>
+        <member name="P:DawnXZ.WebUtility.ServiceProxy.NeedCredential">
+            <summary>
+            是否需要身份验证
+            </summary>
+        </member>
+        <member name="M:DawnXZ.WebUtility.ServiceProxy.GetWsClassName(System.String)">
+            <summary>
+            GetWsClassName
+            </summary>
+            <param name="wsUrl"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DawnXZ.WebUtility.ServiceProxy.InvokeWebService">
+            <summary>
+            InvokeWebService
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

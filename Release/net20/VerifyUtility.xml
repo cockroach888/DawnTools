@@ -1,0 +1,1488 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>VerifyUtility</name>
+    </assembly>
+    <members>
+        <member name="T:DawnXZ.VerifyUtility.ValidError">
+            <summary>
+            数据校验错误信息
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidError.Selector">
+            <summary>
+            下拉框数据选择
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidError.IsEmail">
+            <summary>
+            判断字符串是否符合Email格式
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidError.IsEmailValid">
+            <summary>
+            判断字符串是否符合Email格式
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidError.ChsIsTname">
+            <summary>
+            判断字符串是否为真实姓名
+            <para>不低于2个汉字且不大于4个汉字</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidError.ChsIsChinese">
+            <summary>
+            判断字符串是否由中文组成
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidError.ChsIsChineseOrEngOrNum">
+            <summary>
+            判断字符串是否由中文、英文、数字组成
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidError.ChsIsChineseOrEngOrNums">
+            <summary>
+            判断字符串是否由中文、英文、数字组成
+            <para>中文或英文开头</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidError.ChsIsText">
+            <summary>
+            判断字符串是否由中文、字母、数字组成
+            <para>可含标点符号()[]（）</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidError.ChsIsTexts">
+            <summary>
+            判断字符串是否由中文、字母、数字组成
+            <para>可含标点符号()[]（）</para>
+            <para>中文或英文开头</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidError.ChsIsMemo">
+            <summary>
+            判断字符串是否由中文、字母、数字组成
+            <para>可含标点符号()[]（）：:、，,。.；;！!……</para>
+            <para>含换行符及回车符</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidError.ChsIsMemos">
+            <summary>
+            判断字符串是否由中文、字母、数字组成
+            <para>可含标点符号()[]（）：:、，,。.；;！!……</para>
+            <para>含换行符及回车符</para>
+            <para>中文或英文开头</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidError.ChsIsAddress">
+            <summary>
+            判断字符串是否由中文、字母、数字组成
+            <para>可含标点符号()[-]（、）</para>
+            <para>中文或英文开头</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidError.EngIsPwd">
+            <summary>
+            判断字符串是否符合密码规范
+            <para>任意字符</para>
+            <para>长度：6-16 [区分大小写]</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidError.EngIsPassword">
+            <summary>
+            判断字符串是否符合密码规范
+            <para>任意字符</para>
+            <para>长度：6-16 [区分大小写]</para>
+            <para>英文开头</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidError.EngIsPasswords">
+            <summary>
+            判断字符串是否符合密码规范
+            <para>由英文和数字及下划线组成</para>
+            <para>长度：6-16 [区分大小写]</para>
+            <para>英文开头</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidError.EngIsRegister">
+            <summary>
+            判断字符串是否由英文和数字组成
+            <para>用于检测注册帐号是否符合规范用</para>
+            <para>长度：4-8 [不区分大小写]</para>
+            <para>英文开头</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidError.EngIsRegisters">
+            <summary>
+            判断字符串是否由英文和数字组成
+            <para>用于检测注册帐号是否符合规范用</para>
+            <para>长度：4-16 [不区分大小写]</para>
+            <para>英文开头</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidError.EngIsEnglish">
+            <summary>
+            判断字符串是否由26个英文字母组成
+            <para>不区分大小写</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidError.EngIsUppercase">
+            <summary>
+            判断字符串是否由26个英文字母组成
+            <para>大写</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidError.EngIsLowercase">
+            <summary>
+            判断字符串是否由26个英文字母组成
+            <para>小写</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidError.EngIsEngAndNum">
+            <summary>
+            判断字符串是否由26个英文和数字组成
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidError.EngIsEngAndNums">
+            <summary>
+            判断字符串是否由26个英文和数字组成
+            <para>英文开头</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidError.EngIsEngAndNumComma">
+            <summary>
+            判断字符串是否由26个英文、数字及逗号组成
+            <para>英文开头</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidError.EngIsEngAndNumOrUnderline">
+            <summary>
+            判断字符串是否由26个英文和数字及下划线组成
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidError.NumIsByteTinyint">
+            <summary>
+            判断对象是否为0-255数据
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidError.NumIsInteger">
+            <summary>
+            判断对象是否由数字组成
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidError.NumIsZeroOrNot">
+            <summary>
+            判断对象是否为零和非零开头的数字
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidError.NumIsPlus2Point">
+            <summary>
+            判断对象是否为2位小数的正实数
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidError.NumIsPlus3Point">
+            <summary>
+            判断对象是否为1至3位小数的正实数
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidError.NumIsIntegralBySignless">
+            <summary>
+            判断对象是否为非零的正整数
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidError.NumIsIntegralByNegative">
+            <summary>
+            判断对象是否为非零的负整数
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidError.NumIsFloatBySignless">
+            <summary>
+            判断对象是否为正浮点数
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidError.NumIsFloatByNegative">
+            <summary>
+            判断对象是否为负浮点数
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidError.NumIsDouble">
+            <summary>
+            判断对象是否为Double类型
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidError.NumIsDoubles">
+            <summary>
+            判断对象是否为Double类型
+            <para>包含正负号</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidError.NumIsMoney">
+            <summary>
+            判断对象是否为Money类型
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidError.TelIsPhone">
+            <summary>
+            判断字符串是否符合电话号码格式
+            <para>包含电话号码与手机号码共同验证</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidError.TelIsTelephone">
+            <summary>
+            判断字符串是否符合电话号码格式
+            <para>
+            座机号码，格式：010-12345678、020-1234567、0755-1234567、0755-12345678、1234567、12345678
+            </para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidError.TelIsMobile">
+            <summary>
+            判断字符串是否符合电话号码格式
+            <para>中国电信、中国移动、中国联通共同验证</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidError.TelIsChinaMobile">
+            <summary>
+            判断字符串是否符合电话号码格式
+            <para>
+            手机号码·中国移动【134 135 136 137 138 139 147 150 151 152 157 158 159 182 187 188】
+            </para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidError.TelIsChinaUnicom">
+            <summary>
+            判断字符串是否符合电话号码格式
+            <para>
+            手机号码·中国联通【130 131 132 145 155 156 185 186】
+            </para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidError.TelIsChinaTelecom">
+            <summary>
+            判断字符串是否符合电话号码格式
+            <para>
+            手机号码·中国电信 【133 153 180 189】
+            </para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidError.IsIP">
+            <summary>
+            判断字符串是否为正确的IP地址格式
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidError.IsIPs">
+            <summary>
+            判断字符串是否为正确的IP地址格式
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidError.IsIPSect">
+            <summary>
+            判断字符串是否为正确的IP地址格式
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidError.IsIDCard">
+            <summary>
+            判断字符串是否符合大陆身份证规范
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidError.IsSafeString">
+            <summary>
+            判断字符串是否存在用于链接的危险字符
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidError.IsURL">
+            <summary>
+            判断字符串是否为正确的URL地址格式
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidError.IsPost">
+            <summary>
+            判断字符串是否符合邮政编码格式
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidError.IsDate">
+            <summary>
+            判断字符串是否符合日期格式
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidError.IsEmpty">
+            <summary>
+            判断字符串是否为空
+            </summary>
+        </member>
+        <member name="T:DawnXZ.VerifyUtility.ValidHelper">
+            <summary>
+            数据校验操作辅助类
+            </summary>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.IsEmail(System.String)">
+            <summary>
+            判断字符串是否符合Email格式
+            </summary>
+            <param name="strVerify">需要验证的字符串</param>
+            <returns>True/False，符合/不符合</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.IsEmailValid(System.String)">
+            <summary>
+            判断字符串是否符合Email格式
+            </summary>
+            <param name="strVerify">需要验证的字符串</param>
+            <returns>True/False，符合/不符合</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.ChsIsTname(System.String)">
+            <summary>
+            判断字符串是否为真实姓名
+            <para>不低于2个汉字且不大于8个汉字</para>
+            </summary>
+            <param name="strVerify">需要验证的字符串</param>
+            <returns>True/False，是/否</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.ChsIsChinese(System.String)">
+            <summary>
+            判断字符串是否由中文组成
+            </summary>
+            <param name="strVerify">需要验证的字符串</param>
+            <returns>True/False，是/否</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.ChsIsChineseOrEngOrNum(System.String)">
+            <summary>
+            判断字符串是否由中文、英文、数字组成
+            </summary>
+            <param name="strVerify">需要验证的字符串</param>
+            <returns>True/False，是/否</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.ChsIsChineseOrEngOrNums(System.String)">
+            <summary>
+            判断字符串是否由中文、英文、数字组成
+            <para>中文或英文开头</para>
+            </summary>
+            <param name="strVerify">需要验证的字符串</param>
+            <returns>True/False，是/否</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.ChsIsText(System.String)">
+            <summary>
+            判断字符串是否由中文、字母、数字组成
+            <para>可含标点符号()[]（）</para>
+            </summary>
+            <param name="strVerify">需要验证的字符串</param>
+            <returns>True/False，是/否</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.ChsIsTexts(System.String)">
+            <summary>
+            判断字符串是否由中文、字母、数字组成
+            <para>可含标点符号()[]（）</para>
+            <para>中文或英文开头</para>
+            </summary>
+            <param name="strVerify">需要验证的字符串</param>
+            <returns>True/False，是/否</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.ChsIsMemo(System.String)">
+            <summary>
+            判断字符串是否由中文、字母、数字组成
+            <para>可含标点符号()[]（）：:、，,。.；;！!……</para>
+            <para>含换行符及回车符</para>
+            </summary>
+            <param name="strVerify">需要验证的字符串</param>
+            <returns>True/False，是/否</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.ChsIsMemos(System.String)">
+            <summary>
+            判断字符串是否由中文、字母、数字组成
+            <para>可含标点符号()[]（）：:、，,。.；;！!……</para>
+            <para>含换行符及回车符</para>
+            <para>中文或英文开头</para>
+            </summary>
+            <param name="strVerify">需要验证的字符串</param>
+            <returns>True/False，是/否</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.ChsIsAddress(System.String)">
+            <summary>
+            判断字符串是否由中文、字母、数字组成
+            <para>可含标点符号()[-]（、）</para>
+            <para>中文或英文开头</para>
+            </summary>
+            <param name="strVerify">需要验证的字符串</param>
+            <returns>True/False，是/否</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.ChsToDBC(System.String)">
+            <summary>
+            全角转半角的函数(DBC case)
+            </summary>
+            <param name="strChange">需要转换的字符串</param>
+            <returns>半角字符串</returns>
+            <remarks>
+            全角空格为12288，半角空格为32
+            其他字符半角(33-126)与全角(65281-65374)的对应关系是：均相差65248
+            </remarks>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.EngIsPwd(System.String)">
+            <summary>
+            判断字符串是否符合密码规范
+            <para>任意字符</para>
+            <para>长度：6-16 [区分大小写]</para>
+            </summary>
+            <param name="strVerify">需要验证的字符串</param>
+            <returns>True/False，是/否</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.EngIsPassword(System.String)">
+            <summary>
+            判断字符串是否符合密码规范
+            <para>任意字符</para>
+            <para>长度：6-16 [区分大小写]</para>
+            <para>英文开头</para>
+            </summary>
+            <param name="strVerify">需要验证的字符串</param>
+            <returns>True/False，是/否</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.EngIsPasswords(System.String)">
+            <summary>
+            判断字符串是否符合密码规范
+            <para>由英文和数字及下划线组成</para>
+            <para>长度：6-16 [区分大小写]</para>
+            <para>英文开头</para>
+            </summary>
+            <param name="strVerify">需要验证的字符串</param>
+            <returns>True/False，是/否</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.EngIsRegister(System.String)">
+            <summary>
+            判断字符串是否由英文和数字组成
+            <para>用于检测注册帐号是否符合规范用</para>
+            <para>长度：4-8 [不区分大小写]</para>
+            <para>英文开头</para>
+            </summary>
+            <param name="strVerify">需要验证的字符串</param>
+            <returns>True/False，是/否</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.EngIsRegisters(System.String)">
+            <summary>
+            判断字符串是否由英文和数字组成
+            <para>用于检测注册帐号是否符合规范用</para>
+            <para>长度：4-16 [不区分大小写]</para>
+            <para>英文开头</para>
+            </summary>
+            <param name="strVerify">需要验证的字符串</param>
+            <returns>True/False，是/否</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.EngIsEnglish(System.String)">
+            <summary>
+            判断字符串是否由26个英文字母组成
+            <para>不区分大小写</para>
+            </summary>
+            <param name="strVerify">需要验证的字符串</param>
+            <returns>True/False，是/否</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.EngIsUppercase(System.String)">
+            <summary>
+            判断字符串是否由26个英文字母组成
+            <para>大写</para>
+            </summary>
+            <param name="strVerify">需要验证的字符串</param>
+            <returns>True/False，是/否</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.EngIsLowercase(System.String)">
+            <summary>
+            判断字符串是否由26个英文字母组成
+            <para>小写</para>
+            </summary>
+            <param name="strVerify">需要验证的字符串</param>
+            <returns>True/False，是/否</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.EngIsEngAndNum(System.String)">
+            <summary>
+            判断字符串是否由26个英文和数字组成
+            </summary>
+            <param name="strVerify">需要验证的字符串</param>
+            <returns>True/False，是/否</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.EngIsEngAndNums(System.String)">
+            <summary>
+            判断字符串是否由26个英文和数字组成
+            <para>英文开头</para>
+            </summary>
+            <param name="strVerify">需要验证的字符串</param>
+            <returns>True/False，是/否</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.EngIsEngAndNumComma(System.String)">
+            <summary>
+            判断字符串是否由26个英文、数字及逗号组成
+            <para>英文开头</para>
+            </summary>
+            <param name="strVerify">需要验证的字符串</param>
+            <returns>True/False，是/否</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.EngIsEngAndNumOrUnderline(System.String)">
+            <summary>
+            判断字符串是否由26个英文和数字及下划线组成
+            </summary>
+            <param name="strVerify">需要验证的字符串</param>
+            <returns>True/False，是/否</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.NumIsByteTinyint(System.Object)">
+            <summary>
+            判断对象是否为0-255数据
+            </summary>
+            <param name="objVerify">需要验证的对象</param>
+            <returns>True/False，是/否</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.NumIsInteger(System.Object)">
+            <summary>
+            判断对象是否由数字组成
+            </summary>
+            <param name="objVerify">需要验证的对象</param>
+            <returns>True/False，是/否</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.NumIsZeroOrNot(System.Object)">
+            <summary>
+            判断对象是否为零和非零开头的数字
+            </summary>
+            <param name="objVerify">需要验证的对象</param>
+            <returns>True/False，是/否</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.NumIsPlus2Point(System.Object)">
+            <summary>
+            判断对象是否为2位小数的正实数
+            </summary>
+            <param name="objVerify">需要验证的对象</param>
+            <returns>True/False，是/否</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.NumIsPlus3Point(System.Object)">
+            <summary>
+            判断对象是否为1至3位小数的正实数
+            </summary>
+            <param name="objVerify">需要验证的对象</param>
+            <returns>True/False，是/否</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.NumIsIntegralBySignless(System.Object)">
+            <summary>
+            判断对象是否为非零的正整数
+            </summary>
+            <param name="objVerify">需要验证的对象</param>
+            <returns>True/False，是/否</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.NumIsIntegralByNegative(System.Object)">
+            <summary>
+            判断对象是否为非零的负整数
+            </summary>
+            <param name="objVerify">需要验证的对象</param>
+            <returns>True/False，是/否</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.NumIsFloatBySignless(System.Object)">
+            <summary>
+            判断对象是否为正浮点数
+            </summary>
+            <param name="objVerify">需要验证的对象</param>
+            <returns>True/False，是/否</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.NumIsFloatByNegative(System.Object)">
+            <summary>
+            判断对象是否为负浮点数
+            </summary>
+            <param name="objVerify">需要验证的对象</param>
+            <returns>True/False，是/否</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.NumIsNumeric(System.Object)">
+            <summary>
+            判断对象是否为Int32类型
+            </summary>
+            <param name="objVerify">需要验证的对象</param>
+            <returns>True/False，是/否</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.NumIsDouble(System.Object)">
+            <summary>
+            判断对象是否为Double类型
+            </summary>
+            <param name="objVerify">需要验证的对象</param>
+            <returns>True/False，是/否</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.NumIsDoubles(System.Object)">
+            <summary>
+            判断对象是否为Double类型
+            <para>包含正负号</para>
+            </summary>
+            <param name="objVerify">需要验证的对象</param>
+            <returns>True/False，是/否</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.NumIsMoney(System.Object)">
+            <summary>
+            判断对象是否为Money类型
+            </summary>
+            <param name="objVerify">需要验证的对象</param>
+            <returns>True/False，是/否</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.NumIsNumericArray(System.String[])">
+            <summary>
+            判断字符串数组的值是否全为Int32类型
+            </summary>
+            <param name="strVerify">需要验证的字符串数组</param>
+            <returns>True/False，是/否</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.NumIsNumericList(System.String)">
+            <summary>
+            判断字符串是否为Int32类型
+            <remarks>
+            字符串分割符默认为半角逗号[,]
+            </remarks>
+            </summary>
+            <param name="strVerify">需要验证的字符串</param>
+            <returns>True/False，是/否</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.NumIsNumericList(System.String,System.Char)">
+            <summary>
+            判断字符串是否为Int32类型
+            </summary>
+            <param name="strVerify">需要验证的字符串</param>
+            <param name="flgSplit">字符串分割符</param>
+            <returns>True/False，是/否</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.TelIsAnyPhone(System.String)">
+            <summary>
+            判断字符串是否符合电话号码格式
+            <para>任意电话号码或手机号码</para>
+            <para>包含Any电话号码与Any手机号码共同验证</para>
+            </summary>
+            <param name="strVerify">需要验证的字符串</param>
+            <returns>True/False，符合/不符合</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.TelIsAllPhone(System.String)">
+            <summary>
+            判断字符串是否符合电话号码格式
+            <para>四种常用判断</para>
+            <para>包含电话号码与手机号码共同验证</para>
+            </summary>
+            <param name="strVerify">需要验证的字符串</param>
+            <returns>True/False，符合/不符合</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.TelIsTelephoneAny(System.String)">
+            <summary>
+            判断字符串是否符合电话号码格式
+            <para>电话号码：+000086-1234-12345678-1234</para>
+            </summary>
+            <param name="strVerify">需要验证的字符串</param>
+            <returns>True/False，符合/不符合</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.TelIsTelephone(System.String)">
+            <summary>
+            判断字符串是否符合电话号码格式
+            <para>
+            座机号码，格式：010-12345678、020-1234567、0755-1234567、0755-12345678、1234567、12345678
+            </para>
+            </summary>
+            <param name="strVerify">需要验证的字符串</param>
+            <returns>True/False，符合/不符合</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.TelIsMobile(System.String)">
+            <summary>
+            判断字符串是否符合电话号码格式
+            <para>中国电信、中国移动、中国联通共同验证</para>
+            </summary>
+            <param name="strVerify">需要验证的字符串</param>
+            <returns>True/False，符合/不符合</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.TelIsMobileAny(System.String)">
+            <summary>
+            判断字符串是否符合手机号码格式
+            <para>1开头，长度等于11位。</para>
+            <para>11、12、13、14、15、16、17、18、19</para>
+            </summary>
+            <param name="strVerify">需要验证的字符串</param>
+            <returns>True/False，符合/不符合</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.TelIsChinaMobile(System.String)">
+            <summary>
+            判断字符串是否符合电话号码格式
+            <para>
+            手机号码·中国移动【134 135 136 137 138 139 147 150 151 152 157 158 159 182 187 188】
+            </para>
+            </summary>
+            <param name="strVerify">需要验证的字符串</param>
+            <returns>True/False，符合/不符合</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.TelIsChinaUnicom(System.String)">
+            <summary>
+            判断字符串是否符合电话号码格式
+            <para>
+            手机号码·中国联通【130 131 132 145 155 156 185 186】
+            </para>
+            </summary>
+            <param name="strVerify">需要验证的字符串</param>
+            <returns>True/False，符合/不符合</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.TelIsChinaTelecom(System.String)">
+            <summary>
+            判断字符串是否符合电话号码格式
+            <para>
+            手机号码·中国电信 【133 153 180 189】
+            </para>
+            </summary>
+            <param name="strVerify">需要验证的字符串</param>
+            <returns>True/False，符合/不符合</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.IsIP(System.String)">
+            <summary>
+            判断字符串是否为正确的IP地址格式
+            </summary>
+            <param name="strVerify">需要验证的字符串</param>
+            <returns>True/False，是/否</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.IsIPs(System.String)">
+            <summary>
+            判断字符串是否为正确的IP地址格式
+            </summary>
+            <param name="strVerify">需要验证的字符串</param>
+            <returns>True/False，是/否</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.IsIPSect(System.String)">
+            <summary>
+            判断字符串是否为正确的IP地址格式
+            </summary>
+            <param name="strVerify">需要验证的字符串</param>
+            <returns>True/False，是/否</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.IsIPOfArray(System.String,System.String[])">
+            <summary>
+            判断字符串是否为限定的IP地址格式
+            <remarks>
+            返回指定IP是否在指定的IP数组所限定的范围内, IP数组内的IP地址可以使用*表示该IP段任意, 例如192.168.1.*
+            </remarks>
+            </summary>
+            <param name="strVerify">需要验证的字符串</param>
+            <param name="limitArray">限定范围，IP数组</param>
+            <returns>True/False，是/否</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.SplitString(System.String,System.String)">
+            <summary>
+            分割字符串
+            </summary>
+            <param name="strContent">要分割的字符串</param>
+            <param name="strSplit">分割标识</param>
+            <returns>字符串数组</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.IsIDCard(System.String)">
+            <summary>
+            判断字符串是否符合大陆身份证规范
+            </summary>
+            <param name="strVerify">需要验证的字符串</param>
+            <returns>True/False，是/否</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.IsIDCard18(System.String)">
+            <summary>
+            判断字符串是否符合大陆身份证规范
+            <para>验证15位身份证号码</para>
+            </summary>
+            <param name="strVerify">需要验证的字符串</param>
+            <returns>True/False，是/否</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.IsIDCard15(System.String)">
+            <summary>
+            判断字符串是否符合大陆身份证规范
+            <para>验证18位身份证号码</para>
+            </summary>
+            <param name="strVerify">需要验证的字符串</param>
+            <returns>True/False，是/否</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.IsColor(System.String)">
+            <summary>
+            判断字符串是否为3/6位的合法颜色值
+            </summary>
+            <param name="strVerify">需要验证的字符串</param>
+            <returns>True/False，是/否</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.GetOccurrenceNumber(System.String,System.String)">
+            <summary>
+            查找一个字符串在另一个字符串中出现的次数
+            </summary>
+            <param name="strSource">源数据</param>
+            <param name="strFind">查找数据</param>
+            <returns>出现次数，默认为 0</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.IsSqlFilter(System.String)">
+            <summary>
+            判断字符串是否存在用于SQL注入的关键字、数据类型、危险字符
+            <remarks>
+            结合四个SQL注入检测方法
+            </remarks>
+            </summary>
+            <param name="strVerify">需要验证的字符串</param>
+            <returns>True/False，存在/不存在</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.IsSqlInjectionOfKey(System.String)">
+            <summary>
+            判断字符串是否存在用于SQL注入的SQL关键字
+            </summary>
+            <param name="strVerify">需要验证的字符串</param>
+            <returns>True/False，存在/不存在</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.IsSqlInjectionOfType(System.String)">
+            <summary>
+            判断字符串是否存在用于SQL注入的SQL数据类型
+            </summary>
+            <param name="strVerify">需要验证的字符串</param>
+            <returns>True/False，存在/不存在</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.IsSqlInjectionOfURL(System.String)">
+            <summary>
+            判断字符串是否存在用于SQL注入的SQL危险字符
+            <remarks>
+            常用于 URL 链接检测
+            </remarks>
+            </summary>
+            <param name="strVerify">需要验证的字符串</param>
+            <returns>True/False，存在/不存在</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.IsSqlInjectionOfString(System.String)">
+            <summary>
+            判断字符串是否存在用于SQL注入的SQL危险字符
+            </summary>
+            <param name="strVerify">需要验证的字符串</param>
+            <returns>True/False，存在/不存在</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.IsSafeString(System.String)">
+            <summary>
+            判断字符串是否存在用于链接的危险字符
+            </summary>
+            <param name="strVerify">需要验证的字符串</param>
+            <returns>True/False，存在/不存在</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.IsURL(System.String)">
+            <summary>
+            判断字符串是否为正确的URL地址格式
+            </summary>
+            <param name="strVerify">需要验证的字符串</param>
+            <returns>True/False，是/否</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.IsBase64String(System.String)">
+            <summary>
+            判断字符串是否为Base64字符串
+            </summary>
+            <param name="strVerify">需要验证的字符串</param>
+            <returns>True/False，是/否</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.IsPost(System.String)">
+            <summary>
+            判断字符串是否符合邮政编码格式
+            </summary>
+            <param name="strVerify">需要验证的字符串</param>
+            <returns>True/False，是/否</returns>
+        </member>
+        <member name="M:DawnXZ.VerifyUtility.ValidHelper.IsGuid(System.String)">
+            <summary>
+            是否为正确的全球唯一标识
+            </summary>
+            <param name="strVerify">全球唯一标识</param>
+            <returns>True / False</returns>
+        </member>
+        <member name="T:DawnXZ.VerifyUtility.ValidTips">
+            <summary>
+            数据校验提示信息
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidTips.Selector">
+            <summary>
+            下拉框数据选择
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidTips.IsEmail">
+            <summary>
+            判断字符串是否符合Email格式
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidTips.IsEmailValid">
+            <summary>
+            判断字符串是否符合Email格式
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidTips.ChsIsTname">
+            <summary>
+            判断字符串是否为真实姓名
+            <para>不低于2个汉字且不大于8个汉字</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidTips.ChsIsChinese">
+            <summary>
+            判断字符串是否由中文组成
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidTips.ChsIsChineseOrEngOrNum">
+            <summary>
+            判断字符串是否由中文、英文、数字组成
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidTips.ChsIsChineseOrEngOrNums">
+            <summary>
+            判断字符串是否由中文、英文、数字组成
+            <para>中文或英文开头</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidTips.ChsIsText">
+            <summary>
+            判断字符串是否由中文、字母、数字组成
+            <para>可含标点符号()[]（）</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidTips.ChsIsTexts">
+            <summary>
+            判断字符串是否由中文、字母、数字组成
+            <para>可含标点符号()[]（）</para>
+            <para>中文或英文开头</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidTips.ChsIsMemo">
+            <summary>
+            判断字符串是否由中文、字母、数字组成
+            <para>可含标点符号()[]（）：:、，,。.；;！!……</para>
+            <para>含换行符及回车符</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidTips.ChsIsMemos">
+            <summary>
+            判断字符串是否由中文、字母、数字组成
+            <para>可含标点符号()[]（）：:、，,。.；;！!……</para>
+            <para>含换行符及回车符</para>
+            <para>中文或英文开头</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidTips.ChsIsAddress">
+            <summary>
+            判断字符串是否由中文、字母、数字组成
+            <para>可含标点符号()[-]（、）</para>
+            <para>中文或英文开头</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidTips.EngIsPwd">
+            <summary>
+            判断字符串是否符合密码规范
+            <para>任意字符</para>
+            <para>长度：6-16 [区分大小写]</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidTips.EngIsPassword">
+            <summary>
+            判断字符串是否符合密码规范
+            <para>任意字符</para>
+            <para>长度：6-16 [区分大小写]</para>
+            <para>英文开头</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidTips.EngIsPasswords">
+            <summary>
+            判断字符串是否符合密码规范
+            <para>由英文和数字及下划线组成</para>
+            <para>长度：6-16 [区分大小写]</para>
+            <para>英文开头</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidTips.EngIsRegister">
+            <summary>
+            判断字符串是否由英文和数字组成
+            <para>用于检测注册帐号是否符合规范用</para>
+            <para>长度：4-8 [不区分大小写]</para>
+            <para>英文开头</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidTips.EngIsRegisters">
+            <summary>
+            判断字符串是否由英文和数字组成
+            <para>用于检测注册帐号是否符合规范用</para>
+            <para>长度：4-16 [不区分大小写]</para>
+            <para>英文开头</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidTips.EngIsEnglish">
+            <summary>
+            判断字符串是否由26个英文字母组成
+            <para>不区分大小写</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidTips.EngIsUppercase">
+            <summary>
+            判断字符串是否由26个英文字母组成
+            <para>大写</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidTips.EngIsLowercase">
+            <summary>
+            判断字符串是否由26个英文字母组成
+            <para>小写</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidTips.EngIsEngAndNum">
+            <summary>
+            判断字符串是否由26个英文和数字组成
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidTips.EngIsEngAndNums">
+            <summary>
+            判断字符串是否由26个英文和数字组成
+            <para>英文开头</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidTips.EngIsEngAndNumComma">
+            <summary>
+            判断字符串是否由26个英文、数字及逗号组成
+            <para>英文开头</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidTips.EngIsEngAndNumOrUnderline">
+            <summary>
+            判断字符串是否由26个英文和数字及下划线组成
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidTips.NumIsByteTinyint">
+            <summary>
+            判断对象是否为0-255数据
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidTips.NumIsInteger">
+            <summary>
+            判断对象是否由数字组成
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidTips.NumIsZeroOrNot">
+            <summary>
+            判断对象是否为零和非零开头的数字
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidTips.NumIsPlus2Point">
+            <summary>
+            判断对象是否为2位小数的正实数
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidTips.NumIsPlus3Point">
+            <summary>
+            判断对象是否为1至3位小数的正实数
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidTips.NumIsIntegralBySignless">
+            <summary>
+            判断对象是否为非零的正整数
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidTips.NumIsIntegralByNegative">
+            <summary>
+            判断对象是否为非零的负整数
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidTips.NumIsFloatBySignless">
+            <summary>
+            判断对象是否为正浮点数
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidTips.NumIsFloatByNegative">
+            <summary>
+            判断对象是否为负浮点数
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidTips.NumIsDouble">
+            <summary>
+            判断对象是否为Double类型
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidTips.NumIsDoubles">
+            <summary>
+            判断对象是否为Double类型
+            <para>包含正负号</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidTips.NumIsMoney">
+            <summary>
+            判断对象是否为Money类型
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidTips.TelIsPhone">
+            <summary>
+            判断字符串是否符合电话号码格式
+            <para>包含电话号码与手机号码共同验证</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidTips.TelIsTelephone">
+            <summary>
+            判断字符串是否符合电话号码格式
+            <para>
+            座机号码，格式：010-12345678、020-1234567、0755-1234567、0755-12345678、1234567、12345678
+            </para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidTips.TelIsMobile">
+            <summary>
+            判断字符串是否符合电话号码格式
+            <para>中国电信、中国移动、中国联通共同验证</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidTips.TelIsChinaMobile">
+            <summary>
+            判断字符串是否符合电话号码格式
+            <para>
+            手机号码·中国移动【134 135 136 137 138 139 147 150 151 152 157 158 159 182 187 188】
+            </para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidTips.TelIsChinaUnicom">
+            <summary>
+            判断字符串是否符合电话号码格式
+            <para>
+            手机号码·中国联通【130 131 132 145 155 156 185 186】
+            </para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidTips.TelIsChinaTelecom">
+            <summary>
+            判断字符串是否符合电话号码格式
+            <para>
+            手机号码·中国电信 【133 153 180 189】
+            </para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidTips.IsIP">
+            <summary>
+            判断字符串是否为正确的IP地址格式
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidTips.IsIPs">
+            <summary>
+            判断字符串是否为正确的IP地址格式
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidTips.IsIPSect">
+            <summary>
+            判断字符串是否为正确的IP地址格式
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidTips.IsIDCard">
+            <summary>
+            判断字符串是否符合大陆身份证规范
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidTips.IsSafeString">
+            <summary>
+            判断字符串是否存在用于链接的危险字符
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidTips.IsURL">
+            <summary>
+            判断字符串是否为正确的URL地址格式
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidTips.IsPost">
+            <summary>
+            判断字符串是否符合邮政编码格式
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidTips.IsDate">
+            <summary>
+            判断字符串是否符合日期格式
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidTips.IsEmpty">
+            <summary>
+            判断字符串是否为空
+            </summary>
+        </member>
+        <member name="T:DawnXZ.VerifyUtility.ValidWarn">
+            <summary>
+            数据校验警告信息
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidWarn.Selector">
+            <summary>
+            下拉框数据选择
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidWarn.IsEmail">
+            <summary>
+            判断字符串是否符合Email格式
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidWarn.IsEmailValid">
+            <summary>
+            判断字符串是否符合Email格式
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidWarn.ChsIsTname">
+            <summary>
+            判断字符串是否为真实姓名
+            <para>不低于2个汉字且不大于8个汉字</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidWarn.ChsIsChinese">
+            <summary>
+            判断字符串是否由中文组成
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidWarn.ChsIsChineseOrEngOrNum">
+            <summary>
+            判断字符串是否由中文、英文、数字组成
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidWarn.ChsIsChineseOrEngOrNums">
+            <summary>
+            判断字符串是否由中文、英文、数字组成
+            <para>中文或英文开头</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidWarn.ChsIsText">
+            <summary>
+            判断字符串是否由中文、字母、数字组成
+            <para>可含标点符号()[]（）</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidWarn.ChsIsTexts">
+            <summary>
+            判断字符串是否由中文、字母、数字组成
+            <para>可含标点符号()[]（）</para>
+            <para>中文或英文开头</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidWarn.ChsIsMemo">
+            <summary>
+            判断字符串是否由中文、字母、数字组成
+            <para>可含标点符号()[]（）：:、，,。.；;！!……</para>
+            <para>含换行符及回车符</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidWarn.ChsIsMemos">
+            <summary>
+            判断字符串是否由中文、字母、数字组成
+            <para>可含标点符号()[]（）：:、，,。.；;！!……</para>
+            <para>含换行符及回车符</para>
+            <para>中文或英文开头</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidWarn.ChsIsAddress">
+            <summary>
+            判断字符串是否由中文、字母、数字组成
+            <para>可含标点符号()[-]（、）</para>
+            <para>中文或英文开头</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidWarn.EngIsPwd">
+            <summary>
+            判断字符串是否符合密码规范
+            <para>任意字符</para>
+            <para>长度：6-16 [区分大小写]</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidWarn.EngIsPassword">
+            <summary>
+            判断字符串是否符合密码规范
+            <para>任意字符</para>
+            <para>长度：6-16 [区分大小写]</para>
+            <para>英文开头</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidWarn.EngIsPasswords">
+            <summary>
+            判断字符串是否符合密码规范
+            <para>由英文和数字及下划线组成</para>
+            <para>长度：6-16 [区分大小写]</para>
+            <para>英文开头</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidWarn.EngIsRegister">
+            <summary>
+            判断字符串是否由英文和数字组成
+            <para>用于检测注册帐号是否符合规范用</para>
+            <para>长度：4-8 [不区分大小写]</para>
+            <para>英文开头</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidWarn.EngIsRegisters">
+            <summary>
+            判断字符串是否由英文和数字组成
+            <para>用于检测注册帐号是否符合规范用</para>
+            <para>长度：4-16 [不区分大小写]</para>
+            <para>英文开头</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidWarn.EngIsEnglish">
+            <summary>
+            判断字符串是否由26个英文字母组成
+            <para>不区分大小写</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidWarn.EngIsUppercase">
+            <summary>
+            判断字符串是否由26个英文字母组成
+            <para>大写</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidWarn.EngIsLowercase">
+            <summary>
+            判断字符串是否由26个英文字母组成
+            <para>小写</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidWarn.EngIsEngAndNum">
+            <summary>
+            判断字符串是否由26个英文和数字组成
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidWarn.EngIsEngAndNums">
+            <summary>
+            判断字符串是否由26个英文和数字组成
+            <para>英文开头</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidWarn.EngIsEngAndNumComma">
+            <summary>
+            判断字符串是否由26个英文、数字及逗号组成
+            <para>英文开头</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidWarn.EngIsEngAndNumOrUnderline">
+            <summary>
+            判断字符串是否由26个英文和数字及下划线组成
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidWarn.NumIsByteTinyint">
+            <summary>
+            判断对象是否为0-255数据
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidWarn.NumIsInteger">
+            <summary>
+            判断对象是否由数字组成
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidWarn.NumIsZeroOrNot">
+            <summary>
+            判断对象是否为零和非零开头的数字
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidWarn.NumIsPlus2Point">
+            <summary>
+            判断对象是否为2位小数的正实数
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidWarn.NumIsPlus3Point">
+            <summary>
+            判断对象是否为1至3位小数的正实数
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidWarn.NumIsIntegralBySignless">
+            <summary>
+            判断对象是否为非零的正整数
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidWarn.NumIsIntegralByNegative">
+            <summary>
+            判断对象是否为非零的负整数
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidWarn.NumIsFloatBySignless">
+            <summary>
+            判断对象是否为正浮点数
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidWarn.NumIsFloatByNegative">
+            <summary>
+            判断对象是否为负浮点数
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidWarn.NumIsDouble">
+            <summary>
+            判断对象是否为Double类型
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidWarn.NumIsDoubles">
+            <summary>
+            判断对象是否为Double类型
+            <para>包含正负号</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidWarn.NumIsMoney">
+            <summary>
+            判断对象是否为Money类型
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidWarn.TelIsPhone">
+            <summary>
+            判断字符串是否符合电话号码格式
+            <para>包含电话号码与手机号码共同验证</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidWarn.TelIsTelephone">
+            <summary>
+            判断字符串是否符合电话号码格式
+            <para>
+            座机号码，格式：010-12345678、020-1234567、0755-1234567、0755-12345678、1234567、12345678
+            </para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidWarn.TelIsMobile">
+            <summary>
+            判断字符串是否符合电话号码格式
+            <para>中国电信、中国移动、中国联通共同验证</para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidWarn.TelIsChinaMobile">
+            <summary>
+            判断字符串是否符合电话号码格式
+            <para>
+            手机号码·中国移动【134 135 136 137 138 139 147 150 151 152 157 158 159 182 187 188】
+            </para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidWarn.TelIsChinaUnicom">
+            <summary>
+            判断字符串是否符合电话号码格式
+            <para>
+            手机号码·中国联通【130 131 132 145 155 156 185 186】
+            </para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidWarn.TelIsChinaTelecom">
+            <summary>
+            判断字符串是否符合电话号码格式
+            <para>
+            手机号码·中国电信 【133 153 180 189】
+            </para>
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidWarn.IsIP">
+            <summary>
+            判断字符串是否为正确的IP地址格式
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidWarn.IsIPs">
+            <summary>
+            判断字符串是否为正确的IP地址格式
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidWarn.IsIPSect">
+            <summary>
+            判断字符串是否为正确的IP地址格式
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidWarn.IsIDCard">
+            <summary>
+            判断字符串是否符合大陆身份证规范
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidWarn.IsSafeString">
+            <summary>
+            判断字符串是否存在用于链接的危险字符
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidWarn.IsURL">
+            <summary>
+            判断字符串是否为正确的URL地址格式
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidWarn.IsPost">
+            <summary>
+            判断字符串是否符合邮政编码格式
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidWarn.IsDate">
+            <summary>
+            判断字符串是否符合日期格式
+            </summary>
+        </member>
+        <member name="F:DawnXZ.VerifyUtility.ValidWarn.IsEmpty">
+            <summary>
+            判断字符串是否为空
+            </summary>
+        </member>
+    </members>
+</doc>
